@@ -1,0 +1,105 @@
+{
+    "title": "Random Forest Regressor (RR)",
+    "description": "A generic windowed forecasting method using random forest regression (requested by RollsRoyce). The forecasting error is used as anomaly score.",
+    "inputDimensionality": "univariate",
+    "learningType": "semi-supervised",
+    "version": "0.1",
+    "authors": "Sebastian Schmidl",
+    "language": "Python",
+    "type": "Detector",
+    "mainFile": "algorithm.py",
+    "trainingStep": {
+        "parameters": [
+            {
+                "name": "train_window_size",
+                "type": "int",
+                "defaultValue": 50,
+                "optional": "true",
+                "description": "Size of the training windows. Always predicts a single point!"
+            },
+            {
+                "name": "n_trees",
+                "type": "int",
+                "defaultValue": 100,
+                "optional": "true",
+                "description": "The number of trees in the forest."
+            },
+            {
+                "name": "max_features_method",
+                "type": "enum[auto,sqrt,log2]",
+                "defaultValue": "auto",
+                "optional": "true",
+                "description": "The number of features to consider when looking for the best split between trees: 'auto': max_features=n_features, 'sqrt': max_features=sqrt(n_features), 'log2': max_features=log2(n_features)."
+            },
+            {
+                "name": "bootstrap",
+                "type": "boolean",
+                "defaultValue": true,
+                "optional": "true",
+                "description": "Whether bootstrap samples are used when building trees. If False, the whole dataset is used to build each tree."
+            },
+            {
+                "name": "max_samples",
+                "type": "float",
+                "defaultValue": null,
+                "optional": "true",
+                "description": "If bootstrap is True, the number of samples to draw from X to train each base estimator."
+            },
+            {
+                "name": "random_state",
+                "type": "int",
+                "defaultValue": 42,
+                "optional": "true",
+                "description": "Seeds the randomness of the bootstrapping and the sampling of the features."
+            },
+            {
+                "name": "verbose",
+                "type": "int",
+                "defaultValue": 0,
+                "optional": "true",
+                "description": "Controls logging verbosity."
+            },
+            {
+                "name": "n_jobs",
+                "type": "int",
+                "defaultValue": 1,
+                "optional": "true",
+                "description": "The number of jobs to run in parallel. `-1` means using all processors"
+            },
+            {
+                "name": "max_depth",
+                "type": "int",
+                "defaultValue": null,
+                "optional": "true",
+                "description": "The maximum depth of the tree. If None, then nodes are expanded until all leaves are pure or until all leaves contain less than min_samples_split samples."
+            },
+            {
+                "name": "min_samples_split",
+                "type": "int",
+                "defaultValue": 2,
+                "optional": "true",
+                "description": "The minimum number of samples required to split an internal node."
+            },
+            {
+                "name": "min_samples_leaf",
+                "type": "int",
+                "defaultValue": 1,
+                "optional": "true",
+                "description": "The minimum number of samples required to be at a leaf node. A split point at any depth will only be considered if it leaves at least `min_samples_leaf` training samples in each of the left and right branches. This may have the effect of smoothing the model, especially in regression."
+            }
+        ],
+        "modelInput": "none"
+    },
+    "executionStep": {
+        "parameters": [
+            {
+                "name": "random_state",
+                "type": "int",
+                "defaultValue": 42,
+                "optional": "true",
+                "description": "Seeds the randomness of the bootstrapping and the sampling of the features."
+            }
+        ],
+        "modelInput": "required"
+    }
+}

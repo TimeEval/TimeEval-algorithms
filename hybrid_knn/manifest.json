@@ -1,0 +1,115 @@
+{
+  "title": "Hybrid KNN",
+  "description": "Implementation of https://www.hindawi.com/journals/cin/2017/8501683/",
+  "inputDimensionality": "multivariate",
+  "version": "0.1",
+  "authors": "Hongchao Song, Zhuqing Jiang, Aidong Men, Bo Yang",
+  "language": "Python",
+  "type": "Detector",
+  "learningType": "semi-supervised",
+  "mainFile": "algorithm.py",
+  "trainingStep": {
+    "parameters": [
+      {
+        "name": "linear_layer_shape",
+        "type": "List[int]",
+        "defaultValue": [
+          100,
+          10
+        ],
+        "optional": "true",
+        "description": "NN structure with embedding dim as last value"
+      },
+      {
+        "name": "split",
+        "type": "float",
+        "defaultValue": 0.8,
+        "optional": "true",
+        "description": "train-validation split"
+      },
+      {
+        "name": "anomaly_window_size",
+        "type": "int",
+        "defaultValue": 20,
+        "optional": "true",
+        "description": "windowing size for time series"
+      },
+      {
+        "name": "batch_size",
+        "type": "int",
+        "defaultValue": 64,
+        "optional": "true",
+        "description": "number of simultaneously trained data instances"
+      },
+      {
+        "name": "test_batch_size",
+        "type": "int",
+        "defaultValue": 256,
+        "optional": "true",
+        "description": "number of simultaneously tested data instances"
+      },
+      {
+        "name": "epochs",
+        "type": "int",
+        "defaultValue": 1,
+        "optional": "true",
+        "description": "number of training iterations over entire dataset"
+      },
+      {
+        "name": "early_stopping_delta",
+        "type": "float",
+        "defaultValue": 0.05,
+        "optional": "true",
+        "description": "If 1 - (loss / last_loss) is less than `delta` for `patience` epochs, stop"
+      },
+      {
+        "name": "early_stopping_patience",
+        "type": "int",
+        "defaultValue": 10,
+        "optional": "true",
+        "description": "If 1 - (loss / last_loss) is less than `delta` for `patience` epochs, stop"
+      },
+      {
+        "name": "learning_rate",
+        "type": "float",
+        "defaultValue": 0.001,
+        "optional": "true",
+        "description": "Gradient factor for backpropagation"
+      },
+      {
+        "name": "n_neighbors",
+        "type": "int",
+        "defaultValue": 12,
+        "optional": "true",
+        "description": "Defines which neighbour's distance to use"
+      },
+      {
+        "name": "n_estimators",
+        "type": "int",
+        "defaultValue": 3,
+        "optional": "true",
+        "description": "Defines number of ensembles"
+      },
+      {
+        "name": "random_state",
+        "type": "int",
+        "defaultValue": 42,
+        "optional": "true",
+        "description": "Seed for the random number generator"
+      }
+    ],
+    "modelInput": "none"
+  },
+  "executionStep": {
+    "parameters": [
+      {
+        "name": "random_state",
+        "type": "int",
+        "defaultValue": 42,
+        "optional": "true",
+        "description": "Seed for the random number generator"
+      }
+    ],
+    "modelInput": "required"
+  }
+}

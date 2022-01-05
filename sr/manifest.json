@@ -1,0 +1,44 @@
+{
+    "title": "Spectral Residual (SR)",
+    "description": "Implementation of https://doi.org/10.1145/3292500.3330680",
+    "inputDimensionality": "univariate",
+    "version": "0.1",
+    "authors": "Hansheng Ren, Bixiong Xu, Yujing Wang, Chao Yi, Congrui Huang, Xiaoyu Kou, Tony Xing, Mao Yang, Jie Tong, Qi Zhang",
+    "language": "Python",
+    "type": "Detector",
+    "mainFile": "algorithm.py",
+    "learningType": "unsupervised",
+    "executionStep": {
+      "parameters": [
+        {
+          "name": "mag_window_size",
+          "type": "int",
+          "defaultValue": 3,
+          "optional": "true",
+          "description": "Window size for sliding window average calculation"
+        },
+        {
+          "name": "score_window_size",
+          "type": "int",
+          "defaultValue": 40,
+          "optional": "true",
+          "description": "Window size for anomaly scoring"
+        },
+        {
+          "name": "window_size",
+          "type": "int",
+          "defaultValue": 50,
+          "optional": "true",
+          "description": "Sliding window size"
+        },
+        {
+          "name": "random_state",
+          "type": "int",
+          "defaultValue": 42,
+          "optional": "true",
+          "description": "Seed for random number generation."
+        }
+      ],
+      "modelInput": "none"
+    }
+}

@@ -1,0 +1,184 @@
+{
+    "title": "NumentaHTM",
+    "description": "Implementation of https://doi.org/10.1016/j.neucom.2017.04.070",
+    "inputDimensionality": "univariate",
+    "version": "0.1",
+    "authors": "Subutai Ahmad, Alexander Lavin, Scott Purdy, Zuha Agha",
+    "language": "Python",
+    "type": "Detector",
+    "mainFile": "algorithm.py",
+    "learningType": "unsupervised",
+    "executionStep": {
+      "parameters": [
+        {
+          "name": "encoding_input_width",
+          "type": "int",
+          "defaultValue": 21,
+          "optional": "true",
+          "description": ""
+        },
+        {
+          "name": "encoding_output_width",
+          "type": "int",
+          "defaultValue": 50,
+          "optional": "true",
+          "description": ""
+        },
+        {
+          "name": "autoDetectWaitRecords",
+          "type": "int",
+          "defaultValue": 50,
+          "optional": "true",
+          "description": ""
+        },
+        {
+          "name": "columnCount",
+          "type": "int",
+          "defaultValue": 2048,
+          "optional": "true",
+          "description": "Number of cell columns in the cortical region (same number for SP and TM)"
+        },
+        {
+          "name": "numActiveColumnsPerInhArea",
+          "type": "int",
+          "defaultValue": 40,
+          "optional": "true",
+          "description": "Maximum number of active columns in the SP region's output (when there are more, the weaker ones are suppressed)"
+        },
+        {
+          "name": "potentialPct",
+          "type": "float",
+          "defaultValue": 0.5,
+          "optional": "true",
+          "description": "What percent of the columns's receptive field is available for potential synapses. At initialization time, we will choose potentialPct * (2*potentialRadius+1)^2"
+        },
+        {
+          "name": "synPermConnected",
+          "type": "float",
+          "defaultValue": 0.1,
+          "optional": "true",
+          "description": "The default connected threshold. Any synapse whose permanence value is above the connected threshold is a \"connected synapse\", meaning it can contribute to the cell's firing. Typical value is 0.10. Cells whose activity level before inhibition falls below minDutyCycleBeforeInh will have their own internal synPermConnectedCell threshold set below this default value."
+        },
+        {
+          "name": "synPermActiveInc",
+          "type": "float",
+          "defaultValue": 0.1,
+          "optional": "true",
+          "description": ""
+        },
+        {
+          "name": "synPermInactiveDec",
+          "type": "float",
+          "defaultValue": 0.005,
+          "optional": "true",
+          "description": ""
+        },
+        {
+          "name": "cellsPerColumn",
+          "type": "int",
+          "defaultValue": 32,
+          "optional": "true",
+          "description": "The number of cells (i.e., states), allocated per column."
+        },
+        {
+          "name": "inputWidth",
+          "type": "int",
+          "defaultValue": 2048,
+          "optional": "true",
+          "description": ""
+        },
+        {
+          "name": "newSynapseCount",
+          "type": "int",
+          "defaultValue": 20,
+          "optional": "true",
+          "description": "New Synapse formation count"
+        },
+        {
+          "name": "maxSynapsesPerSegment",
+          "type": "int",
+          "defaultValue": 32,
+          "optional": "true",
+          "description": "Maximum number of synapses per segment"
+        },
+        {
+          "name": "maxSegmentsPerCell",
+          "type": "int",
+          "defaultValue": 128,
+          "optional": "true",
+          "description": "Maximum number of segments per cell"
+        },
+        {
+          "name": "initialPerm",
+          "type": "float",
+          "defaultValue": 0.21,
+          "optional": "true",
+          "description": "Initial Permanence"
+        },
+        {
+          "name": "permanenceInc",
+          "type": "float",
+          "defaultValue": 0.1,
+          "optional": "true",
+          "description": "Permanence Increment"
+        },
+        {
+          "name": "permanenceDec",
+          "type": "float",
+          "defaultValue" : 0.1,
+          "optional": "true",
+          "description": "Permanence Decrement"
+        },
+        {
+          "name": "globalDecay",
+          "type": "float",
+          "defaultValue": 0.0,
+          "optional": "true",
+          "description": ""
+        },
+        {
+          "name": "maxAge",
+          "type": "int",
+          "defaultValue": 0,
+          "optional": "true",
+          "description": ""
+        },
+        {
+          "name": "minThreshold",
+          "type": "int",
+          "defaultValue": 9,
+          "optional": "true",
+          "description": "Minimum number of active synapses for a segment to be considered during search for the best-matching segments."
+        },
+        {
+          "name": "activationThreshold",
+          "type": "int",
+          "defaultValue": 12,
+          "optional": "true",
+          "description": "Segment activation threshold. A segment is active if it has >= tpSegmentActivationThreshold connected synapses that are active due to infActiveState"
+        },
+        {
+          "name": "pamLength",
+          "type": "int",
+          "defaultValue": 1,
+          "optional": "true",
+          "description": "\"Pay Attention Mode\" length. This tells the TM how many new elements to append to the end of a learned sequence at a time. Smaller values are better for datasets with short sequences, higher values are better for datasets with long sequences."
+        },
+        {
+          "name": "alpha",
+          "type": "float",
+          "defaultValue": 0.5,
+          "optional": "true",
+          "description": "This controls how fast the classifier learns/forgets. Higher values make it adapt faster and forget older patterns faster"
+        },
+        {
+          "name": "random_state",
+          "type": "int",
+          "defaultValue": 42,
+          "optional": "true",
+          "description": "Seed for random number generation."
+        }
+      ],
+      "modelInput": "none"
+    }
+}

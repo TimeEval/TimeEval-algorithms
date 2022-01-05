@@ -1,0 +1,83 @@
+{
+    "title": "PhaseSpace-SVM",
+    "description": "Implementation of https://doi.org/10.1109/IJCNN.2003.1223670.",
+    "inputDimensionality": "univariate",
+    "version": "0.1",
+    "authors": "Junshui Ma and Simon Perkins",
+    "language": "Python",
+    "type": "Detector",
+    "mainFile": "algorithm.py",
+    "learningType": "unsupervised",
+    "executionStep": {
+        "parameters": [
+            {
+                "name": "embed_dim_range",
+                "type": "List[int]",
+                "defaultValue": [
+                    50,
+                    100,
+                    150
+                ],
+                "optional": "true",
+                "description": "List of phase space dimensions (sliding window sizes). For each dimension a OC-SVM is fitted to calculate outlier scores. The final result is the point-wise aggregation of the anomaly scores."
+            },
+            {
+                "name": "project_phasespace",
+                "type": "boolean",
+                "defaultValue": "False",
+                "optional": "true",
+                "description": "Whether to use phasespace projection or just work on the phasespace values."
+            },
+            {
+                "name": "nu",
+                "type": "float",
+                "defaultValue": 0.5,
+                "optional": "true",
+                "description": "Main parameter of OC-SVM. An upper bound on the fraction of training errors and a lower bound of the fraction of support vectors. Should be in the interval (0, 1]."
+            },
+            {
+                "name": "kernel",
+                "type": "enum[linear,poly,rbf,sigmoid]",
+                "defaultValue": "rbf",
+                "optional": "true",
+                "description": "Specifies the kernel type to be used in the algorithm. It must be one of ‘linear’, ‘poly’, ‘rbf’, or ‘sigmoid’."
+            },
+            {
+                "name": "gamma",
+                "type": "float",
+                "defaultValue": null,
+                "optional": "true",
+                "description": "Kernel coefficient for ‘rbf’, ‘poly’ and ‘sigmoid’. If gamma is not set (`null`) then it uses 1 / (n_features * X.var()) as value of gamma"
+            },
+            {
+                "name": "degree",
+                "type": "int",
+                "defaultValue": 3,
+                "optional": "true",
+                "description": "Degree of the polynomial kernel function (‘poly’). Ignored by all other kernels."
+            },
+            {
+                "name": "coef0",
+                "type": "float",
+                "defaultValue": 0.0,
+                "optional": "true",
+                "description": "Independent term in kernel function. It is only significant in ‘poly’ and ‘sigmoid’."
+            },
+            {
+                "name": "tol",
+                "type": "float",
+                "defaultValue": 0.001,
+                "optional": "true",
+                "description": "Tolerance for stopping criterion."
+            },
+            {
+                "name": "random_state",
+                "type": "int",
+                "defaultValue": 42,
+                "optional": "true",
+                "description": "Seed for random number generation."
+            }
+        ],
+        "modelInput": "none"
+    }
+}

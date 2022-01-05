@@ -1,0 +1,105 @@
+{
+  "title": "DeepAnT",
+  "description": "Adapted community implementation (https://github.com/dev-aadarsh/DeepAnT)",
+  "inputDimensionality": "multivariate",
+  "version": "0.1",
+  "authors": "",
+  "language": "Python",
+  "type": "Detector",
+  "learningType": "semi-supervised",
+  "mainFile": "algorithm.py",
+  "trainingStep": {
+    "parameters": [
+      {
+        "name": "epochs",
+        "type": "int",
+        "description": "Number of training epochs",
+        "defaultValue": 50,
+        "optional": "true"
+      },
+      {
+        "name": "window_size",
+        "type": "int",
+        "description": "History window: Number of time stamps in history, which are taken into account",
+        "defaultValue": 45,
+        "optional": "true"
+      },
+      {
+        "name": "prediction_window_size",
+        "type": "int",
+        "description": "Prediction window: Number of data points that will be predicted from each window",
+        "defaultValue": 1,
+        "optional": "true"
+      },
+      {
+        "name": "learning_rate",
+        "type": "float",
+        "description": "Learning rate",
+        "defaultValue": 1e-05,
+        "optional": "true"
+      },
+      {
+        "name": "batch_size",
+        "type": "int",
+        "description": "Batch size for input data",
+        "defaultValue": 45,
+        "optional": "true"
+      },
+      {
+        "name": "random_state",
+        "type": "int",
+        "defaultValue": 42,
+        "optional": "true",
+        "description": "Seed for the random number generator"
+      },
+      {
+        "name": "split",
+        "type": "float",
+        "defaultValue": 0.8,
+        "optional": "true",
+        "description": "Train-validation split for early stopping"
+      },
+      {
+        "name": "early_stopping_delta",
+        "type": "float",
+        "defaultValue": 0.05,
+        "optional": "true",
+        "description": "If 1 - (loss / last_loss) is less than `delta` for `patience` epochs, stop"
+      },
+      {
+        "name": "early_stopping_patience",
+        "type": "int",
+        "defaultValue": 10,
+        "optional": "true",
+        "description": "If 1 - (loss / last_loss) is less than `delta` for `patience` epochs, stop"
+      }
+    ],
+    "modelInput": "none"
+  },
+  "executionStep": {
+    "parameters": [
+      {
+        "name": "window_size",
+        "type": "int",
+        "description": "History window that was used for the model training",
+        "defaultValue": 45,
+        "optional": "false"
+      },
+      {
+        "name": "prediction_window_size",
+        "type": "int",
+        "description": "Prediction window that was used for the model training",
+        "defaultValue": 1,
+        "optional": "false"
+      },
+      {
+        "name": "random_state",
+        "type": "int",
+        "defaultValue": 42,
+        "optional": "true",
+        "description": "Seed for the random number generator"
+      }
+    ],
+    "modelInput": "optional"
+  }
+}

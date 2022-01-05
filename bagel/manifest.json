@@ -1,0 +1,108 @@
+{
+  "title": "Bagel",
+  "description": "Implementation of https://doi.org/10.1109/PCCC.2018.8710885",
+  "inputDimensionality": "univariate",
+  "version": "0.1",
+  "authors": "Zeyan Li, Wenxiao Chen, Dan Pei",
+  "language": "Python",
+  "type": "Detector",
+  "mainFile": "algorithm.py",
+  "learningType": "semi-supervised",
+  "trainingStep": {
+    "parameters": [
+      {
+        "name": "window_size",
+        "type": "int",
+        "defaultValue": 120,
+        "optional": "true",
+        "description": "Size of sliding windows"
+      },
+      {
+        "name": "latent_size",
+        "type": "int",
+        "defaultValue": 8,
+        "optional": "true",
+        "description": "Dimensionality of encoding"
+      },
+      {
+        "name": "hidden_layer_shape",
+        "type": "List[int]",
+        "defaultValue": [
+          100,
+          100
+        ],
+        "optional": "true",
+        "description": "NN hidden layers structure"
+      },
+      {
+        "name": "dropout",
+        "type": "float",
+        "defaultValue": 0.1,
+        "optional":"true",
+        "description": "Rate of conditional dropout used"
+      },
+      {
+        "name": "cuda",
+        "type": "boolean",
+        "defaultValue": false,
+        "optional": "true",
+        "description": "Use GPU for training"
+      },
+      {
+        "name": "epochs",
+        "type": "int",
+        "defaultValue": 50,
+        "optional": "true",
+        "description": "Number of passes over the entire dataset"
+      },
+      {
+        "name": "batch_size",
+        "type": "int",
+        "description": "Batch size for input data",
+        "defaultValue": 128,
+        "optional": "true"
+      },
+      {
+        "name": "split",
+        "type": "float",
+        "defaultValue": 0.8,
+        "optional": "true",
+        "description": "Fraction to split training data by for validation"
+      },
+      {
+        "name": "early_stopping_delta",
+        "type": "float",
+        "defaultValue": 0.5,
+        "optional": "true",
+        "description": "If loss is `delta` or less smaller for `patience` epochs, stop"
+      },
+      {
+        "name": "early_stopping_patience",
+        "type": "int",
+        "defaultValue": 10,
+        "optional": "true",
+        "description": "If loss is `delta` or less smaller for `patience` epochs, stop"
+      },
+      {
+        "name": "random_state",
+        "type": "int",
+        "defaultValue": 42,
+        "optional": "true",
+        "description": "Seed for the random number generator"
+      }
+    ],
+    "modelInput": "none"
+  },
+  "executionStep": {
+    "parameters": [
+      {
+        "name": "random_state",
+        "type": "int",
+        "defaultValue": 42,
+        "optional": "true",
+        "description": "Seed for the random number generator"
+      }
+    ],
+    "modelInput": "required"
+  }
+}

@@ -1,0 +1,79 @@
+{
+    "title": "DBStream",
+    "description": "A simple density-based clustering algorithm that assigns data points to micro-clusters with a given radius and implements shared-density-based reclustering.",
+    "inputDimensionality": "multivariate",
+    "version": "1.0",
+    "authors": "Michael Hahsler, Matthew Bolanos, John Forrest, Matthias Carnein, Dennis Assenmacher, Dalibor Krleža, Richard Schulz",
+    "language": "R",
+    "type": "Detector",
+    "learningType": "Unsupervised",
+    "mainFile": "algorithm.r",
+    "executionStep": {
+        "modelInput": "none",
+        "parameters": [
+            {
+                "name": "window_size",
+                "type": "int",
+                "defaultValue": 20,
+                "optional": "True",
+                "description": "The length of the subsequences the dataset should be splitted in."
+            },
+            {
+                "name": "radius",
+                "type": "float",
+                "defaultValue": 0.1,
+                "optional": "True",
+                "description": "The radius of micro-clusters."
+            },
+            {
+                "name": "lambda",
+                "type": "float",
+                "defaultValue": 0.001,
+                "optional": "True",
+                "description": "The lambda used in the fading function."
+            },
+            {
+                "name": "distance_metric",
+                "type": "enum[Euclidean,Manhattan,Maximum]",
+                "defaultValue": "Euclidean",
+                "optional": "True",
+                "description": "The metric used to calculate distances. If shared_density is TRUE this has to be Euclidian."
+            },
+            {
+                "name": "shared_density",
+                "type": "boolean",
+                "defaultValue": "True",
+                "optional": "True",
+                "description": "Record shared density information. If set to TRUE then shared density is used for reclustering, otherwise reachability is used (overlapping clusters with less than r∗(1−alpha) distance are clustered together)"
+            },
+            {
+                "name": "n_clusters",
+                "type": "int",
+                "defaultValue": 0,
+                "optional": "True",
+                "description": "The number of macro clusters to be returned if macro is true."
+            },
+            {
+                "name": "alpha",
+                "type": "float",
+                "defaultValue": 0.1,
+                "optional": "True",
+                "description": "For shared density: The minimum proportion of shared points between to clus-ters to warrant combining them (a suitable value for 2D data is .3). For reacha-bility clustering it is a distance factor"
+            },
+            {
+                "name": "min_weight",
+                "type": "float",
+                "defaultValue": 0.0,
+                "optional": "True",
+                "description": "The proportion of the total weight a macro-cluster needs to have not to be noise(between 0 and 1)."
+            },
+            {
+                "name": "random_state",
+                "type": "int",
+                "defaultValue": 42,
+                "optional": "true",
+                "description": "Seed for random number generation."
+            }
+        ]
+    }
+}

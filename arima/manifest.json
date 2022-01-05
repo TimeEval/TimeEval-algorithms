@@ -1,0 +1,79 @@
+{
+    "title": "ARIMA",
+    "description": "Anomoly detector using ARIMA estimation and (default: euclidean) distance function to calculate prediction error as anomaly score",
+    "inputDimensionality": "univariate",
+    "version": "1.0",
+    "authors": "Yinchen Wu",
+    "language": "Python",
+    "type": "Detector",
+    "learningType": "unsupervised",
+    "mainFile": "algorithm.py",
+    "executionStep": {
+        "parameters": [
+            {
+                "name": "window_size",
+                "type": "int",
+                "defaultValue": 20,
+                "optional": "false",
+                "description": "Size of sliding window (also used as prediction window size)"
+            },
+            {
+                "name": "max_lag",
+                "type": "int",
+                "defaultValue": 30000,
+                "optional": "false",
+                "description": "Number of points, after which the ARIMA model is re-fitted to the data to deal with trends and shifts"
+            },
+            {
+                "name": "p_start",
+                "type": "int",
+                "defaultValue": 1,
+                "optional": "false",
+                "description": "Minimum AR-order for the auto-ARIMA process"
+            },
+            {
+                "name": "q_start",
+                "type": "int",
+                "defaultValue": 1,
+                "optional": "false",
+                "description": "Minimum MA-order for the auto-ARIMA process"
+            },
+            {
+                "name": "max_p",
+                "type": "int",
+                "defaultValue": 5,
+                "optional": "false",
+                "description": "Maximum AR-order for the auto-ARIMA process"
+            },
+            {
+                "name": "max_q",
+                "type": "int",
+                "defaultValue": 5,
+                "optional": "false",
+                "description": "Maximum MA-order for the auto-ARIMA process"
+            },
+            {
+                "name": "differencing_degree",
+                "type": "int",
+                "defaultValue": 0,
+                "optional": "false",
+                "description": "Differencing degree for the auto-ARIMA process"
+            },
+            {
+                "name": "distance_metric",
+                "type": "enum[Euclidean,Mahalanobis,Garch,SSA,Fourier,DTW,EDRS,TWED]",
+                "defaultValue": "Euclidean",
+                "optional": "false",
+                "description": "Distance measure used to calculate the prediction error = anomaly score"
+            },
+            {
+                "name": "random_state",
+                "type": "int",
+                "defaultValue": 42,
+                "optional": "true",
+                "description": "Seed for the random number generator"
+            }
+        ],
+        "modelInput": "none"
+    }
+}

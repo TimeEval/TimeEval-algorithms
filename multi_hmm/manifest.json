@@ -1,0 +1,49 @@
+{
+    "title": "MultiHMM",
+    "description": "Implementation of https://doi.org/10.1016/j.asoc.2017.06.035",
+    "inputDimensionality": "multivariate",
+    "version": "0.1",
+    "authors": "Jinbo Li, Witold Pedrycz, Iqbal Jamal",
+    "language": "Python",
+    "type": "Detector",
+    "learningType": "Supervised",
+    "mainFile": "algorithm.py",
+    "trainingStep": {
+      "parameters": [
+        {
+          "name": "discretizer",
+          "type": "enum[sugeno,choquet,fcm]",
+          "defaultValue": "fcm",
+          "optional": "true",
+          "description": "Available discretizers are \"sugeno\", \"choquet\", and \"fcm\". If only 1 feature in time series, K-Bins discretizer is used."
+        },
+        {
+          "name": "n_bins",
+          "type": "int",
+          "defaultValue": 10,
+          "optional": "true",
+          "description": "Number of bins used for discretization."
+        },
+        {
+          "name": "random_state",
+          "type": "int",
+          "defaultValue": 42,
+          "optional": "true",
+          "description": "Seed for random number generation."
+        }
+      ],
+      "modelInput": "none"
+    },
+    "executionStep": {
+      "parameters": [
+        {
+          "name": "random_state",
+          "type": "int",
+          "defaultValue": 42,
+          "optional": "true",
+          "description": "Seed for random number generation."
+        }
+      ],
+      "modelInput": "required"
+    }
+}

@@ -1,0 +1,51 @@
+{
+    "title": "SSA",
+    "description": "Segmented Sequence Analysis calculates two piecewise linear models, aligns them and then computes the similarity between them. Finally a treshhold based approach is used to classify data as anomalous.",
+    "inputDimensionality": "univariate",
+    "learningType": "Unsupervised",
+    "version": "1.0",
+    "authors": "Yuan Yao et al.",
+    "language": "Python",
+    "type": "Detector",
+    "mainFile": "algorithm.py",
+    "executionStep": {
+        "parameters": [
+            {
+                "name": "ep",
+                "type": "int",
+                "description": "Score normalization value",
+                "defaultValue": 3,
+                "optional": "false"
+            },
+            {
+                "name": "window_size",
+                "description": "Size of sliding window.",
+                "type": "int",
+                "defaultValue": 20,
+                "optional": "false"
+            },
+            {
+                "name": "rf_method",
+                "description": "`all`: Directly calculate reference timeseries from all points. `alpha`: Create weighted reference timeseries with help of parameter 'a'",
+                "type": "Enum[all,alpha]",
+                "defaultValue": "alpha",
+                "optional": "false"
+            },
+            {
+                "name": "alpha",
+                "type": "float",
+                "description": "Describes weights that are used for reference time series creation. Can be a single weight(float) or an array of weights. So far only supporting a single value",
+                "defaultValue": 0.2,
+                "optional": "true"
+            },
+            {
+                "name": "random_state",
+                "type": "int",
+                "description": "Seed for random number generation.",
+                "defaultValue": 42,
+                "optional": "true"
+            }
+        ],
+        "modelInput": "none"
+    }
+}

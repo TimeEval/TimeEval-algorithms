@@ -1,0 +1,48 @@
+{
+    "title": "LOF",
+    "description": "Implementation of https://doi.org/10.1145/342009.335388.",
+    "inputDimensionality": "multivariate",
+    "version": "0.1",
+    "authors": "Markus M. Breunig, Hans-Peter Kriegel, Raymond T. Ng, Jörg Sander",
+    "language": "Python",
+    "type": "Detector",
+    "mainFile": "algorithm.py",
+    "learningType": "unsupervised",
+    "executionStep": {
+    	"parameters": [
+            {
+                "name": "n_neighbors",
+                "type": "int",
+                "defaultValue": 20,
+                "optional": "true",
+                "description": "Number of neighbors to use by default for `kneighbors` queries. If n_neighbors is larger than the number of samples provided, all samples will be used."
+            },{
+                "name": "leaf_size",
+                "type": "int",
+                "defaultValue": 30,
+                "optional": "true",
+                "description": "Leaf size passed to `BallTree` or `KDTree`. This can affect the speed of the construction and query, as well as the memory required to store the tree. The optimal value depends on the nature of the problem."
+            },{
+                "name": "distance_metric_order",
+                "type": "int",
+                "defaultValue": 2,
+                "optional": "true",
+                "description": "Parameter for the Minkowski metric from sklearn.metrics.pairwise.pairwise_distances. When p = 1, this is equivalent to using manhattan_distance (l1), and euclidean_distance (l2) for p = 2. For arbitrary p, minkowski_distance (l_p) is used. See http://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.pairwise_distances."
+            },{
+                "name": "n_jobs",
+                "type": "int",
+                "defaultValue": 1,
+                "optional": "true",
+                "description": "The number of parallel jobs to run for neighbors search. If ``-1``, then the number of jobs is set to the number of CPU cores. Affects only kneighbors and kneighbors_graph methods."
+            },
+            {
+                "name": "random_state",
+                "type": "int",
+                "defaultValue": 42,
+                "optional": "true",
+                "description": "Seed for random number generation."
+            }
+        ],
+        "modelInput": "none"
+    }
+}

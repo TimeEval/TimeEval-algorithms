@@ -1,0 +1,5 @@
+numpy>=1.19.5
+pandas>=1.2.1
+scipy>=1.6.0
+torch==1.7.1
+nflows==0.14

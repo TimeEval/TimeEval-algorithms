@@ -1,0 +1,126 @@
+{
+    "title": "XGBoosting (RR)",
+    "description": "A generic windowed forecasting method using XGBoost regression (requested by RollsRoyce). The forecasting error is used as anomaly score.",
+    "inputDimensionality": "univariate",
+    "learningType": "semi-supervised",
+    "version": "0.1",
+    "authors": "Sebastian Schmidl",
+    "language": "Python",
+    "type": "Detector",
+    "mainFile": "algorithm.py",
+    "trainingStep": {
+        "parameters": [
+            {
+                "name": "train_window_size",
+                "type": "int",
+                "defaultValue": 50,
+                "optional": "true",
+                "description": "Size of the training windows. Always predicts a single point!"
+            },
+            {
+                "name": "n_estimators",
+                "type": "int",
+                "defaultValue": 100,
+                "optional": "true",
+                "description": "Number of gradient boosted trees. Equivalent to number of boosting rounds."
+            },
+            {
+                "name": "learning_rate",
+                "type": "float",
+                "defaultValue": 0.1,
+                "optional": "true",
+                "description": "Boosting learning rate (xgb’s `eta`)"
+            },
+            {
+                "name": "booster",
+                "type": "enum[gbtree,gblinear,dart]",
+                "defaultValue": "gbtree",
+                "optional": "true",
+                "description": "Booster to use"
+            },
+            {
+                "name": "tree_method",
+                "type": "enum[auto,exact,approx,hist]",
+                "defaultValue": "auto",
+                "optional": "true",
+                "description": "Tree method to use. Default to auto. If this parameter is set to default, XGBoost will choose the most conservative option available. `exact` is slowest, `hist` is fastest. Prefer `hist` and `approx` over `exact`, because for most datasets they have comparative quality, but are significantly faster."
+            },
+            {
+                "name": "n_trees",
+                "type": "int",
+                "defaultValue": 1,
+                "optional": "true",
+                "description": "If >1, then boosting random forests with `n_trees` trees."
+            },
+            {
+                "name": "max_depth",
+                "type": "int",
+                "defaultValue": null,
+                "optional": "true",
+                "description": "Maximum tree depth for base learners."
+            },
+            {
+                "name": "max_samples",
+                "type": "float",
+                "defaultValue": null,
+                "optional": "true",
+                "description": "Subsample ratio of the training instance."
+            },
+            {
+                "name": "colsample_bytree",
+                "type": "float",
+                "defaultValue": null,
+                "optional": "true",
+                "description": "Subsample ratio of columns when constructing each tree."
+            },
+            {
+                "name": "colsample_bylevel",
+                "type": "float",
+                "defaultValue": null,
+                "optional": "true",
+                "description": "Subsample ratio of columns for each level."
+            },
+            {
+                "name": "colsample_bynode",
+                "type": "float",
+                "defaultValue": null,
+                "optional": "true",
+                "description": "Subsample ratio of columns for each split."
+            },
+            {
+                "name": "random_state",
+                "type": "int",
+                "defaultValue": 42,
+                "optional": "true",
+                "description": "Seeds the randomness of the bootstrapping and the sampling of the features."
+            },
+            {
+                "name": "verbose",
+                "type": "int",
+                "defaultValue": 0,
+                "optional": "true",
+                "description": "Controls logging verbosity."
+            },
+            {
+                "name": "n_jobs",
+                "type": "int",
+                "defaultValue": 1,
+                "optional": "true",
+                "description": "The number of jobs to run in parallel. `-1` means using all processors."
+            }
+        ],
+        "modelInput": "none"
+    },
+    "executionStep": {
+        "parameters": [
+            {
+                "name": "random_state",
+                "type": "int",
+                "defaultValue": 42,
+                "optional": "true",
+                "description": "Seeds the randomness of the bootstrapping and the sampling of the features."
+            }
+        ],
+        "modelInput": "required"
+    }
+}

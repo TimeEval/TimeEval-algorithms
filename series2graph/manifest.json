@@ -1,0 +1,41 @@
+{
+    "title": "Series2Graph",
+    "description": "Implementation of https://doi.org/10.14778/3407790.3407792.",
+    "inputDimensionality": "univariate",
+    "version": "0.1",
+    "authors": "Paul Boniol, Themis Palpanas, Mohammed Meftah, Emmanuel Remy",
+    "language": "Python",
+    "type": "Detector",
+    "mainFile": "algorithm.py",
+    "learningType": "unsupervised",
+    "executionStep": {
+    	"parameters": [
+            {
+                "name": "window_size",
+                "type": "Int",
+                "defaultValue": 50,
+                "optional": "true",
+                "description": "Size of the sliding window (paper: `l`), independent of anomaly length, but should in the best case be larger."
+            },{
+                "name": "query_window_size",
+                "type": "Int",
+                "defaultValue": 75,
+                "optional": "true",
+                "description": "Size of the sliding windows used to find anomalies (query subsequences). query_window_size must be >= window_size! (paper: `l_q`)"
+            },{
+                "name": "rate",
+                "type": "Int",
+                "defaultValue": 30,
+                "optional": "true",
+                "description": "Number of angles used to extract pattern nodes. A higher value will lead to high precision, but at the cost of increased computation time. (paper: `r` performance parameter)"
+            },{
+                "name": "random_state",
+                "type": "Int",
+                "defaultValue": 42,
+                "optional": "true",
+                "description": "Seed for random number generation."
+            }
+        ],
+        "modelInput": "none"
+    }
+}

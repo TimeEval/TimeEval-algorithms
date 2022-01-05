@@ -1,0 +1,126 @@
+{
+  "title": "DeepNAP",
+  "description": "Implementation of https://doi.org/10.1016/j.ins.2018.05.020",
+  "inputDimensionality": "multivariate",
+  "version": "0.1",
+  "authors": "Jingchu Liu, Bhaskar Krishnamachari, Sheng Zhou, Zhisheng Niu",
+  "language": "Python",
+  "type": "Detector",
+  "mainFile": "algorithm.py",
+  "learningType": "semi-supervised",
+  "trainingStep": {
+    "parameters": [
+      {
+        "name": "anomaly_window_size",
+        "type": "int",
+        "defaultValue": 15,
+        "optional": "true",
+        "description": "Size of the sliding windows"
+      },
+      {
+        "name": "partial_sequence_length",
+        "type": "int",
+        "defaultValue": 3,
+        "optional": "true",
+        "description": "Number of points taken from the beginning of the predicted window used to build a partial sequence (with neighboring points) that is passed through another linear network."
+      },
+      {
+        "name": "lstm_layers",
+        "type": "int",
+        "defaultValue": 2,
+        "optional": "true",
+        "description": "Number of LSTM layers within encoder and decoder"
+      },
+      {
+        "name": "rnn_hidden_size",
+        "type": "int",
+        "defaultValue": 200,
+        "optional": "true",
+        "description": "Number of neurons in LSTM hidden layer"
+      },
+      {
+        "name": "dropout",
+        "type": "float",
+        "defaultValue": 0.5,
+        "optional": "true",
+        "description": "Probability for a neuron to be zeroed for regularization"
+      },
+      {
+        "name": "linear_hidden_size",
+        "type": "int",
+        "defaultValue": 100,
+        "optional": "true",
+        "description": "Number of neurons in linear hidden layer"
+      },
+      {
+        "name": "batch_size",
+        "type": "int",
+        "defaultValue": 32,
+        "optional": "true",
+        "description": "Number of instances trained at the same time"
+      },
+      {
+        "name": "validation_batch_size",
+        "type": "int",
+        "defaultValue": 256,
+        "optional": "true",
+        "description": "Number of instances used for validation at the same time"
+      },
+      {
+        "name": "epochs",
+        "type": "int",
+        "defaultValue": 1,
+        "optional": "true",
+        "description": "Number of training iterations over entire dataset; recommended value: 256"
+      },
+      {
+        "name": "learning_rate",
+        "type": "float",
+        "defaultValue": 0.001,
+        "optional": "true",
+        "description": "Learning rate for Adam optimizer"
+      },
+      {
+        "name": "split",
+        "type": "float",
+        "defaultValue": 0.8,
+        "optional": "true",
+        "description": "Train-validation split for early stopping"
+      },
+      {
+        "name": "early_stopping_delta",
+        "type": "float",
+        "defaultValue": 0.05,
+        "optional": "true",
+        "description": "If 1 - (loss / last_loss) is less than `delta` for `patience` epochs, stop"
+      },
+      {
+        "name": "early_stopping_patience",
+        "type": "int",
+        "defaultValue": 10,
+        "optional": "true",
+        "description": "If 1 - (loss / last_loss) is less than `delta` for `patience` epochs, stop"
+      },
+      {
+        "name": "random_state",
+        "type": "int",
+        "defaultValue": 42,
+        "optional": "true",
+        "description": "Seed for the random number generator"
+      }
+    ],
+    "modelInput": "none"
+  },
+  "executionStep": {
+    "parameters": [
+      {
+        "name": "random_state",
+        "type": "int",
+        "defaultValue": 42,
+        "optional": "true",
+        "description": "Seed for the random number generator"
+      }
+    ],
+    "modelInput": "required"
+  }
+}

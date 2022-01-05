@@ -1,0 +1,8 @@
+pandas
+scipy
+scikit-learn
+joblib
+marshmallow
+matplotlib
+netCDF4
+numpy

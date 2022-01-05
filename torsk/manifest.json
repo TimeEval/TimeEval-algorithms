@@ -1,0 +1,128 @@
+{
+    "title": "Torsk",
+    "description": "Implementation of http://arxiv.org/abs/1909.01709",
+    "inputDimensionality": "multivariate",
+    "version": "0.1",
+    "authors": "Niklas Heim, James E. Avery",
+    "language": "Python",
+    "type": "Detector",
+    "mainFile": "algorithm.py",
+    "learningType": "unsupervised",
+    "executionStep": {
+        "parameters": [
+            {
+                "name": "input_map_size",
+                "type": "int",
+                "defaultValue": 100,
+                "optional": "true",
+                "description": "Size of the random weight preprocessing latent space. `input_map_size` must be larger than or equal to `context_window_size`!"
+            },
+            {
+                "name": "input_map_scale",
+                "type": "float",
+                "defaultValue": 0.125,
+                "optional": "true",
+                "description": "Feature scaling of the random weight preprocessing."
+            },
+            {
+                "name": "context_window_size",
+                "type": "int",
+                "defaultValue": 10,
+                "optional": "true",
+                "description": "Size of a tumbling window used to encode the time series into a 2D (image-based) representation, called slices"
+            },
+            {
+                "name": "train_window_size",
+                "type": "int",
+                "defaultValue": 50,
+                "optional": "true",
+                "description": "Torsk creates the input subsequences by sliding a window of size `train_window_size + prediction_window_size + 1` over the slices with shape (context_window_size, dim). `train_window_size` represents the size of the input windows for training and prediction"
+            },
+            {
+                "name": "prediction_window_size",
+                "type": "int",
+                "defaultValue": 20,
+                "optional": "true",
+                "description": "Torsk creates the input subsequences by sliding a window of size `train_window_size + prediction_window_size + 1` over the slices with shape (context_window_size, dim). `prediction_window_size` represents the size of the ESN predictions, should be `min_anomaly_length < prediction_window_size < 10 * min_anomaly_length`"
+            },
+            {
+                "name": "transient_window_size",
+                "type": "int",
+                "defaultValue": 10,
+                "optional": "true",
+                "description": "Just a part of the training window, the first `transient_window_size` slices, are used for the ESN optimization."
+            },
+            {
+                "name": "spectral_radius",
+                "type": "float",
+                "defaultValue": 2.0,
+                "optional": "true",
+                "description": "ESN hyperparameter that determines the influence of previous internal ESN state on the next one. `spectral_radius > 1.0` increases non-linearity, but decreases short-term-memory capacity (maximized at 1.0)"
+            },
+            {
+                "name": "density",
+                "type": "float",
+                "defaultValue": 0.01,
+                "optional": "true",
+                "description": "Density of the ESN cell, where approx. `density` percent of elements being non-zero"
+            },
+            {
+                "name": "reservoir_representation",
+                "type": "enum[sparse,dense]",
+                "defaultValue": "sparse",
+                "optional": "true",
+                "description": "Representation of the ESN reservoirs. `sparse` is significantly faster than `dense`"
+            },
+            {
+                "name": "imed_loss",
+                "type": "boolean",
+                "defaultValue": false,
+                "optional": "true",
+                "description": "Calculate loss on spatially aware (image-based) data representation instead of flat arrays"
+            },
+            {
+                "name": "train_method",
+                "type": "enum[pinv_lstsq,pinv_svd,tikhonov]",
+                "defaultValue": "pinv_svd",
+                "optional": "true",
+                "description": "Solver used to train the ESN. `tikhonov` - linear solver with tikhonov regularization, `pinv_lstsq` - exact least-squares-solver that may lead to a numerical blowup, `pinv_svd` - SVD-based least-squares-solver that is highly numerically stable, but approximate"
+            },
+            {
+                "name": "tikhonov_beta",
+                "type": "float",
+                "defaultValue": null,
+                "optional": "true",
+                "description": "Parameter of the Tikhonov regularization term when `train_method = tikhonov` is used."
+            },
+            {
+                "name": "verbose",
+                "type": "int",
+                "defaultValue": 2,
+                "optional": "true",
+                "description": "Controls the logging output"
+            },
+            {
+                "name": "scoring_small_window_size",
+                "type": "int",
+                "defaultValue": 10,
+                "optional": "true",
+                "description": "Size of the smaller of two windows slid over the prediction errors to calculate the final anomaly scores."
+            },
+            {
+                "name": "scoring_large_window_size",
+                "type": "int",
+                "defaultValue": 100,
+                "optional": "true",
+                "description": "Size of the larger of two windows slid over the prediction errors to calculate the final anomaly scores."
+            },
+            {
+                "name": "random_state",
+                "type": "int",
+                "defaultValue": 42,
+                "optional": "true",
+                "description": "Seed for random number generation."
+            }
+        ],
+        "modelInput": "none"
+    }
+}

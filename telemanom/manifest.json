@@ -1,0 +1,163 @@
+{
+    "title": "Telemanom",
+    "description": "Implementation of https://doi.org/10.1145/3219819.3219845.",
+    "inputDimensionality": "multivariate",
+    "version": "0.1",
+    "authors": "Kyle Hundman, Valentino Constantinou, Christopher Laporte, Ian Colwell, Tom Soderstrom",
+    "language": "Python",
+    "type": "Detector",
+    "mainFile": "algorithm.py",
+    "learningType": "semi-supervised",
+    "executionStep": {
+      "parameters": [
+        {
+            "name": "batch_size",
+            "type": "Int",
+            "defaultValue": 70,
+            "optional": "true",
+            "description": "number of values to evaluate in each batch"
+        },
+        {
+            "name": "window_size",
+            "type": "Int",
+            "defaultValue": 250,
+            "optional": "true",
+            "description": "num previous timesteps provided to model to predict future values"
+        },
+        {
+            "name": "smoothing_window_size",
+            "type": "Int",
+            "defaultValue": 30,
+            "optional": "true",
+            "description": "number of trailing batches to use in error calculation"
+        },
+        {
+            "name": "smoothing_perc",
+            "type": "Float",
+            "defaultValue": 0.05,
+            "optional": "true",
+            "description": "determines window size used in EWMA smoothing (percentage of total values for channel)"
+        },
+        {
+            "name": "prediction_window_size",
+            "type": "Int",
+            "defaultValue": 10,
+            "optional": "true",
+            "description": "number of steps to predict ahead"
+        },
+        {
+            "name": "random_state",
+            "type": "int",
+            "defaultValue": 42,
+            "optional": "true",
+            "description": "Seed for the random number generator"
+        }
+
+      ],
+      "modelInput": "required"
+    },
+    "trainingStep": {
+    	"parameters": [
+            {
+                "name": "batch_size",
+                "type": "Int",
+                "defaultValue": 70,
+                "optional": "true",
+                "description": "number of values to evaluate in each batch"
+            },
+            {
+                "name": "smoothing_window_size",
+                "type": "Int",
+                "defaultValue": 30,
+                "optional": "true",
+                "description": "number of trailing batches to use in error calculation"
+            },
+            {
+                "name": "smoothing_perc",
+                "type": "Float",
+                "defaultValue": 0.05,
+                "optional": "true",
+                "description": "etermines window size used in EWMA smoothing (percentage of total values for channel)"
+            },
+            {
+                "name": "error_buffer",
+                "type": "Int",
+                "defaultValue": 100,
+                "optional": "true",
+                "description": "number of values surrounding an error that are brought into the sequence (promotes grouping on nearby sequences)"
+            },
+            {
+                "name": "dropout",
+                "type": "Float",
+                "defaultValue": 0.3,
+                "optional": "true",
+                "description": "LSTM dropout probability"
+            },
+            {
+                "name": "lstm_batch_size",
+                "type": "Int",
+                "defaultValue": 64,
+                "optional": "true",
+                "description": "number of vlaues to evaluate in one batch for the LSTM"
+            },
+            {
+                "name": "epochs",
+                "type": "Int",
+                "defaultValue": 35,
+                "optional": "true",
+                "description": "Number of training iterations over entire dataset"
+            },
+            {
+                "name": "split",
+                "type": "Float",
+                "defaultValue": 0.8,
+                "optional": "true",
+                "description": "Train-validation split for early stopping"
+            },
+            {
+                "name": "early_stopping_patience",
+                "type": "Int",
+                "defaultValue": 10,
+                "optional": "true",
+                "description": "If loss is `delta` or less smaller for `patience` epochs, stop"
+            },
+            {
+                "name": "early_stopping_delta",
+                "type": "Float",
+                "defaultValue": 0.0003,
+                "optional": "true",
+                "description": "If loss is `delta` or less smaller for `patience` epochs, stop"
+            },
+            {
+                "name": "window_size",
+                "type": "Int",
+                "defaultValue": 250,
+                "optional": "true",
+                "description": "num previous timesteps provided to model to predict future values"
+            },
+            {
+                "name": "prediction_window_size",
+                "type": "Int",
+                "defaultValue": 10,
+                "optional": "true",
+                "description": "number of steps to predict ahead"
+            },
+            {
+                "name": "p",
+                "type": "Float",
+                "defaultValue": 0.13,
+                "optional": "true",
+                "description": "minimum percent decrease between max errors in anomalous sequences (used for pruning)"
+            },
+            {
+                "name": "random_state",
+                "type": "int",
+                "defaultValue": 42,
+                "optional": "true",
+                "description": "Seed for the random number generator"
+            }
+
+        ],
+        "modelInput": "none"
+    }
+}

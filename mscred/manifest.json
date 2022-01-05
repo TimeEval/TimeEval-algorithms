@@ -1,0 +1,109 @@
+{
+  "title": "MSCRED",
+  "description": "Implementation of https://doi.org/10.1609/aaai.v33i01.33011409",
+  "inputDimensionality": "multivariate",
+  "version": "0.1",
+  "authors": "Chuxu Zhang, Dongjin Song, Yuncong Chen, Xinyang Feng, Cristian Lumezanu, Wei Cheng, Jingchao Ni, Bo Zong, Haifeng Chen, Nitesh V. Chawla",
+  "language": "Python",
+  "type": "Detector",
+  "mainFile": "algorithm.py",
+  "learningType": "semi-supervised",
+  "trainingStep": {
+    "parameters": [
+      {
+        "name": "windows",
+        "type": "List[int]",
+        "defaultValue": [
+          10,
+          30,
+          60
+        ],
+        "optional": "true",
+        "description": "Number and size of different signature matrices (correlation matrices) to compute as a preprocessing step"
+      },
+      {
+        "name": "gap_time",
+        "type": "int",
+        "defaultValue": 10,
+        "optional": "true",
+        "description": "Number of points to skip over between the generation of signature matrices"
+      },
+      {
+        "name": "window_size",
+        "type": "int",
+        "defaultValue": 5,
+        "optional": "true",
+        "description": "Size of the sliding windows"
+      },
+      {
+        "name": "batch_size",
+        "type": "int",
+        "defaultValue": 32,
+        "optional": "true",
+        "description": "Number of instances trained at the same time"
+      },
+      {
+        "name": "learning_rate",
+        "type": "float",
+        "defaultValue": 0.001,
+        "optional": "true",
+        "description": "Learning rate for Adam optimizer"
+      },
+      {
+        "name": "epochs",
+        "type": "int",
+        "defaultValue": 1,
+        "optional": "true",
+        "description": "Number of training iterations over entire dataset"
+      },
+      {
+        "name": "early_stopping_patience",
+        "type": "int",
+        "defaultValue": 10,
+        "optional": "true",
+        "description": "If 1 - (loss / last_loss) is less than `delta` for `patience` epochs, stop"
+      },
+      {
+        "name": "early_stopping_delta",
+        "type": "float",
+        "defaultValue": 0.05,
+        "optional": "true",
+        "description": "If 1 - (loss / last_loss) is less than `delta` for `patience` epochs, stop"
+      },
+      {
+        "name": "split",
+        "type": "float",
+        "defaultValue": 0.8,
+        "optional": "true",
+        "description": "Train-validation split for early stopping"
+      },
+      {
+        "name": "test_batch_size",
+        "type": "int",
+        "defaultValue": 256,
+        "optional": "true",
+        "description": "Number of instances used for validation and testing at the same time"
+      },
+      {
+        "name": "random_state",
+        "type": "int",
+        "defaultValue": 42,
+        "optional": "true",
+        "description": "Seed for the random number generator"
+      }
+    ],
+    "modelInput": "none"
+  },
+  "executionStep": {
+    "parameters": [
+      {
+        "name": "random_state",
+        "type": "int",
+        "defaultValue": 42,
+        "optional": "true",
+        "description": "Seed for the random number generator"
+      }
+    ],
+    "modelInput": "required"
+  }
+}

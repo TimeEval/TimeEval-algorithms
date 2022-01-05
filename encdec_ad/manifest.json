@@ -1,0 +1,133 @@
+{
+  "title": "EncDec-AD",
+  "description": "Implementation of https://arxiv.org/pdf/1607.00148.pdf",
+  "inputDimensionality": "multivariate",
+  "version": "0.1",
+  "authors": "Pankaj Malhotra, Anusha Ramakrishnan, Gaurangi Anand, Lovekesh Vig, Puneet Agarwal, Gautam Shroff",
+  "language": "Python",
+  "type": "Detector",
+  "mainFile": "algorithm.py",
+  "learningType": "semi-supervised",
+  "trainingStep": {
+    "parameters": [
+      {
+        "name": "lstm_layers",
+        "type": "int",
+        "defaultValue": 1,
+        "optional": "true",
+        "description": "Number of LSTM layers within encoder and decoder"
+      },
+      {
+        "name": "anomaly_window_size",
+        "type": "int",
+        "defaultValue": 30,
+        "optional": "true",
+        "description": "Size of the sliding windows"
+      },
+      {
+        "name": "latent_size",
+        "type": "int",
+        "defaultValue": 40,
+        "optional": "true",
+        "description": "Size of the autoencoder's latent space (embedding size)"
+      },
+      {
+        "name": "batch_size",
+        "type": "int",
+        "defaultValue": 32,
+        "optional": "true",
+        "description": "Number of instances trained at the same time"
+      },
+      {
+        "name": "validation_batch_size",
+        "type": "int",
+        "defaultValue": 128,
+        "optional": "true",
+        "description": "Number of instances used for validation at the same time"
+      },
+      {
+        "name": "epochs",
+        "type": "int",
+        "defaultValue": 50,
+        "optional": "true",
+        "description": "Number of training iterations over entire dataset"
+      },
+      {
+        "name": "split",
+        "type": "float",
+        "defaultValue": 0.9,
+        "optional": "true",
+        "description": "Train-validation split for early stopping"
+      },
+      {
+        "name": "early_stopping_delta",
+        "type": "float",
+        "defaultValue": 0.05,
+        "optional": "true",
+        "description": "If 1 - (loss / last_loss) is less than `delta` for `patience` epochs, stop"
+      },
+      {
+        "name": "early_stopping_patience",
+        "type": "int",
+        "defaultValue": 10,
+        "optional": "true",
+        "description": "If 1 - (loss / last_loss) is less than `delta` for `patience` epochs, stop"
+      },
+      {
+        "name": "learning_rate",
+        "type": "float",
+        "defaultValue": 0.001,
+        "optional": "true",
+        "description": "Learning rate for Adam optimizer"
+      },
+      {
+        "name": "random_state",
+        "type": "int",
+        "defaultValue": 42,
+        "optional": "true",
+        "description": "Seed for the random number generator"
+      }
+    ],
+    "modelInput": "none"
+  },
+  "executionStep": {
+    "parameters": [
+      {
+        "name": "lstm_layers",
+        "type": "int",
+        "defaultValue": 2,
+        "optional": "true",
+        "description": "Number of LSTM layers within encoder and decoder"
+      },
+      {
+        "name": "window_size",
+        "type": "int",
+        "defaultValue": 30,
+        "optional": "true",
+        "description": "Size of the sliding windows"
+      },
+      {
+        "name": "latent_size",
+        "type": "int",
+        "defaultValue": 40,
+        "optional": "true",
+        "description": "Size of the autoencoder's latent space (embedding size)"
+      },
+      {
+        "name": "test_batch_size",
+        "type": "int",
+        "defaultValue": 128,
+        "optional": "true",
+        "description": "Number of instances used for testing at the same time"
+      },
+      {
+        "name": "random_state",
+        "type": "int",
+        "defaultValue": 42,
+        "optional": "true",
+        "description": "Seed for the random number generator"
+      }
+    ],
+    "modelInput": "required"
+  }
+}

@@ -1,0 +1,49 @@
+{
+    "title": "Hybrid Isolation Forest (HIF)",
+    "description": "Implementation of https://arxiv.org/abs/1705.03800",
+    "inputDimensionality": "multivariate",
+    "version": "0.1",
+    "authors": "Pierre-Franccois Marteau, Saeid Soheily-Khah, Nicolas Bechet",
+    "language": "Python",
+    "type": "Detector",
+    "mainFile": "algorithm.py",
+    "learningType": "supervised",
+    "trainingStep": {
+        "parameters": [
+            {
+                "name": "n_trees",
+                "type": "int",
+                "defaultValue": 1024,
+                "optional": "false",
+                "description": "The number of decision trees (base estimators) in the forest (ensemble)."
+            },
+            {
+                "name": "max_samples",
+                "type": "float",
+                "defaultValue": null,
+                "optional": "false",
+                "description": "The number of samples to draw from X to train each base estimator: `max_samples * X.shape[0]`. If unspecified (`null`), then `max_samples=min(256, X.shape[0])`."
+            },
+            {
+                "name": "random_state",
+                "type": "int",
+                "defaultValue": 42,
+                "optional": "true",
+                "description": "Seed for random number generation."
+            }
+        ],
+        "modelInput": "none"
+    },
+    "executionStep": {
+        "parameters": [
+            {
+                "name": "random_state",
+                "type": "int",
+                "defaultValue": 42,
+                "optional": "true",
+                "description": "Seed for random number generation."
+            }
+        ],
+        "modelInput": "required"
+    }
+}

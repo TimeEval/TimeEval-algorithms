@@ -1,0 +1,41 @@
+{
+    "title": "Fast-MCD",
+    "description": "Implementation of https://doi.org/10.2307/1270566",
+    "inputDimensionality": "multivariate",
+    "version": "0.1",
+    "authors": "Peter J. Rousseeuw, Katrien Van Driessen",
+    "language": "Python",
+    "type": "Detector",
+    "learningType": "semi-supervised",
+    "mainFile": "algorithm.py",
+    "trainingStep": {
+        "parameters": [
+            {
+                "name": "store_precision",
+                "type": "boolean",
+                "defaultValue": true,
+                "optional": "true",
+                "description": "Specify if the estimated precision is stored"
+            },
+            {
+                "name": "support_fraction",
+                "type": "float",
+                "defaultValue": null,
+                "optional": "true",
+                "description": "The proportion of points to be included in the support of the raw MCD estimate. Default is None, which implies that the minimum value of support_fraction will be used within the algorithm: `(n_sample + n_features + 1) / 2`. The parameter must be in the range (0, 1)."
+            },
+            {
+                "name": "random_state",
+                "type": "int",
+                "defaultValue": 42,
+                "optional": "true",
+                "description": "Determines the pseudo random number generator for shuffling the data."
+            }
+        ],
+        "modelInput": "none"
+    },
+    "executionStep": {
+        "parameters": [],
+        "modelInput": "required"
+    }
+}

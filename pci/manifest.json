@@ -1,0 +1,37 @@
+{
+    "title": "PCI",
+    "description": "Implementation of https://doi.org/10.1155/2014/879736",
+    "inputDimensionality": "univariate",
+    "version": "0.1",
+    "authors": "Yufeng Yu, Yuelong Zhu, Shijin Li, Dingsheng Wan",
+    "language": "Python",
+    "type": "Detector",
+    "mainFile": "algorithm.py",
+    "learningType": "unsupervised",
+    "executionStep": {
+        "parameters": [
+            {
+                "name": "window_size",
+                "type": "int",
+                "defaultValue": 20,
+                "optional": "true",
+                "description": "The algorithm uses windows around the current points to predict that point (`k` points before and `k` after, where `k = window_size // 2`). The difference between real and predicted value is used as anomaly score. The parameter `window_size` acts as a kind of smoothing factor. The bigger the `window_size`, the smoother the predictions, the more values have big errors. If `window_size` is too small, anomalies might not be found. `window_size` should correlate with anomaly window sizes."
+            },
+            {
+                "name": "thresholding_p",
+                "type": "float",
+                "defaultValue": 0.05,
+                "optional": "true",
+                "description": "This parameter is only needed if the algorithm should decide itself whether a point is an anomaly. It treats `p` as a confidence coefficient. It's the t-statistics confidence coefficient. The smaller `p` is, the bigger is the confidence interval. If `p` is too small, anomalies might not be found. If `p` is too big, too many points might be labeled anomalous."
+            },
+            {
+                "name": "random_state",
+                "type": "int",
+                "defaultValue": 42,
+                "optional": "true",
+                "description": "Seed for random number generation."
+            }
+        ],
+        "modelInput": "none"
+    }
+}

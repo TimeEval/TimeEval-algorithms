@@ -1,0 +1,51 @@
+{
+    "title": "k-Means",
+    "description": "Implementation of http://robotics.estec.esa.int/i-SAIRAS/isairas2001/papers/Paper_AS012.pdf",
+    "inputDimensionality": "multivariate",
+    "version": "0.1",
+    "authors": "Takehisa Yairi, Yoshikiyo Kato, Koichi Hori",
+    "language": "Python",
+    "type": "Detector",
+    "mainFile": "algorithm.py",
+    "learningType": "unsupervised",
+    "executionStep": {
+        "parameters": [
+            {
+                "name": "n_clusters",
+                "type": "int",
+                "defaultValue": 20,
+                "optional": "true",
+                "description": "The number of clusters to form as well as the number of centroids to generate. The bigger `n_clusters` (`k`) is, the less noisy the anomaly scores are."
+            },
+            {
+                "name": "anomaly_window_size",
+                "type": "int",
+                "defaultValue": 20,
+                "optional": "true",
+                "description": "Size of sliding windows. The bigger `window_size` is, the bigger the anomaly context is. If it's to big, things seem anomalous that are not. If it's too small, the algorithm is not able to find anomalous windows and looses its time context."
+            },
+            {
+                "name": "stride",
+                "type": "int",
+                "defaultValue": 1,
+                "optional": "true",
+                "description": "Stride of sliding windows. It is the step size between windows. The larger `stride` is, the noisier the scores get. If `stride == window_size`, they are tumbling windows."
+            },
+            {
+                "name": "n_jobs",
+                "type": "int",
+                "defaultValue": 1,
+                "optional": "true",
+                "description": "Internal parallelism used (sample-wise in the main loop which assigns each sample to its closest center). If `-1` or `None`, all available CPUs are used."
+            },
+            {
+                "name": "random_state",
+                "type": "int",
+                "defaultValue": 42,
+                "optional": "true",
+                "description": "Seed for random number generation."
+            }
+        ],
+        "modelInput": "none"
+    }
+}

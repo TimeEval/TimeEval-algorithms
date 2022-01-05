@@ -1,0 +1,140 @@
+{
+  "title": "OceanWNN",
+  "description": "Implementation of https://doi.org/10.1016/j.oceaneng.2019.106129",
+  "inputDimensionality": "univariate",
+  "version": "0.1",
+  "authors": "Yi Wang, Linsheng Han, Wei Liu, Shujia Yang, Yanbo Gao",
+  "language": "Python",
+  "type": "Detector",
+  "learningType": "semi-supervised",
+  "mainFile": "algorithm.py",
+  "trainingStep": {
+    "parameters": [
+      {
+        "name": "train_window_size",
+        "type": "int",
+        "defaultValue": 20,
+        "optional": "true",
+        "description": "Window size used for forecasting the next point"
+      },
+      {
+        "name": "hidden_size",
+        "type": "int",
+        "defaultValue": 20,
+        "optional": "true",
+        "description": "Number of neurons in hidden layer"
+      },
+      {
+        "name": "batch_size",
+        "type": "int",
+        "defaultValue": 64,
+        "optional": "true",
+        "description": "Number of instances trained at the same time"
+      },
+      {
+        "name": "test_batch_size",
+        "type": "int",
+        "defaultValue": 256,
+        "optional": "true",
+        "description": "Batch size over test and validation dataset"
+      },
+      {
+        "name": "epochs",
+        "type": "int",
+        "defaultValue": 1,
+        "optional": "true",
+        "description": "Number of training iterations over entire dataset; recommended value: 1000"
+      },
+      {
+        "name": "split",
+        "type": "float",
+        "defaultValue": 0.8,
+        "optional": "true",
+        "description": "Train-validation split for early stopping"
+      },
+      {
+        "name": "early_stopping_delta",
+        "type": "float",
+        "defaultValue": 0.05,
+        "optional": "true",
+        "description": "If 1 - (loss / last_loss) is less than `delta` for `patience` epochs, stop"
+      },
+      {
+        "name": "early_stopping_patience",
+        "type": "int",
+        "defaultValue": 10,
+        "optional": "true",
+        "description": "If 1 - (loss / last_loss) is less than `delta` for `patience` epochs, stop"
+      },
+      {
+        "name": "learning_rate",
+        "type": "float",
+        "defaultValue": 0.01,
+        "optional": "true",
+        "description": "Learning rate for Adam optimizer"
+      },
+      {
+        "name": "wavelet_a",
+        "type": "float",
+        "defaultValue": -2.5,
+        "optional": "true",
+        "description": "WBF scale parameter; recommended range: [-2.5, 2.5]"
+      },
+      {
+        "name": "wavelet_k",
+        "type": "float",
+        "defaultValue": -1.5,
+        "optional": "true",
+        "description": "WBF shift parameter; recommended range: [-1.5, 1.5]"
+      },
+      {
+        "name": "wavelet_wbf",
+        "type": "enum[mexican_hat,central_symmetric,morlet]",
+        "defaultValue": "mexican_hat",
+        "optional": "true",
+        "description": "Mother WBF; allowed values: \"mexican_hat\", \"central_symmetric\", \"morlet\""
+      },
+      {
+        "name": "wavelet_cs_C",
+        "type": "float",
+        "defaultValue": 1.75,
+        "optional": "true",
+        "description": "Cosine factor for central-symmetric WBF."
+      },
+      {
+        "name": "threshold_percentile",
+        "type": "float",
+        "defaultValue": 0.99,
+        "optional": "true",
+        "description": "Upper percentile of training residual distribution used for detection replacement."
+      },
+      {
+        "name": "random_state",
+        "type": "int",
+        "defaultValue": 42,
+        "optional": "true",
+        "description": "Seed for the random number generator"
+      }
+    ],
+    "modelInput": "none"
+  },
+  "executionStep": {
+    "parameters": [
+      {
+        "name": "with_threshold",
+        "type": "boolean",
+        "defaultValue": "true",
+        "optional": "true",
+        "description": "If true, values whose forecasting error exceeds the threshold are not included in next window, but are replaced by the prediction."
+      },
+      {
+        "name": "random_state",
+        "type": "int",
+        "defaultValue": 42,
+        "optional": "true",
+        "description": "Seed for the random number generator"
+      }
+    ],
+    "modelInput": "required"
+  }
+}

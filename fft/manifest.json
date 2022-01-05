@@ -1,0 +1,54 @@
+{
+    "title": "FFT",
+    "description": "Implementation of https://dl.acm.org/doi/10.5555/1789574.1789615 proudly provided by members of the HPI AKITA project.",
+    "inputDimensionality": "univariate",
+    "version": "0.1",
+    "authors": "Faraz Rasheed, Peter Peng, Reda Alhajj, Jon Rokne",
+    "language": "Python",
+    "type": "Detector",
+    "mainFile": "algorithm.py",
+    "learningType": "unsupervised",
+    "executionStep": {
+    	"parameters": [
+            {
+                "name": "fft_parameters",
+                "type": "int",
+                "defaultValue": 5,
+                "optional": "true",
+                "description": "Number of parameters to be used in IFFT for creating the fit."
+            },{
+                "name": "context_window_size",
+                "type": "int",
+                "defaultValue": 21,
+                "optional": "true",
+                "description": "Centered window of neighbors to consider for the calculation of local outliers' z_scores"
+            },{
+                "name": "local_outlier_threshold",
+                "type": "float",
+                "defaultValue": 0.6,
+                "optional": "true",
+                "description": "Outlier threshold in multiples of sigma for local outliers"
+            },{
+                "name": "max_anomaly_window_size",
+                "type": "int",
+                "defaultValue": 50,
+                "optional": "true",
+                "description": "Maximum size of outlier regions."
+            },{
+                "name": "max_sign_change_distance",
+                "type": "int",
+                "defaultValue": 10,
+                "optional": "true",
+                "description": "Maximum gap between two closed oppositely signed local outliers to detect a sign change for outlier region grouping."
+            },
+            {
+              "name": "random_state",
+              "type": "int",
+              "defaultValue": 42,
+              "optional": "true",
+              "description": "Seed for the random number generator"
+            }
+        ],
+        "modelInput": "none"
+    }
+}

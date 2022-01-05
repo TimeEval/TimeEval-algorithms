@@ -1,0 +1,72 @@
+{
+    "title": "DSPOT",
+    "description": "Implementation of https://doi.org/10.1145/3097983.3098144.",
+    "inputDimensionality": "univariate",
+    "version": "0.1",
+    "authors": "Alban Siffer, Pierre-Alain Fouque, Alexandre Termier, Christine Largouët",
+    "language": "Python",
+    "type": "Detector",
+    "learningType": "Unsupervised",
+    "mainFile": "algorithm.py",
+    "executionStep": {
+    	"parameters": [
+            {
+                "name": "q",
+                "type": "float",
+                "defaultValue": 1e-3,
+                "optional": "true",
+                "description": "Main parameter: maximum probability of an abnormal event"
+            },{
+                "name": "n_init",
+                "type": "int",
+                "defaultValue": 1000,
+                "optional": "true",
+                "description": "Calibration: number of data used to calibrate algorithm. The user must ensure that n_init * (1 - level) > 10"
+            },{
+                "name": "level",
+                "type": "float",
+                "defaultValue": 0.99,
+                "optional": "true",
+                "description": "Calibration: proportion of initial data (n_init) not involved in the tail distribution fit during initialization. The user must ensure that n_init * (1 - level) > 10"
+            },{
+                "name": "up",
+                "type": "boolean",
+                "defaultValue": "true",
+                "optional": "true",
+                "description": "Compute upper thresholds"
+            },{
+                "name": "down",
+                "type": "boolean",
+                "defaultValue": "true",
+                "optional": "true",
+                "description": "Compute lower thresholds"
+            },{
+                "name": "alert",
+                "type": "boolean",
+                "defaultValue": "true",
+                "optional": "true",
+                "description": "Enable alert triggering, if false, even out-of-bounds-data will be taken into account for tail fit"
+            },{
+                "name": "bounded",
+                "type": "boolean",
+                "defaultValue": "true",
+                "optional": "true",
+                "description": "Performance: enable memory bounding (also improves performance)"
+            },{
+                "name": "max_excess",
+                "type": "int",
+                "defaultValue": 200,
+                "optional": "true",
+                "description": "Performance: maximum number of data stored to perform the tail fit when memory bounding is enabled"
+            },
+            {
+              "name": "random_state",
+              "type": "int",
+              "defaultValue": 42,
+              "optional": "true",
+              "description": "Seed for the random number generator"
+            }
+        ],
+        "modelInput": "none"
+    }
+}

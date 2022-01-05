@@ -1,0 +1,122 @@
+{
+  "title": "Normalizing Flows",
+  "description": "Implementation of https://arxiv.org/abs/1912.09323",
+  "inputDimensionality": "multivariate",
+  "version": "0.1",
+  "authors": "Artem Ryzhikov, Maxim Borisyak, Andrey Ustyuzhanin, Denis Derkach",
+  "language": "Python",
+  "type": "Detector",
+  "learningType": "Supervised",
+  "mainFile": "algorithm.py",
+  "trainingStep": {
+    "parameters": [
+      {
+        "name": "n_hidden_features_factor",
+        "type": "float",
+        "defaultValue": 1.0,
+        "optional": "true",
+        "description": "Factor deciding how many hidden features for NFs are used based on number of features"
+      },
+      {
+        "name": "hidden_layer_shape",
+        "type": "List[int]",
+        "defaultValue": [
+          100,
+          100
+        ],
+        "optional": "true",
+        "description": "NN hidden layers structure"
+      },
+      {
+        "name": "window_size",
+        "type": "int",
+        "defaultValue": 20,
+        "optional": "true",
+        "description": "Window size of sliding window over time series"
+      },
+      {
+        "name": "split",
+        "type": "float",
+        "defaultValue": 0.9,
+        "optional": "true",
+        "description": "Train-validation split"
+      },
+      {
+        "name": "epochs",
+        "type": "int",
+        "defaultValue": 1,
+        "optional": "true",
+        "description": "Number of training epochs"
+      },
+      {
+        "name": "batch_size",
+        "type": "int",
+        "defaultValue": 64,
+        "optional": "true",
+        "description": "How many data instances are trained at the same time."
+      },
+      {
+        "name": "test_batch_size",
+        "type": "int",
+        "defaultValue": 128,
+        "optional": "true",
+        "description": "How many data instances are tested at the same time."
+      },
+      {
+        "name": "teacher_epochs",
+        "type": "int",
+        "defaultValue": 1,
+        "optional": "true",
+        "description": "Number of epochs for teacher NF training"
+      },
+      {
+        "name": "distillation_iterations",
+        "type": "int",
+        "defaultValue": 1,
+        "optional": "true",
+        "description": "Number of training steps for distillation"
+      },
+      {
+        "name": "percentile",
+        "type": "float",
+        "defaultValue": 0.05,
+        "optional": "true",
+        "description": "Percentile defining the tails for anomaly sampling."
+      },
+      {
+        "name": "early_stopping_patience",
+        "type": "int",
+        "defaultValue": 10,
+        "optional": "true",
+        "description": "If 1 - (loss / last_loss) is less than `delta` for `patience` epochs, stop"
+      },
+      {
+        "name": "early_stopping_delta",
+        "type": "float",
+        "defaultValue": 0.05,
+        "optional": "true",
+        "description": "If 1 - (loss / last_loss) is less than `delta` for `patience` epochs, stop"
+      },
+      {
+        "name": "random_state",
+        "type": "int",
+        "defaultValue": 42,
+        "optional": "true",
+        "description": "Seed for the random number generator"
+      }
+    ],
+    "modelInput": "none"
+  },
+  "executionStep": {
+    "parameters": [
+      {
+        "name": "random_state",
+        "type": "int",
+        "defaultValue": 42,
+        "optional": "true",
+        "description": "Seed for the random number generator"
+      }
+    ],
+    "modelInput": "required"
+  }
+}

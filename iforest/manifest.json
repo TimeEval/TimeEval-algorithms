@@ -1,0 +1,65 @@
+{
+    "title": "Isolation Forest (iForest)",
+    "description": "Implementation of https://doi.org/10.1145/2133360.2133363.",
+    "inputDimensionality": "multivariate",
+    "version": "0.1",
+    "authors": "Fei Tony Liu and Kai Ming Ting and Zhi-Hua Zhou",
+    "language": "Python",
+    "type": "Detector",
+    "mainFile": "algorithm.py",
+    "learningType": "unsupervised",
+    "executionStep": {
+        "parameters": [
+            {
+                "name": "n_trees",
+                "type": "int",
+                "defaultValue": 100,
+                "optional": "true",
+                "description": "The number of decision trees (base estimators) in the forest (ensemble)."
+            },
+            {
+                "name": "max_samples",
+                "type": "float",
+                "defaultValue": null,
+                "optional": "true",
+                "description": "The number of samples to draw from X to train each base estimator: `max_samples * X.shape[0]`. If unspecified (`null`), then `max_samples=min(256, n_samples)`."
+            },
+            {
+                "name": "max_features",
+                "type": "float",
+                "defaultValue": 1.0,
+                "optional": "true",
+                "description": "The number of features to draw from X to train each base estimator: `max_features * X.shape[1]`."
+            },
+            {
+                "name": "bootstrap",
+                "type": "boolean",
+                "defaultValue": "false",
+                "optional": "true",
+                "description": "If True, individual trees are fit on random subsets of the training data sampled with replacement. If False, sampling without replacement is performed."
+            },
+            {
+                "name": "random_state",
+                "type": "int",
+                "defaultValue": 42,
+                "optional": "true",
+                "description": "Seed for random number generation."
+            },
+            {
+                "name": "verbose",
+                "type": "int",
+                "defaultValue": 0,
+                "optional": "true",
+                "description": "Controls the verbosity of the tree building process logs."
+            },
+            {
+                "name": "n_jobs",
+                "type": "int",
+                "defaultValue": 1,
+                "optional": "true",
+                "description": "The number of jobs to run in parallel. If -1, then the number of jobs is set to the number of cores."
+            }
+        ],
+        "modelInput": "none"
+    }
+}

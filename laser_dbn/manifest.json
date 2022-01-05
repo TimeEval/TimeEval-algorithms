@@ -1,0 +1,49 @@
+{
+    "title": "LaserDBN",
+    "description": "Implementation of https://doi.org/10.1007/978-3-662-53806-7_3",
+    "inputDimensionality": "multivariate",
+    "version": "0.1",
+    "authors": "Alberto Ogbechie, Javier Díaz-Rozo, Pedro Larrañaga, Concha Bielza",
+    "language": "Python",
+    "type": "Detector",
+    "learningType": "Semi-Supervised",
+    "mainFile": "algorithm.py",
+    "trainingStep": {
+      "parameters": [
+        {
+          "name": "timesteps",
+          "type": "int",
+          "defaultValue": 2,
+          "optional": "true",
+          "description": "Number of time steps the DBN builds probabilities for (min: 2)"
+        },
+        {
+          "name": "n_bins",
+          "type": "int",
+          "defaultValue": 10,
+          "optional": "true",
+          "description": "Number of bins used for discretization."
+        },
+        {
+          "name": "random_state",
+          "type": "int",
+          "defaultValue": 42,
+          "optional": "true",
+          "description": "Seed for the random number generator"
+        }
+      ],
+      "modelInput": "none"
+    },
+    "executionStep": {
+      "parameters": [
+        {
+          "name": "random_state",
+          "type": "int",
+          "defaultValue": 42,
+          "optional": "true",
+          "description": "Seed for the random number generator"
+        }
+      ],
+      "modelInput": "required"
+    }
+}

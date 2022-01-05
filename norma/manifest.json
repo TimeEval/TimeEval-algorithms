@@ -1,0 +1,36 @@
+{
+    "title": "NormA",
+    "description": "Improved algorithm based on NorM (https://doi.org/10.1109/ICDE48307.2020.00182).",
+    "inputDimensionality": "univariate",
+    "version": "0.1",
+    "authors": "Paul Boniol, Michele Linardi, Federico Roncallo, Themis Palpanas",
+    "language": "Python",
+    "type": "Detector",
+    "mainFile": "algorithm.py",
+    "learningType": "unsupervised",
+    "executionStep": {
+    	"parameters": [
+            {
+                "name": "anomaly_window_size",
+                "type": "int",
+                "defaultValue": 20,
+                "optional": "true",
+                "description": "Sliding window size used to create subsequences (equal to desired anomaly length)"
+            },{
+                "name": "normal_model_percentage",
+                "type": "float",
+                "defaultValue": 0.5,
+                "optional": "true",
+                "description": "Percentage of (random) subsequences used to build the normal model."
+            },
+            {
+                "name": "random_state",
+                "type": "int",
+                "defaultValue": 42,
+                "optional": "true",
+                "description": "Seed for random number generation."
+            }
+        ],
+        "modelInput": "none"
+    }
+}

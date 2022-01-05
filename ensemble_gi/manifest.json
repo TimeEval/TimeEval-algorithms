@@ -1,0 +1,72 @@
+{
+    "title": "Ensemble GI",
+    "description": "Implementation of https://doi.org/10.5441/002/edbt.2020.09",
+    "inputDimensionality": "univariate",
+    "version": "0.1",
+    "authors": "Yifeng Gao, Jessica Lin, Constantin Brif",
+    "language": "Python",
+    "type": "Detector",
+    "mainFile": "algorithm.py",
+    "learningType": "unsupervised",
+    "executionStep": {
+        "parameters": [
+            {
+                "name": "anomaly_window_size",
+                "type": "int",
+                "defaultValue": 50,
+                "optional": "true",
+                "description": "The size of the sliding window, in which `w` regions are made discrete."
+            },
+            {
+                "name": "n_estimators",
+                "type": "int",
+                "defaultValue": 10,
+                "optional": "true",
+                "description": "The number of models in the ensemble."
+            },
+            {
+                "name": "max_paa_transform_size",
+                "type": "int",
+                "defaultValue": 20,
+                "optional": "true",
+                "description": "Maximum size of the embedding space used by PAA (SAX word size `w`)"
+            },
+            {
+                "name": "max_alphabet_size",
+                "type": "int",
+                "defaultValue": 10,
+                "optional": "true",
+                "description": "Maximum number of symbols used for discretization by SAX (`\\alpha`)"
+            },
+            {
+                "name": "selectivity",
+                "type": "float",
+                "defaultValue": 0.8,
+                "optional": "true",
+                "description": "The fraction of models in the ensemble included in the end result."
+            },
+            {
+                "name": "random_state",
+                "type": "int",
+                "defaultValue": 42,
+                "optional": "true",
+                "description": "Seed for the random number generator"
+            },
+            {
+                "name": "n_jobs",
+                "type": "int",
+                "defaultValue": 1,
+                "optional": "true",
+                "description": "The number of parallel jobs to use for executing the models. If `-1`, then the number of jobs is set to the number of CPU cores."
+            },
+            {
+                "name": "window_method",
+                "type": "enum[sliding,tumbling,orig]",
+                "defaultValue": "sliding",
+                "optional": "true",
+                "description": "Windowing method used to create subsequences. The original implementation had a strange method (`orig`) that is similar to `tumbling`, the paper uses a `sliding` window. However, `sliding` is significantly slower than `tumbling` while producing better results (higher anomaly score resolution). `orig` should not be used!"
+            }
+        ],
+        "modelInput": "none"
+    }
+}

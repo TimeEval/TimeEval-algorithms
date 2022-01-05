@@ -1,0 +1,37 @@
+{
+  "title": "DWT-MLEAD",
+  "description": "Implementation of http://blogs.gm.fh-koeln.de/ciop/files/2019/01/thillwavelet.pdf.",
+  "inputDimensionality": "univariate",
+  "version": "0.1",
+  "authors": "Markus Thill, Wolfgang Konen, and Thomas Bäck",
+  "language": "Python",
+  "type": "Detector",
+  "learningType": "unsupervised",
+  "mainFile": "algorithm.py",
+  "executionStep": {
+    "parameters": [
+      {
+        "name": "start_level",
+        "type": "int",
+        "defaultValue": 3,
+        "optional": "true",
+        "description": "First discrete wavelet decomposition level to consider"
+      },
+      {
+        "name": "quantile_epsilon",
+        "type": "float",
+        "defaultValue": 0.01,
+        "optional": "true",
+        "description":  "Percentage of windows to flag as anomalous within each decomposition level's coefficients"
+      },
+      {
+        "name": "random_state",
+        "type": "int",
+        "defaultValue": 42,
+        "optional": "true",
+        "description":  "Seed for the random number generator"
+      }
+    ],
+    "modelInput": "none"
+  }
+}

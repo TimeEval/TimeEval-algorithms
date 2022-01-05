@@ -1,0 +1,4 @@
+numpy>=1.19.5
+pandas>=1.2.1
+tensorflow==2.4.1
+Keras==2.4.3

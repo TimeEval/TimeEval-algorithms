@@ -1,0 +1,112 @@
+{
+  "title": "SR-CNN",
+  "description": "Implementation of https://doi.org/10.1145/3292500.3330680",
+  "inputDimensionality": "univariate",
+  "version": "0.1",
+  "authors": "Hansheng Ren, Bixiong Xu, Yujing Wang, Chao Yi, Congrui Huang, Xiaoyu Kou, Tony Xing, Mao Yang, Jie Tong, Qi Zhang",
+  "language": "Python",
+  "type": "Detector",
+  "mainFile": "algorithm.py",
+  "learningType": "semi-supervised",
+  "trainingStep": {
+    "parameters": [
+      {
+        "name": "window_size",
+        "type": "int",
+        "defaultValue": 128,
+        "optional": "true",
+        "description": "Sliding window size"
+      },
+      {
+        "name": "random_state",
+        "type": "int",
+        "defaultValue": 42,
+        "optional": "true",
+        "description": "Seed for random number generators"
+      },
+      {
+        "name": "step",
+        "type": "int",
+        "defaultValue": 64,
+        "optional": "true",
+        "description": "stride size for training data generation"
+      },
+      {
+        "name": "num",
+        "type": "int",
+        "defaultValue": 10,
+        "optional": "true",
+        "description": "Max value for generated data"
+      },
+      {
+        "name": "learning_rate",
+        "type": "float",
+        "defaultValue": 1e-06,
+        "optional": "true",
+        "description": "Gradient factor during SGD training"
+      },
+      {
+        "name": "epochs",
+        "type": "int",
+        "defaultValue": 1,
+        "optional": "true",
+        "description": "Number of training passes over entire dataset"
+      },
+      {
+        "name": "batch_size",
+        "type": "int",
+        "defaultValue": 256,
+        "optional": "true",
+        "description": "Number of data points trained in parallel"
+      },
+      {
+        "name": "n_jobs",
+        "type": "int",
+        "defaultValue": 1,
+        "optional": "true",
+        "description": "Number of processes used during training"
+      },
+      {
+        "name": "split",
+        "type": "float",
+        "defaultValue": 0.9,
+        "optional": "true",
+        "description": "Train-validation split for early stopping"
+      },
+      {
+        "name": "early_stopping_delta",
+        "type": "float",
+        "defaultValue": 0.05,
+        "optional": "true",
+        "description": "If 1 - (loss / last_loss) is less than `delta` for `patience` epochs, stop"
+      },
+      {
+        "name": "early_stopping_patience",
+        "type": "int",
+        "defaultValue": 10,
+        "optional": "true",
+        "description": "If 1 - (loss / last_loss) is less than `delta` for `patience` epochs, stop"
+      }
+    ],
+    "modelInput": "none"
+  },
+  "executionStep": {
+    "parameters": [
+      {
+        "name": "random_state",
+        "type": "int",
+        "defaultValue": 42,
+        "optional": "true",
+        "description": "Seed for random number generators"
+      },
+      {
+        "name": "window_size",
+        "type": "int",
+        "defaultValue": 128,
+        "optional": "true",
+        "description": "Sliding window size"
+      }
+    ],
+    "modelInput": "required"
+  }
+}

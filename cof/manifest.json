@@ -1,0 +1,30 @@
+{
+    "title": "COF",
+    "description": "Implementation of https://doi.org/10.1007/3-540-47887-6_53.",
+    "inputDimensionality": "multivariate",
+    "version": "0.1",
+    "authors": "Jian Tang, Zhixiang Chen, Ada Wai-chee Fu, David W. Cheung",
+    "language": "Python",
+    "type": "Detector",
+    "mainFile": "algorithm.py",
+    "learningType": "unsupervised",
+    "executionStep": {
+        "parameters": [
+            {
+                "name": "n_neighbors",
+                "type": "int",
+                "defaultValue": 20,
+                "optional": "true",
+                "description": "Number of neighbors to use by default for k neighbors queries. Note that n_neighbors should be less than the number of samples. If n_neighbors is larger than the number of samples provided, all samples will be used."
+            },
+            {
+                "name": "random_state",
+                "type": "int",
+                "defaultValue": 42,
+                "optional": "true",
+                "description": "Seed for random number generation."
+            }
+        ],
+        "modelInput": "none"
+    }
+}

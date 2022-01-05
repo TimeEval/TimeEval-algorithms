@@ -1,0 +1,70 @@
+{
+    "title": "Donut",
+    "description": "Implementation of https://doi.org/10.1145/3178876.3185996",
+    "inputDimensionality": "univariate",
+    "version": "0.1",
+    "authors": "Haowen Xu, Wenxiao Chen, Nengwen Zhao, Zeyan Li, Jiahao Bu, Zhihan Li, Ying Liu, Youjian Zhao, Dan Pei, Yang Feng, Jie Chen, Zhaogang Wang, Honglin Qiao",
+    "language": "Python",
+    "type": "Detector",
+    "learningType": "Semi-Supervised",
+    "mainFile": "algorithm.py",
+    "trainingStep": {
+      "parameters": [
+        {
+          "name": "window_size",
+          "type": "int",
+          "defaultValue": 120,
+          "optional": "true",
+          "description": "Size of sliding windows"
+        },
+        {
+          "name": "latent_size",
+          "type": "int",
+          "defaultValue": 5,
+          "optional": "true",
+          "description": "Dimensionality of encoding"
+        },
+        {
+          "name": "regularization",
+          "type": "float",
+          "defaultValue": 0.001,
+          "optional": "true",
+          "description": "Factor for regularization in loss"
+        },
+        {
+          "name": "linear_hidden_size",
+          "type": "int",
+          "defaultValue": 100,
+          "optional": "true",
+          "description": "Size of linear hidden layer"
+        },
+        {
+          "name": "epochs",
+          "type": "int",
+          "defaultValue": 256,
+          "optional": "true",
+          "description": "Number of training passes over entire dataset"
+        },
+        {
+          "name": "random_state",
+          "type": "int",
+          "defaultValue": 42,
+          "optional": "true",
+          "description": "Seed for random number generation."
+        }
+      ],
+      "modelInput": "none"
+    },
+    "executionStep": {
+      "parameters": [
+        {
+          "name": "random_state",
+          "type": "int",
+          "defaultValue": 42,
+          "optional": "true",
+          "description": "Seed for random number generation."
+        }
+      ],
+      "modelInput": "required"
+    }
+}

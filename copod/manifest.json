@@ -1,0 +1,23 @@
+{
+    "title": "COPOD",
+    "description": "Implementation of https://publications.pik-potsdam.de/pubman/faces/ViewItemOverviewPage.jsp?itemId=item_24536.",
+    "inputDimensionality": "multivariate",
+    "version": "0.1",
+    "authors": "Zheng Li, Yue Zhao, Nicola Botta, Cezar Ionescu, Xiyang Hu, ",
+    "language": "Python",
+    "type": "Detector",
+    "mainFile": "algorithm.py",
+    "learningType": "unsupervised",
+    "executionStep": {
+        "parameters": [
+            {
+                "name": "random_state",
+                "type": "int",
+                "defaultValue": 42,
+                "optional": "true",
+                "description": "Seed for random number generation."
+            }
+        ],
+        "modelInput": "none"
+    }
+}

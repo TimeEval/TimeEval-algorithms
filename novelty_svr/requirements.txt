@@ -1,0 +1,8 @@
+--index-url https://__token__:fatNz_tBymyvspWHzzRF@gitlab.hpi.de/api/v4/projects/4434/packages/pypi/simple
+--extra-index-url https://pypi.python.org/simple
+
+pandas
+numpy
+scikit-learn
+PyOnlineSVR>=0.0.2
+tqdm

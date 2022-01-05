@@ -1,0 +1,4 @@
+Cython>=0.29.2
+numpy==1.18.1
+pandas==0.25.3
+torch==1.7.1

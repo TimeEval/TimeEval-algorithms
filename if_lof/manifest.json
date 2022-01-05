@@ -1,0 +1,58 @@
+{
+    "title": "IF-LOF",
+    "description": "Isolation Forest - Local Outlier Factor: Uses a 3 step process - Building an isolation forest, pruning the forest with a computed treshhold, and applies local outlier factor to the resulting dataset",
+    "inputDimensionality": "multivariate",
+    "version": "0.1",
+    "authors": "Cheng, Zhangyu and Zou, Chengming and Dong, Jianwei",
+    "type": "Detector",
+    "language": "Python",
+    "learningType": "Unsupervised",
+    "mainFile": "algorithm.py",
+    "executionStep": {
+        "parameters": [
+            {
+                "name": "n_trees",
+                "type": "int",
+                "description": "Number of trees in isolation forest",
+                "defaultValue": 200,
+                "optional": "false"
+            },
+            {
+                "name": "max_samples",
+                "type": "float",
+                "description": "The number of samples to draw from X to train each tree: `max_samples * X.shape[0]`. If unspecified (`null`), then `max_samples=min(256, X.shape[0])`.",
+                "defaultValue": null,
+                "optional": "false"
+            },
+            {
+                "name": "n_neighbors",
+                "type": "int",
+                "description": "Number neighbors to look at in local outlier factor calculation",
+                "defaultValue": 10,
+                "optional": "false"
+            },
+            {
+                "name": "alpha",
+                "type": "float",
+                "description": "Scalar that depends on consideration of the dataset and controls the amount of data to be pruned",
+                "defaultValue": 0.5,
+                "optional": "false"
+            },
+            {
+                "name": "m",
+                "type": "int",
+                "description": "m features with highest scores will be used for pruning",
+                "defaultValue": null,
+                "optional": "true"
+            },
+            {
+                "name": "random_state",
+                "type": "int",
+                "description": "Seed for random number generation.",
+                "defaultValue": 42,
+                "optional": "true"
+            }
+        ],
+        "modelInput": "none"
+    }
+}

@@ -1,0 +1,51 @@
+{
+    "title": "Extended Isolation Forest (EIF)",
+    "description": "Extenstion to the basic isolation forest. Implementation of https://doi.org/10.1109/TKDE.2019.2947676. Code from https://github.com/sahandha/eif",
+    "inputDimensionality": "multivariate",
+    "version": "0.1",
+    "authors": "S. Hariri, M. Carrasco Kind, R. J. Brunner",
+    "type": "Detector",
+    "language": "Python",
+    "mainFile": "algorithm.py",
+    "learningType": "unsupervised",
+    "executionStep": {
+        "parameters": [
+            {
+                "name": "n_trees",
+                "type": "int",
+                "defaultValue": 200,
+                "optional": "false",
+                "description": "The number of decision trees (base estimators) in the forest (ensemble)."
+            },
+            {
+                "name": "max_samples",
+                "type": "float",
+                "defaultValue": null,
+                "optional": "false",
+                "description": "The number of samples to draw from X to train each base estimator: `max_samples * X.shape[0]`. If unspecified (`null`), then `max_samples=min(256, X.shape[0])`."
+            },
+            {
+                "name": "extension_level",
+                "type": "int",
+                "defaultValue": null,
+                "optional": "true",
+                "description": "Extension level 0 resembles standard isolation forest. If unspecified (`null`), then `extension_level=X.shape[1] - 1`."
+            },
+            {
+                "name": "limit",
+                "type": "int",
+                "defaultValue": null,
+                "optional": "true",
+                "description": "The maximum allowed tree depth. This is by default set to average length of unsucessful search in a binary tree."
+            },
+            {
+                "name": "random_state",
+                "type": "int",
+                "defaultValue": 42,
+                "optional": "true",
+                "description": "Seed for random number generation."
+            }
+        ],
+        "modelInput": "optional"
+    }
+}

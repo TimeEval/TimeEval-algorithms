@@ -1,0 +1,48 @@
+{
+    "title": "STAMP",
+    "description": "Implementation of https://doi.org/10.1109/ICDM.2016.0179.",
+    "inputDimensionality": "univariate",
+    "version": "0.1",
+    "authors": "Chin-Chia Michael Yeh, Yan Zhu, Liudmila Ulanova, Nurjahan Begum, Yifei Ding, Hoang Anh Dau, Diego Furtado Silva, Abdullah Mueen, Eamonn Keogh",
+    "language": "R",
+    "type": "Detector",
+    "mainFile": "algorithm.r",
+    "learningType": "unsupervised",
+    "executionStep": {
+        "parameters": [
+            {
+                "name": "anomaly_window_size",
+                "type": "Int",
+                "defaultValue": 30,
+                "optional": "false",
+                "description": "Size of the sliding window."
+            },{
+                "name": "exclusion_zone",
+                "type": "Float",
+                "defaultValue": 0.5,
+                "optional": "true",
+                "description": "Size of the exclusion zone as a factor of the window_size. This prevents self-matches."
+            },{
+                "name": "verbose",
+                "type": "Int",
+                "defaultValue": 1,
+                "optional": "true",
+                "description": "Controls logging verbosity."
+            },{
+                "name": "n_jobs",
+                "type": "Int",
+                "defaultValue": 1,
+                "optional": "true",
+                "description": "The number of jobs to run in parallel. `-1` is not supported, defaults back to serial implementation."
+            },
+            {
+                "name": "random_state",
+                "type": "Int",
+                "defaultValue": 42,
+                "optional": "true",
+                "description": "Seed for random number generation."
+            }
+        ],
+        "modelInput": "none"
+    }
+}

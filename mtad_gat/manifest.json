@@ -1,0 +1,151 @@
+{
+  "title": "MTAD-GAT",
+  "description": "Implementation of http://arxiv.org/abs/2009.02040",
+  "inputDimensionality": "multivariate",
+  "version": "0.1",
+  "authors": "Hang Zhao, Yujing Wang, Juanyong Duan, Congrui Huang, Defu Cao, Yunhai Tong, Bixiong Xu, Jing Bai, Jie Tong, Qi Zhang",
+  "language": "Python",
+  "type": "Detector",
+  "mainFile": "algorithm.py",
+  "learningType": "semi-supervised",
+  "trainingStep": {
+    "parameters": [
+      {
+        "name": "mag_window_size",
+        "type": "int",
+        "defaultValue": 3,
+        "optional": "true",
+        "description": "Window size for sliding window average calculation"
+      },
+      {
+        "name": "score_window_size",
+        "type": "int",
+        "defaultValue": 40,
+        "optional": "true",
+        "description": "Window size for anomaly scoring"
+      },
+      {
+        "name": "threshold",
+        "type": "float",
+        "defaultValue": 3,
+        "optional": "true",
+        "description": "Threshold for SR cleaning"
+      },
+      {
+        "name": "context_window_size",
+        "type": "int",
+        "defaultValue": 5,
+        "optional": "true",
+        "description": "Window for mean in SR cleaning"
+      },
+      {
+        "name": "kernel_size",
+        "type": "int",
+        "defaultValue": 7,
+        "optional": "true",
+        "description": "Kernel size for 1D-convolution"
+      },
+      {
+        "name": "learning_rate",
+        "type": "float",
+        "defaultValue": 0.001,
+        "optional": "true",
+        "description": "Learning rate for training"
+      },
+      {
+        "name": "epochs",
+        "type": "int",
+        "defaultValue": 1,
+        "optional": "true",
+        "description": "Number of times the algorithm trains on the dataset"
+      },
+      {
+        "name": "batch_size",
+        "type": "int",
+        "defaultValue": 64,
+        "optional": "true",
+        "description": "Number of data points propagated in parallel"
+      },
+      {
+        "name": "window_size",
+        "type": "int",
+        "defaultValue": 20,
+        "optional": "true",
+        "description": "Window size for windowing of Time Series"
+      },
+      {
+        "name": "gamma",
+        "type": "float",
+        "defaultValue": 0.8,
+        "optional": "true",
+        "description": "Importance factor for posterior in scoring"
+      },
+      {
+        "name": "latent_size",
+        "type": "int",
+        "defaultValue": 300,
+        "optional": "true",
+        "description": "Embedding size in VAE"
+      },
+      {
+        "name": "linear_layer_shape",
+        "type": "List[int]",
+        "defaultValue": [
+          300,
+          300,
+          300
+        ],
+        "optional": "true",
+        "description": "Architecture of FC-NN"
+      },
+      {
+        "name": "early_stopping_patience",
+        "type": "int",
+        "defaultValue": 10,
+        "optional": "true",
+        "description": "If 1 - (loss / last_loss) is less than `delta` for `patience` epochs, stop"
+      },
+      {
+        "name": "early_stopping_delta",
+        "type": "float",
+        "defaultValue": 0.05,
+        "optional": "true",
+        "description": "If 1 - (loss / last_loss) is less than `delta` for `patience` epochs, stop"
+      },
+      {
+        "name": "split",
+        "type": "float",
+        "defaultValue": 0.8,
+        "optional": "true",
+        "description": "Train-validation split for early stopping"
+      },
+      {
+        "name": "random_state",
+        "type": "int",
+        "defaultValue": 42,
+        "optional": "true",
+        "description": "Seed for the random number generator"
+      }
+    ],
+    "modelInput": "none"
+  },
+  "executionStep": {
+    "parameters": [
+      {
+        "name": "batch_size",
+        "type": "int",
+        "defaultValue": 64,
+        "optional": "true",
+        "description": "Number of data points propagated in parallel"
+      },
+      {
+        "name": "random_state",
+        "type": "int",
+        "defaultValue": 42,
+        "optional": "true",
+        "description": "Seed for the random number generator"
+      }
+    ],
+    "modelInput": "required"
+  }
+}

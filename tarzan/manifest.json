@@ -1,0 +1,49 @@
+{
+    "title": "TARZAN",
+    "description": "Implementation of https://dl.acm.org/doi/10.1145/775047.775128",
+    "inputDimensionality": "univariate",
+    "version": "0.1",
+    "authors": "Eamonn Keogh, Stefano Leonardi, Bill Chiu",
+    "language": "Python",
+    "type": "Detector",
+    "mainFile": "algorithm.py",
+    "learningType": "semi-supervised",
+    "trainingStep": {
+        "parameters": [
+            {
+                "name": "random_state",
+                "type": "int",
+                "defaultValue": 42,
+                "optional": "true",
+                "description": "Seed for random number generation."
+            }
+        ],
+        "modelInput": "none"
+    },
+    "executionStep": {
+        "parameters": [
+            {
+                "name": "anomaly_window_size",
+                "type": "int",
+                "defaultValue": 20,
+                "optional": "true",
+                "description": "Size of the sliding window. Equal to the discord length!"
+            },
+            {
+                "name": "alphabet_size",
+                "type": "int",
+                "defaultValue": 4,
+                "optional": "true",
+                "description": "Number of symbols used for discretization by SAX (performance parameter)"
+            },
+            {
+                "name": "random_state",
+                "type": "int",
+                "defaultValue": 42,
+                "optional": "true",
+                "description": "Seed for random number generation."
+            }
+        ],
+        "modelInput": "required"
+    }
+}

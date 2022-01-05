@@ -1,0 +1,42 @@
+{
+    "title": "RobustPCA",
+    "description": "Implementation of https://arxiv.org/pdf/1801.01571.pdf",
+    "inputDimensionality": "multivariate",
+    "version": "0.1",
+    "authors": "Randy Paffenroth, Kathleen Kay, Les Servi",
+    "language": "Python",
+    "type": "Detector",
+    "mainFile": "algorithm.py",
+    "learningType": "semi-supervised",
+    "trainingStep": {
+        "parameters": [
+            {
+                "name": "max_iter",
+                "type": "int",
+                "defaultValue": 1000,
+                "optional": "true",
+                "description": "Defines the number of maximum robust PCA iterations for solving matrix decomposition."
+            },
+            {
+                "name": "random_state",
+                "type": "int",
+                "defaultValue": 42,
+                "optional": "true",
+                "description": "Seed for random number generation."
+            }
+        ],
+        "modelInput": "none"
+    },
+    "executionStep": {
+        "parameters": [
+            {
+                "name": "random_state",
+                "type": "int",
+                "defaultValue": 42,
+                "optional": "true",
+                "description": "Seed for random number generation."
+            }
+        ],
+        "modelInput": "required"
+    }
+}

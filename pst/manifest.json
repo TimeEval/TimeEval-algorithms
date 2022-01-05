@@ -1,0 +1,65 @@
+{
+    "title": "PST",
+    "description": "Implementation of a modified version (with preceding discretization) of https://doi.org/10.1137/1.9781611972764.9.",
+    "inputDimensionality": "univariate",
+    "version": "1.0",
+    "authors": "Pei Sun, Sanjay Chawla, Bavani Arunasalam",
+    "language": "R",
+    "type": "Detector",
+    "learningType": "Unsupervised",
+    "mainFile": "algorithm.r",
+    "executionStep": {
+        "modelInput": "none",
+        "parameters": [
+            {
+                "name": "window_size",
+                "type": "int",
+                "defaultValue": 5,
+                "optional": "True",
+                "description": "Length of the subsequences in which the time series should be splitted into (sliding window)."
+            },
+            {
+                "name": "max_depth",
+                "type": "int",
+                "defaultValue": 4,
+                "optional": "True",
+                "description": "Maximal depth of the PST. Default to maximum length of the sequence(s) in object minus 1."
+            },
+            {
+                "name": "n_min",
+                "type": "int",
+                "defaultValue": 1,
+                "optional": "True",
+                "description": "Minimum number of occurences of a string to add it in the tree."
+            },
+            {
+                "name": "y_min",
+                "type": "float",
+                "defaultValue": null,
+                "optional": "True",
+                "description": "Smoothing parameter for conditional probabilities, assuring that nosymbol, and hence no sequence, is predicted to have a null probability. The parameter $ymin$ sets a lower bound for a symbol’s probability."
+            },
+            {
+                "name": "n_bins",
+                "type": "int",
+                "defaultValue": 5,
+                "optional": "True",
+                "description": "Number of Bags (bins) in which the time-series should be splitted by frequency."
+            },
+            {
+                "name": "sim",
+                "type": "enum[SIMo,SIMn]",
+                "defaultValue": "SIMn",
+                "optional": "True",
+                "description": "The similarity measure to use when computing the similarity between a sequence and the pst. SIMn is supposed to yield better results."
+            },
+            {
+                "name": "random_state",
+                "type": "int",
+                "defaultValue": 42,
+                "optional": "true",
+                "description": "Seed for random number generation."
+            }
+        ]
+    }
+}

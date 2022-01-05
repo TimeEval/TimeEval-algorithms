@@ -1,0 +1,168 @@
+{
+  "title": "OmniAnomaly",
+  "description": "Implementation of https://doi.org/10.1145/3292500.3330672",
+  "inputDimensionality": "multivariate",
+  "version": "0.1",
+  "authors": "Ya Su, Youjian Zhao, Chenhao Niu, Rong Liu, Wei Sun, Dan Pei",
+  "language": "Python",
+  "type": "Detector",
+  "mainFile": "algorithm.py",
+  "learningType": "semi-supervised",
+  "trainingStep": {
+    "parameters": [
+      {
+        "name": "latent_size",
+        "type": "int",
+        "defaultValue": 3,
+        "optional": "true",
+        "description": "Reduced dimension size"
+      },
+      {
+        "name": "rnn_hidden_size",
+        "type": "int",
+        "defaultValue": 500,
+        "optional": "true",
+        "description": "Size of RNN hidden layer"
+      },
+      {
+        "name": "window_size",
+        "type": "int",
+        "defaultValue": 100,
+        "optional": "true",
+        "description": "Sliding window size"
+      },
+      {
+        "name": "linear_hidden_size",
+        "type": "int",
+        "defaultValue": 500,
+        "optional": "true",
+        "description": "Dense layer size"
+      },
+      {
+        "name": "nf_layers",
+        "type": "int",
+        "defaultValue": 20,
+        "optional": "true",
+        "description": "NF layer size"
+      },
+      {
+        "name": "epochs",
+        "type": "int",
+        "defaultValue": 10,
+        "optional": "true",
+        "description": "Number of training passes over entire dataset"
+      },
+      {
+        "name": "split",
+        "type": "float",
+        "defaultValue": 0.8,
+        "optional":"true",
+        "description": "Train-validation split"
+      },
+      {
+        "name": "batch_size",
+        "type": "int",
+        "defaultValue": 50,
+        "optional": "true",
+        "description": "Number of datapoints fitted parallel"
+      },
+      {
+        "name": "l2_reg",
+        "type": "float",
+        "defaultValue": 0.0001,
+        "optional": "true",
+        "description": "Regularization factor"
+      },
+      {
+        "name": "learning_rate",
+        "type": "float",
+        "defaultValue": 0.001,
+        "optional": "true",
+        "description": "Learning Rate for Adam Optimizer"
+      },
+      {
+        "name": "random_state",
+        "type": "int",
+        "defaultValue": 42,
+        "optional": "true",
+        "description": "Seed for random number generation."
+      }
+    ],
+    "modelInput": "none"
+  },
+  "executionStep": {
+    "parameters": [
+      {
+        "name": "latent_size",
+        "type": "int",
+        "defaultValue": 3,
+        "optional": "true",
+        "description": "Reduced dimension size"
+      },
+      {
+        "name": "rnn_hidden_size",
+        "type": "int",
+        "defaultValue": 500,
+        "optional": "true",
+        "description": "Size of RNN hidden layer"
+      },
+      {
+        "name": "window_size",
+        "type": "int",
+        "defaultValue": 100,
+        "optional": "true",
+        "description": "Sliding window size"
+      },
+      {
+        "name": "linear_hidden_size",
+        "type": "int",
+        "defaultValue": 500,
+        "optional": "true",
+        "description": "Dense layer size"
+      },
+      {
+        "name": "nf_layers",
+        "type": "int",
+        "defaultValue": 20,
+        "optional": "true",
+        "description": "NF layer size"
+      },
+      {
+        "name": "epochs",
+        "type": "int",
+        "defaultValue": 10,
+        "optional": "true",
+        "description": "Number of training passes over entire dataset"
+      },
+      {
+        "name": "batch_size",
+        "type": "int",
+        "defaultValue": 50,
+        "optional": "true",
+        "description": "Number of datapoints fitted parallel"
+      },
+      {
+        "name": "l2_reg",
+        "type": "float",
+        "defaultValue": 0.0001,
+        "optional": "true",
+        "description": "Regularization factor"
+      },
+      {
+        "name": "learning_rate",
+        "type": "float",
+        "defaultValue": 0.001,
+        "optional": "true",
+        "description": "Learning Rate for Adam Optimizer"
+      },
+      {
+        "name": "random_state",
+        "type": "int",
+        "defaultValue": 42,
+        "optional": "true",
+        "description": "Seed for random number generation."
+      }
+    ],
+    "modelInput": "required"
+  }
+}

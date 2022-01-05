@@ -1,0 +1,119 @@
+{
+  "title": "ImageEmbeddingCAE",
+  "description": "Implementation of http://arxiv.org/abs/2009.02040",
+  "inputDimensionality": "univariate",
+  "version": "0.1",
+  "authors": "Gabriel Rodriguez Garcia, Gabriel Michau, Melanie Ducoffe, Jayant Sen Gupta",
+  "language": "Python",
+  "type": "Detector",
+  "learningType": "Semi-Supervised",
+  "mainFile": "algorithm.py",
+  "trainingStep": {
+    "parameters": [
+      {
+        "name": "anomaly_window_size",
+        "type": "int",
+        "defaultValue": 512,
+        "optional": "true",
+        "description": "length of one time series chunk (tumbling window)"
+      },
+      {
+        "name": "kernel_size",
+        "type": "int",
+        "defaultValue": 2,
+        "optional": "true",
+        "description": "width, height of each convolution kernel (stride is equal to this value)"
+      },
+      {
+        "name": "num_kernels",
+        "type": "int",
+        "defaultValue": 64,
+        "optional": "true",
+        "description": "number of convolution kernels used in each layer"
+      },
+      {
+        "name": "latent_size",
+        "type": "int",
+        "defaultValue": 100,
+        "optional": "true",
+        "description": "number of neurons used in the embedding layer"
+      },
+      {
+        "name": "leaky_relu_alpha",
+        "type": "float",
+        "defaultValue": 0.03,
+        "optional": "true",
+        "description": "alpha value used for leaky relu activation function"
+      },
+      {
+        "name": "batch_size",
+        "type": "int",
+        "defaultValue": 32,
+        "optional": "true",
+        "description": "number of simultaneously trained data instances"
+      },
+      {
+        "name": "test_batch_size",
+        "type": "int",
+        "defaultValue": 128,
+        "optional": "true",
+        "description": "number of simultaneously trained data instances"
+      },
+      {
+        "name": "learning_rate",
+        "type": "float",
+        "defaultValue": 0.001,
+        "optional": "true",
+        "description": "Gradient factor for backpropagation"
+      },
+      {
+        "name": "epochs",
+        "type": "int",
+        "defaultValue": 30,
+        "optional": "true",
+        "description": "number of training iterations over entire dataset"
+      },
+      {
+        "name": "split",
+        "type": "float",
+        "defaultValue": 0.8,
+        "optional": "true",
+        "description": "train-validation split"
+      },
+      {
+        "name": "early_stopping_delta",
+        "type": "float",
+        "defaultValue": 0.05,
+        "optional": "true",
+        "description": "If 1 - (loss / last_loss) is less than `delta` for `patience` epochs, stop"
+      },
+      {
+        "name": "early_stopping_patience",
+        "type": "int",
+        "defaultValue": 10,
+        "optional": "true",
+        "description": "If 1 - (loss / last_loss) is less than `delta` for `patience` epochs, stop"
+      },
+      {
+        "name": "random_state",
+        "type": "int",
+        "defaultValue": 42,
+        "optional": "true",
+        "description": "Seed for the random number generator"
+      }
+    ],
+    "modelInput": "none"
+  },
+  "executionStep": {
+    "parameters": [
+      {
+        "name": "random_state",
+        "type": "int",
+        "defaultValue": 42,
+        "optional": "true",
+        "description": "Seed for the random number generator"
+      }
+    ],
+    "modelInput": "required"
+  }
+}

@@ -1,0 +1,23 @@
+{
+    "title": "Random Baseline",
+    "description": "Baseline that returns a random score between 0 and 1",
+    "inputDimensionality": "multivariate",
+    "version": "0.1",
+    "authors": "",
+    "language": "Python",
+    "type": "Detector",
+    "mainFile": "baseline.py",
+    "learningType": "unsupervised",
+    "executionStep": {
+        "parameters": [
+            {
+                "name": "random_state",
+                "type": "int",
+                "defaultValue": 42,
+                "optional": "true",
+                "description": "Seed for random number generation."
+            }
+        ],
+        "modelInput": "none"
+    }
+}

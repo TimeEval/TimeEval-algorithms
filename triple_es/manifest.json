@@ -1,0 +1,51 @@
+{
+  "title": "Triple ES (Holt-Winter's)",
+  "description": "Implementation of http://www.diva-portal.org/smash/get/diva2:1198551/FULLTEXT02.pdf",
+  "inputDimensionality": "univariate",
+  "version": "0.1",
+  "authors": "Adam Aboode",
+  "language": "Python",
+  "type": "Detector",
+  "learningType": "Unsupervised",
+  "mainFile": "algorithm.py",
+  "executionStep": {
+    "parameters": [
+      {
+        "name": "train_window_size",
+        "type": "int",
+        "defaultValue": 200,
+        "optional": "false",
+        "description": "size of each TripleES model to predict the next timestep"
+      },
+      {
+        "name": "period",
+        "type": "int",
+        "defaultValue": 100,
+        "optional": "false",
+        "description": "number of time units at which events happen regularly/periodically"
+      },
+      {
+        "name": "trend",
+        "type": "enum[add, mul]",
+        "defaultValue": "add",
+        "optional": "true",
+        "description": "type of trend component"
+      },
+      {
+        "name": "seasonal",
+        "type": "enum[add, mul]",
+        "defaultValue": "add",
+        "optional": "true",
+        "description": "type of seasonal component"
+      },
+      {
+        "name": "random_state",
+        "type": "int",
+        "defaultValue": 42,
+        "optional": "true",
+        "description": "Seed for random number generation."
+      }
+    ],
+    "modelInput": "none"
+  }
+}

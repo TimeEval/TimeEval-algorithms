@@ -1,0 +1,15 @@
+{
+    "title": "Normal Baseline",
+    "description": "Baseline that returns a score of all zeros",
+    "inputDimensionality": "multivariate",
+    "version": "0.1",
+    "authors": "",
+    "language": "Python",
+    "type": "Detector",
+    "mainFile": "baseline.py",
+    "learningType": "unsupervised",
+    "executionStep": {
+        "parameters": [],
+        "modelInput": "none"
+    }
+}

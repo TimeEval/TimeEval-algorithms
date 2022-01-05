@@ -1,0 +1,15 @@
+{
+    "title": "Increasing Baseline",
+    "description": "Baseline that returns a score that steadily increases from 0 to 1",
+    "inputDimensionality": "multivariate",
+    "version": "0.1",
+    "authors": "",
+    "language": "Python",
+    "type": "Detector",
+    "mainFile": "baseline.py",
+    "learningType": "unsupervised",
+    "executionStep": {
+        "parameters": [],
+        "modelInput": "none"
+    }
+}

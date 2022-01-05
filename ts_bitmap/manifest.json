@@ -1,0 +1,65 @@
+{
+    "title": "TSBitmap",
+    "description": "Implementation of https://dl.acm.org/doi/abs/10.5555/1116877.1116907",
+    "inputDimensionality": "univariate",
+    "version": "0.1",
+    "authors": "Li Wei, Nitin Kumar, Venkata Lolla, Eamonn Keogh, Stefano Lonardi, Chotirat Ann Ratanamahatana",
+    "language": "Python",
+    "type": "Detector",
+    "mainFile": "algorithm.py",
+    "learningType": "unsupervised",
+    "executionStep": {
+        "parameters": [
+            {
+                "name": "feature_window_size",
+                "type": "int",
+                "defaultValue": 100,
+                "optional": "false",
+                "description": "Size of the tumbling windows used for SAX discretization."
+            },
+            {
+                "name": "lead_window_size",
+                "type": "int",
+                "defaultValue": 200,
+                "optional": "false",
+                "description": "How far to look ahead to create lead bitmap."
+            },
+            {
+                "name": "lag_window_size",
+                "type": "int",
+                "defaultValue": 300,
+                "optional": "false",
+                "description": "How far to look back to create the lag bitmap."
+            },
+            {
+                "name": "alphabet_size",
+                "type": "int",
+                "defaultValue": 5,
+                "optional": "false",
+                "description": "Number of bins for SAX discretization."
+            },
+            {
+                "name": "level_size",
+                "type": "int",
+                "defaultValue": 3,
+                "optional": "false",
+                "description": "Desired level of recursion of the bitmap."
+            },
+            {
+                "name": "compression_ratio",
+                "type": "int",
+                "defaultValue": 2,
+                "optional": "true",
+                "description": "How much to compress the timeseries in the PAA step. If `compression_ration == 1`, no compression."
+            },
+            {
+                "name": "random_state",
+                "type": "int",
+                "defaultValue": 42,
+                "optional": "true",
+                "description": "Seed for random number generation."
+            }
+        ],
+        "modelInput": "none"
+    }
+}

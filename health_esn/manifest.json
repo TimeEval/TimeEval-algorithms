@@ -1,0 +1,62 @@
+{
+    "title": "HealthESN",
+    "description": "Implementation of https://doi.org/10.1007/s00521-018-3747-z",
+    "inputDimensionality": "multivariate",
+    "version": "0.1",
+    "authors": "Qing Chen, Anguo Zhang, Tingwen Huang, Qianping He, Yongduan Song",
+    "language": "Python",
+    "type": "Detector",
+    "mainFile": "algorithm.py",
+    "learningType": "semi-supervised",
+    "trainingStep": {
+        "parameters": [
+            {
+                "name": "linear_hidden_size",
+                "type": "int",
+                "defaultValue": 500,
+                "optional": "true",
+                "description": "Hidden units in ESN reservoir."
+            },
+            {
+                "name": "prediction_window_size",
+                "type": "int",
+                "defaultValue": 20,
+                "optional": "true",
+                "description": "Window of predicted points in the future."
+            },
+            {
+                "name": "connectivity",
+                "type": "float",
+                "defaultValue": 0.25,
+                "optional": "true",
+                "description": "How dense the units in the reservoir are connected (= percentage of non-zero weights)"
+            },
+            {
+                "name": "spectral_radius",
+                "type": "float",
+                "defaultValue": 0.6,
+                "optional": "true",
+                "description": "Factor used for random initialization of ESN neural connections."
+            },
+            {
+                "name": "activation",
+                "type": "enum[tanh,sigmoid]",
+                "defaultValue": "tanh",
+                "optional": "true",
+                "description": "Activation function used for the ESN."
+            },
+            {
+                "name": "random_state",
+                "type": "int",
+                "defaultValue": 42,
+                "optional": "true",
+                "description": "Seed for the random number generator"
+            }
+        ],
+        "modelInput": "none"
+    },
+    "executionStep": {
+        "parameters": [],
+        "modelInput": "required"
+    }
+}

@@ -1,0 +1,30 @@
+{
+    "title": "MedianMethod",
+    "description": "Implementation of https://doi.org/10.1007/s10115-006-0026-6",
+    "inputDimensionality": "univariate",
+    "version": "0.1",
+    "authors": "",
+    "language": "Python",
+    "type": "Detector",
+    "mainFile": "algorithm.py",
+    "learningType": "unsupervised",
+    "executionStep": {
+        "parameters": [
+            {
+                "name": "neighbourhood_size",
+                "type": "int",
+                "defaultValue": 100,
+                "optional": "false",
+                "description": "Specifies the number of time steps to look forward and backward for each data point."
+            },
+            {
+                "name": "random_state",
+                "type": "int",
+                "defaultValue": 42,
+                "optional": "true",
+                "description": "Seed for random number generation."
+            }
+        ],
+        "modelInput": "none"
+    }
+}

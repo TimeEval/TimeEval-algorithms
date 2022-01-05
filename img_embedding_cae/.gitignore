@@ -1,0 +1,5 @@
+data/
+results/
+model/
+arguments.json
+*.pdf

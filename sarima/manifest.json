@@ -1,0 +1,72 @@
+{
+    "title": "SARIMA",
+    "description": "Implementation of SARIMA method described in https://milets18.github.io/papers/milets18_paper_19.pdf.",
+    "inputDimensionality": "univariate",
+    "version": "0.1",
+    "authors": "Sebastian Schmidl",
+    "language": "Python",
+    "type": "Detector",
+    "mainFile": "algorithm.py",
+    "learningType": "unsupervised",
+    "executionStep": {
+        "parameters": [
+            {
+                "name": "train_window_size",
+                "type": "int",
+                "defaultValue": 500,
+                "optional": "true",
+                "description": "Number of points from the beginning of the series to build model on."
+            },
+            {
+                "name": "prediction_window_size",
+                "type": "int",
+                "defaultValue": 10,
+                "optional": "true",
+                "description": "Number of points to forecast in one go; smaller = slower, but more accurate."
+            },
+            {
+                "name": "max_lag",
+                "type": "int",
+                "defaultValue": null,
+                "optional": "true",
+                "description": "Refit SARIMA model after that number of points (only helpful if fixed_orders=None)"
+            },
+            {
+                "name": "period",
+                "type": "int",
+                "defaultValue": 1,
+                "optional": "true",
+                "description": "Periodicity (number of periods in season), often it is 4 for quarterly data or 12 for monthly data. Default is no seasonal effect (==1). Must be >= 1."
+            },
+            {
+                "name": "max_iter",
+                "type": "int",
+                "defaultValue": 20,
+                "optional": "true",
+                "description": "The maximum number of function evaluations. smaller = faster, but might not converge."
+            },
+            {
+                "name": "exhaustive_search",
+                "type": "boolean",
+                "defaultValue": "false",
+                "optional": "true",
+                "description": "Performs full grid search to find optimal SARIMA-model without considering statistical tests on the data --> SLOW! but finds the optimal model."
+            },
+            {
+                "name": "n_jobs",
+                "type": "int",
+                "defaultValue": 1,
+                "optional": "true",
+                "description": "The number of parallel jobs to run for grid search. If ``-1``, then the number of jobs is set to the number of CPU cores."
+            },
+            {
+                "name": "random_state",
+                "type": "int",
+                "defaultValue": 42,
+                "optional": "true",
+                "description": "Seed for random number generation."
+            }
+        ],
+        "modelInput": "none"
+    }
+}

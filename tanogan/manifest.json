@@ -1,0 +1,133 @@
+{
+  "title": "TAnoGan",
+  "description": "Implementation of http://arxiv.org/abs/2008.09567",
+  "inputDimensionality": "multivariate",
+  "version": "0.1",
+  "authors": "Md Abul Bashar, Richi Nayak",
+  "language": "Python",
+  "type": "Detector",
+  "mainFile": "algorithm.py",
+  "learningType": "semi-supervised",
+  "trainingStep": {
+    "parameters": [
+      {
+        "name": "epochs",
+        "type": "int",
+        "defaultValue": 1,
+        "optional": "true",
+        "description": "Number of training iterations over entire dataset"
+      },
+      {
+        "name": "cuda",
+        "type": "boolean",
+        "defaultValue": "false",
+        "optional": "true",
+        "description": "Set to `true`, if the GPU-backend (using CUDA) should be used. Otherwise, the algorithm is executed on the CPU."
+      },
+      {
+        "name": "window_size",
+        "type": "int",
+        "defaultValue": 30,
+        "optional": "true",
+        "description": "Size of the sliding windows"
+      },
+      {
+        "name": "learning_rate",
+        "type": "float",
+        "defaultValue": 0.0002,
+        "optional": "true",
+        "description": "Learning rate for Adam optimizer"
+      },
+      {
+        "name": "batch_size",
+        "type": "int",
+        "defaultValue": 32,
+        "optional": "true",
+        "description": "Number of instances trained at the same time"
+      },
+      {
+        "name": "n_jobs",
+        "type": "int",
+        "defaultValue": 1,
+        "optional": "true",
+        "description": "Number of workers (processes) used to load and preprocess the data"
+      },
+      {
+        "name": "random_state",
+        "type": "int",
+        "defaultValue": 42,
+        "optional": "true",
+        "description": "Seed for random number generation."
+      },
+      {
+        "name": "early_stopping_patience",
+        "type": "int",
+        "defaultValue": 10,
+        "optional": "true",
+        "description": "If 1 - (loss / last_loss) is less than `delta` for `patience` epochs, stop"
+      },
+      {
+        "name": "early_stopping_delta",
+        "type": "float",
+        "defaultValue": 0.05,
+        "optional": "true",
+        "description": "If 1 - (loss / last_loss) is less than `delta` for `patience` epochs, stop"
+      },
+      {
+        "name": "split",
+        "type": "float",
+        "defaultValue": 0.8,
+        "optional": "true",
+        "description": "Train-validation split for early stopping"
+      }
+    ],
+    "modelInput": "none"
+  },
+  "executionStep": {
+    "parameters": [
+      {
+        "name": "cuda",
+        "type": "boolean",
+        "defaultValue": "false",
+        "optional": "true",
+        "description": "Set to `true`, if the GPU-backend (using CUDA) should be used. Otherwise, the algorithm is executed on the CPU."
+      },
+      {
+        "name": "window_size",
+        "type": "int",
+        "defaultValue": 30,
+        "optional": "true",
+        "description": "Size of the sliding windows"
+      },
+      {
+        "name": "batch_size",
+        "type": "int",
+        "defaultValue": 32,
+        "optional": "true",
+        "description": "Number of instances trained at the same time"
+      },
+      {
+        "name": "n_jobs",
+        "type": "int",
+        "defaultValue": 1,
+        "optional": "true",
+        "description": "Number of workers (processes) used to load and preprocess the data"
+      },
+      {
+        "name": "iterations",
+        "type": "int",
+        "defaultValue": 25,
+        "optional": "true",
+        "description": "Number of test iterations per window"
+      },
+      {
+        "name": "random_state",
+        "type": "int",
+        "defaultValue": 42,
+        "optional": "true",
+        "description": "Seed for random number generation."
+      }
+    ],
+    "modelInput": "required"
+  }
+}
