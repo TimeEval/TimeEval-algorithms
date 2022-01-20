@@ -1,6 +1,12 @@
-# TimeEval Algorithms
+<div align="center">
+<img width="130px" src="./timeeval-algorithms.png" alt="TimeEval logo"/>
+<h1 align="center">TimeEval Algorithms</h1>
+<p>
+  Time Series Anomaly Detection Algorithms for TimeEval.
+</p>
+</div>
 
-[![pipeline status](https://gitlab.hpi.de/akita/timeeval-algorithms/badges/main/pipeline.svg)](https://gitlab.hpi.de/akita/timeeval-algorithms/-/commits/main)
+## Description
 
 This repository contains a collection of containerized (dockerized) time series anomaly detection methods that can easily be evaluated using [TimeEval](https://github.com/HPI-Information-Systems/TimeEval).
 
