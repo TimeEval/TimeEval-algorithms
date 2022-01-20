@@ -95,7 +95,7 @@ You need the following tools installed on your development machine:
 
 - git
 - docker
-- access to this and the [Docker Images](https://gitlab.hpi.de/akita/docker-images) repository
+- access to this repository
 
 Please make yourself familiar with the contents of this repository and read this document carefully!
 
