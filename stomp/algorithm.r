@@ -30,6 +30,9 @@ exclusion_zone <- config$customParameters$exclusion_zone %or% 1/2
 verbose <- config$customParameters$verbose %or% 1
 n_jobs <- config$customParameters$n_jobs %or% 1
 random_state <- config$customParameters$random_state %or% 42
+use_column_index <- config$customParameters$use_column_index %or% 0
+# align index to R-indexing, which is 1-based
+use_column_index <- use_column_index + 1
 
 # Set random seed
 set.seed(random_state)
@@ -40,7 +43,7 @@ if (window_size < 4) {
   window_size <- 4
 }
 
-if(verbose > 1) {
+if (verbose > 1) {
     message("-- Configuration ------------")
     message("executionType=", executionType)
     message("window_Size=", window_size)
@@ -58,7 +61,20 @@ if (executionType != "execute") {
 
 message("Reading data from ", input)
 data <- read.csv(file=input)
-values = data[, 2] # Attention: 1-based indexing!
+
+max_column_index <- ncol(data) - 2
+if (use_column_index > max_column_index) {
+    message("Selected column index ",
+        use_column_index,
+        " is out of bounds (max index = ",
+        max_column_index,
+        ")! Using last channel!"
+    )
+    use_column_index <- max_column_index
+}
+# jump over index column (timestamp)
+use_column_index <- use_column_index + 1
+values = data[, use_column_index] # Attention: 1-based indexing!
 
 if (n_jobs <= 1) {
     stomp_mp <- stomp(values, window_size=window_size, exclusion_zone=exclusion_zone, verbose=verbose)

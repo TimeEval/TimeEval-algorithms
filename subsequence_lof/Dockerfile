@@ -1,4 +1,4 @@
-FROM mut:5000/akita/pyod:0.2.2
+FROM mut:5000/akita/pyod:0.2.3
 
 LABEL maintainer="sebastian.schmidl@hpi.de"
 

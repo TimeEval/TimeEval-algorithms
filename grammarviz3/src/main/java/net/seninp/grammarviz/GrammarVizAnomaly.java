@@ -147,7 +147,10 @@ public class GrammarVizAnomaly {
     LOGGER.info("Reading data ...");
     double[] series;
     try {
-      series = TimeEvalFileReader.readTS(params.IN_FILE, 1, 1);
+      int columnIndex = params.COLUMN_INDEX;
+      // jump over index column (timestamp)
+      columnIndex += 1;
+      series = TimeEvalFileReader.readTS(params.IN_FILE, columnIndex, 1);
     } catch (Exception e) { // try default file reading if the TimeEval integration fails
       LOGGER.warn("Reading file {} failed for the TimeEval integration, trying to recover with SAX file reading", params.IN_FILE);
       series = tp.readTS(params.IN_FILE, 0);

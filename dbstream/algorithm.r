@@ -105,6 +105,8 @@ subsequences <- as.data.frame(subsequences)
 message("Converting the data into a datastream object")
 data_stream <- DSD_Memory(subsequences)
 
+message("Parameters: window_count=", subsequence_count, ", window_length=", subsequence_length, ", k=", k, ", alpha=", alpha)
+
 message("Initialize the algorithm with the correct parameters.")
 # CM is fixed to 0 because we want every point to be assigned to micro cluster (even if at worst that cluster only contains of that point).
 # Gaptime is set to the subsequence_count because we never want to have weak micro cluster removed.
@@ -115,6 +117,9 @@ update(dbstream, data_stream, n=subsequence_count, assignments=TRUE)
 
 message("Get the cluster assignments.")
 micro_clusters <- get_cluster_assignments(dbstream)
+message("Get macro clustering", dbstream$RObj$get_macro_clustering())
+message("Macros", dbstream$macro$macro)
+message("Assignments", dbstream$macro$macro$microToMacro)
 macro_clusters <- microToMacro(dbstream)
 
 message("Get the macro cluster centers")

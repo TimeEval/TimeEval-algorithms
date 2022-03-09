@@ -6,33 +6,19 @@ import numpy as np
 import pandas as pd
 
 from dataclasses import dataclass
-from stumpy import stumpi
+from stumpy import mstump
 
 
 @dataclass
 class CustomParameters:
     anomaly_window_size: int = 50
-    n_init_train: int = 100
     random_state: int = 42
-    use_column_index: int = 0
 
 
 class AlgorithmArgs(argparse.Namespace):
     @property
     def ts(self) -> np.ndarray:
-        column_index = 0
-        if config.customParameters.use_column_index is not None:
-            column_index = config.customParameters.use_column_index
-        max_column_index = self.df.shape[1] - 3
-        if column_index > max_column_index:
-            print(f"Selected column index {column_index} is out of bounds (columns = {self.df.columns.values}; "
-                f"max index = {max_column_index} [column '{self.df.columns[max_column_index + 1]}'])! "
-                "Using last channel!", file=sys.stderr)
-            column_index = max_column_index
-        # jump over index column (timestamp)
-        column_index += 1
-
-        return self.df.values[:, column_index].astype(float)
+        return self.df.iloc[:, 1:-1].values
 
     @property
     def df(self) -> pd.DataFrame:
@@ -57,22 +43,9 @@ def set_random_state(config: AlgorithmArgs) -> None:
 def main(config: AlgorithmArgs):
     set_random_state(config)
     data = config.ts
-    warmup = config.customParameters.n_init_train
 
-    ws = config.customParameters.anomaly_window_size
-    if ws > warmup:
-        print(f"WARN: anomaly_window_size is larger than n_init_train. Dynamically fixing it by setting anomaly_window_size to n_init_train={warmup}")
-        ws = warmup
-    if ws < 3:
-        print("WARN: anomaly_window_size must be at least 3. Dynamically fixing it by setting anomaly_window_size to 3")
-        ws = 3
-
-    stream = stumpi(data[:warmup], m=ws, egress=False)
-    for point in data[warmup:]:
-        stream.update(point)
-
-    mp = stream.left_P_
-    mp[:warmup] = 0
+    mps = mstump(data.transpose(), m=config.customParameters.anomaly_window_size, discords=True)
+    mp = mps[0].sum(axis=0)
 
     np.savetxt(config.dataOutput, mp, delimiter=",")
 
