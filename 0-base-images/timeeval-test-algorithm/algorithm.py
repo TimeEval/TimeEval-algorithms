@@ -22,13 +22,19 @@ def main():
     args = AlgorithmArgs.from_sys_args()
     will_raise = args.customParameters.get("raise", False)
     sleep_seconds = args.customParameters.get("sleep", 10)
+    write_preliminary_results = args.customParameters.get("write_prelim_results", False)
+
+    results = np.zeros(args.ts.shape[0])
+
+    if write_preliminary_results:
+        results.tofile(args.dataOutput, sep="\n")
 
     if will_raise:
         raise Exception("from within")
 
     time.sleep(sleep_seconds)
 
-    np.zeros(args.ts.shape[0]).tofile(args.dataOutput, sep="\n")
+    results.tofile(args.dataOutput, sep="\n")
 
 
 if __name__ == "__main__":
