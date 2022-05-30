@@ -1,11 +1,13 @@
 FROM mut:5000/maven:3-openjdk-11-slim as build
 
-COPY pom.xml /app/
-COPY src /app/src
-RUN cd /app && \
-    mvn package -PsingleCLI -DskipTests
+WORKDIR /app
 
-FROM mut:5000/akita/java-base:0.2.1
+COPY pom.xml .
+COPY src src
+RUN mvn package -PsingleCLI -DskipTests
+
+
+FROM mut:5000/akita/java-base:0.2.3
 
 LABEL maintainer="sebastian.schmidl@hpi.de"
 

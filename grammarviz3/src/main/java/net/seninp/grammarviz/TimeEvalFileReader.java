@@ -32,7 +32,16 @@ public final class TimeEvalFileReader {
             String line;
             for(int i = skipCols; i > 0; i--) in.readLine();
             while ((line = in.readLine()) != null) {
-                String value = line.split(delimiter)[useColumn].trim();
+                String[] cells = line.split(delimiter);
+                int maxColumnIndex = cells.length;
+                if(useColumn > maxColumnIndex - 1) {
+                    LOGGER.warn(
+                        "Warning: Selected column index {} is out of bounds (max index = {})! " +
+                        "Using last channel!", useColumn, maxColumnIndex
+                    );
+                    useColumn = maxColumnIndex;
+                }
+                String value = cells[useColumn].trim();
                 try {
                     values.add(Double.valueOf(value));
                 } catch (NumberFormatException e) {

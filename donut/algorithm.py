@@ -31,6 +31,7 @@ class CustomParameters:
     linear_hidden_size: int = 100
     epochs: int = 256  # max_epochs
     random_state: int = 42
+    use_column_index: int = 0
 
 
 class AlgorithmArgs(argparse.Namespace):
@@ -50,7 +51,19 @@ class AlgorithmArgs(argparse.Namespace):
 
 def prepare_data(args: AlgorithmArgs) -> Tuple[np.ndarray, np.ndarray, np.ndarray, float, float]:
     df = args.df
-    timestamp, missing, (values, labels) = complete_timestamp(df.timestamp, (df.iloc[:, 1], df.is_anomaly))
+    column_index = 0
+    if args.customParameters.use_column_index is not None:
+        column_index = args.customParameters.use_column_index
+    max_column_index = df.shape[1] - 3
+    if column_index > max_column_index:
+        print(f"Selected column index {column_index} is out of bounds (columns = {df.columns.values}; "
+              f"max index = {max_column_index} [column '{df.columns[max_column_index + 1]}'])! "
+              "Using last channel!", file=sys.stderr)
+        column_index = max_column_index
+    # jump over index column (timestamp)
+    column_index += 1
+
+    timestamp, missing, (values, labels) = complete_timestamp(df.timestamp, (df.iloc[:, column_index], df.is_anomaly))
     kpi, mean, std = standardize_kpi(values)
     return kpi, labels, missing, mean, std
 

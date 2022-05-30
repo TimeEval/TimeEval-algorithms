@@ -41,6 +41,7 @@ public final class TimeEvalArguments {
         params.SAX_NORM_THRESHOLD = this.customParameters.saxNormThreshold;
         params.RANDOM_SEED = this.customParameters.randomState;
 //        params.DISCORDS_NUM = this.customParameters.nDiscords;
+        params.COLUMN_INDEX = this.customParameters.columnIndex;
     }
 
     static final class CustomParameters {
@@ -56,6 +57,8 @@ public final class TimeEvalArguments {
         public long randomState = 42;
 //        @SerializedName("n_discords")
 //        public int nDiscords = 5;
+        @SerializedName("use_column_index")
+        public int columnIndex = 0;
 
         @Override
         public String toString() {
@@ -66,6 +69,7 @@ public final class TimeEvalArguments {
                     ", SAX_NORM_THRESHOLD=" + saxNormThreshold +
                     ", RANDOM_STATE=" + randomState +
 //                    ", DISCORDS_NUM=" + nDiscords +
+                    ", COLUMN_INDEX=" + columnIndex +
                     '}';
         }
     }

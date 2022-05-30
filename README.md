@@ -9,6 +9,7 @@
 ## Description
 
 This repository contains a collection of containerized (dockerized) time series anomaly detection methods that can easily be evaluated using [TimeEval](https://github.com/HPI-Information-Systems/TimeEval).
+Some of the algorithm's source code is access restricted and we just provide the TimeEval stubs and manifests. We are happy to share our TimeEval adaptations of excluded algorithms upon request, if the original authors approve this.
 
 Each folder contains the implementation of an algorithm that will be build into a runnable Docker container using CI.
 The namespace prefix (repository) for the built Docker images is `mut:5000/akita/`.
@@ -17,7 +18,7 @@ The namespace prefix (repository) for the built Docker images is `mut:5000/akita
 
 | Algorithm (folder) | Image | Language | Base image | Learning Type | Input Dimensionality |
 | :----------------- | :---- | :------- | :--------- | :------------ | :------------------- |
-| [arima](./arima) | `mut:5000/akita/arima` | python 3.7 | [`mut:5000/akita/python3-base`](./0-base-images/python3-base) | unsupervised | univariate |
+| [arima](./arima) (_restricted access_) | `mut:5000/akita/arima` | python 3.7 | [`mut:5000/akita/python3-base`](./0-base-images/python3-base) | unsupervised | univariate |
 | [autoencoder](./autoencoder) | `mut:5000/akita/autoencoder` | python 3.7 | [`mut:5000/akita/python3-base`](./0-base-images/python3-base) | semi-supervised | multivariate |
 | [bagel](./bagel) | `mut:5000/akita/bagel` | python 3.7 | [`mut:5000/akita/python3-base`](./0-base-images/python3-base) | semi-supervised | univariate |
 | [baseline_increasing](./baseline_increasing) | `mut:5000/akita/baseline_increasing` | Python 3.7 | [`mut:5000/akita/python3-base`](./0-base-images/python3-base) | unsupervised | multivariate |
@@ -58,9 +59,10 @@ The namespace prefix (repository) for the built Docker images is `mut:5000/akita
 | [lstm_vae](./lstm_vae) | `mut:5000/akita/lstm_vae` | python 3.7 | [`mut:5000/akita/python3-torch`](./0-base-images/python3-torch) -> [`mut:5000/akita/python3-base`](./0-base-images/python3-base) | semi-supervised | univariate |
 | [median_method](./median_method) | `mut:5000/akita/median_method` | python 3.7 | [`mut:5000/akita/python3-base`](./0-base-images/python3-base) | unsupervised | univariate |
 | [mscred](./mscred) | `mut:5000/akita/mscred` | python 3.7 | [`mut:5000/akita/python3-torch`](./0-base-images/python3-torch) -> [`mut:5000/akita/python3-base`](./0-base-images/python3-base) | semi-supervised | multivariate |
+| [mstamp](./mstamp) | `mut:5000/akita/mstamp` | python 3.7 | [`mut:5000/akita/python3-base`](./0-base-images/python3-base) | unsupervised | multivariate |
 | [mtad_gat](./mtad_gat) | `mut:5000/akita/mtad_gat` | python 3.7 | [`mut:5000/akita/python3-torch`](./0-base-images/python3-torch) -> [`mut:5000/akita/python3-base`](./0-base-images/python3-base) | semi-supervised | multivariate |
 | [multi_hmm](./multi_hmm) | `mut:5000/akita/multi_hmm` | Python 3.7 |[`mut:5000/akita/python3-base`](./0-base-images/python3-base) | supervised | multivariate |
-| [norma](./norma) | `mut:5000/akita/norma` | Python 3.7 |[`mut:5000/akita/python3-base`](./0-base-images/python3-base) | unsupervised | univariate |
+| [norma](./norma) (_restricted access_) | `mut:5000/akita/norma` | Python 3.7 |[`mut:5000/akita/python3-base`](./0-base-images/python3-base) | unsupervised | univariate |
 | [normalizing_flows](./normalizing_flows) | `mut:5000/akita/normalizing_flows` | python 3.7 | [`mut:5000/akita/python3-torch`](./0-base-images/python3-torch) -> [`mut:5000/akita/python3-base`](./0-base-images/python3-base) | supervised | multivariate |
 | [novelty_svr](./novelty_svr) | `mut:5000/akita/novelty_svr` | python 3.7 | [`mut:5000/akita/python3-base`](./0-base-images/python3-base) | unsupervised | univariate |
 | [numenta_htm](./numenta_htm) | `mut:5000/akita/numenta_htm` | Python 2.7 |[`mut:5000/akita/python2-base`](./0-base-images/python2-base) | unsupervised | univariate |
@@ -72,13 +74,13 @@ The namespace prefix (repository) for the built Docker images is `mut:5000/akita
 | [pst](./pst) | `mut:5000/akita/pst` | R 3.5.2 | [`mut:5000/akita/r-base`](./0-base-images/r-base) | |
 | [random_black_forest](./random_black_forest) | `mut:5000/akita/random_black_forest` | python 3.7 | [`mut:5000/akita/python3-base`](./0-base-images/python3-base) | semi-supervised | multivariate |
 | [robust_pca](./robust_pca) | `mut:5000/akita/robust_pca` | Python 3.7 | [`mut:5000/akita/python3-base`](./0-base-images/python3-base) | semi-supervised | multivariate |
-| [sand](./sand) | `mut:5000/akita/sand` | python 3.7 | [`mut:5000/akita/python3-base`](./0-base-images/python3-base) | unsupervised | univariate |
+| [sand](./sand) (_restricted access_) | `mut:5000/akita/sand` | python 3.7 | [`mut:5000/akita/python3-base`](./0-base-images/python3-base) | unsupervised | univariate |
 | [sarima](./sarima) | `mut:5000/akita/sarima` | python 3.7 | [`mut:5000/akita/python3-base`](./0-base-images/python3-base) | unsupervised | univariate |
-| [series2graph](./series2graph) | `mut:5000/akita/series2graph` | python 3.7 | [`mut:5000/akita/python3-base`](./0-base-images/python3-base) | unsupervised | univariate |
+| [series2graph](./series2graph)  (_restricted access_) | `mut:5000/akita/series2graph` | python 3.7 | [`mut:5000/akita/python3-base`](./0-base-images/python3-base) | unsupervised | univariate |
 | [s_h_esd](./s_h_esd) | `mut:5000/akita/s_h_esd` | python 3.7 | [`mut:5000/akita/python3-base`](./0-base-images/python3-base) | unsupervised | univariate |
 | [sr](./sr) | `mut:5000/akita/sr` | Python 3.7 | [`mut:5000/akita/python3-base`](./0-base-images/python3-base) | unsupervised | univariate |
 | [sr_cnn](./sr_cnn) | `mut:5000/akita/sr_cnn` | Python 3.7 | [`mut:5000/akita/python3-torch`](./0-base-images/python3-base) | semi-supervised | univariate |
-| [ssa](./ssa) | `mut:5000/akita/ssa` | python 3.7 | [`mut:5000/akita/python3-base`](./0-base-images/python3-base) | semi-supervised | univariate |
+| [ssa](./ssa) (_restricted access_) | `mut:5000/akita/ssa` | python 3.7 | [`mut:5000/akita/python3-base`](./0-base-images/python3-base) | semi-supervised | univariate |
 | [stamp](./stamp) | `mut:5000/akita/stamp` | R 3.5.2 | [`mut:5000/akita/tsmp`](./0-base-images/tsmp) -> [`mut:5000/akita/r-base`](./0-base-images/r-base) | unsupervised | univariate |
 | [stomp](./stomp) | `mut:5000/akita/stomp` | R 3.5.2 | [`mut:5000/akita/tsmp`](./0-base-images/tsmp) -> [`mut:5000/akita/r-base`](./0-base-images/r-base) | unsupervised | univariate |
 | [subsequence_fast_mcd](./subsequence_fast_mcd) | `mut:5000/akita/subsequence_fast_mcd` | python 3.7 | [`mut:5000/akita/python3-base`](./0-base-images/python3-base) | semi-supervised | univariate |

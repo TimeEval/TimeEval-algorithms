@@ -25,6 +25,7 @@ class CustomParameters:
     shrinking: bool = True  # using default is fine
     cache_size: float = 200  # using default is fine
     max_iter: int = -1  # using default is fine
+    use_column_index: int = 0
 
 
 class AlgorithmArgs(argparse.Namespace):
@@ -46,14 +47,26 @@ def set_random_state(config: AlgorithmArgs) -> None:
 
 def load_data(config: AlgorithmArgs) -> np.ndarray:
     df = pd.read_csv(config.dataInput)
-    data = df.iloc[:, 1:-1].values
+    column_index = 0
+    if config.customParameters.use_column_index is not None:
+        column_index = config.customParameters.use_column_index
+    max_column_index = df.shape[1] - 3
+    if column_index > max_column_index:
+        print(f"Selected column index {column_index} is out of bounds (columns = {df.columns.values}; "
+            f"max index = {max_column_index} [column '{df.columns[max_column_index + 1]}'])! "
+            "Using last channel!", file=sys.stderr)
+        column_index = max_column_index
+    # jump over index column (timestamp)
+    column_index += 1
+
+    data = df.iloc[:, column_index].values
     return data
 
 
 def main(config: AlgorithmArgs):
     set_random_state(config)
     data = load_data(config)
-    scores = detect_anomalies(data.ravel(),
+    scores = detect_anomalies(data,
                               embed_dims=config.customParameters.embed_dim_range,
                               projected_ps=config.customParameters.project_phasespace,
                               nu=config.customParameters.nu,

@@ -81,4 +81,9 @@ public class GrammarVizAnomalyParameters {
   @Parameter(names = { "--seed" }, description = "Random number generator seed")
   public long RANDOM_SEED = 42l;
 
+  // Column index of a multivariate dataset to select the correct univariate TS (channel).
+  //
+  @Parameter(names = { "--use_column_index" }, description = "The column index to use as input for the univariate algorithm for multivariate datasets. The selected single channel of the multivariate time series is analyzed by the algorithms. The index is 0-based and does not include the index-column ('timestamp'). The single channel of an univariate dataset, therefore, has index 0.")
+  public int COLUMN_INDEX = 0;
+
 }

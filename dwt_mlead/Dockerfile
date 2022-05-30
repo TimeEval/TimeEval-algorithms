@@ -1,4 +1,4 @@
-FROM mut:5000/akita/python3-base:latest
+FROM mut:5000/akita/python3-base:0.2.3
 
 LABEL maintainer="sebastian.schmidl@hpi.de"
 

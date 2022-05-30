@@ -26,7 +26,7 @@ RUN set -eux; \
 # Install R
 RUN set -eux; \
     echo "deb http://cloud.r-project.org/bin/linux/debian buster-cran40/" >> /etc/apt/sources.list; \
-    apt-key adv --keyserver keyserver.ubuntu.com --recv-key E19F5F87128899B192B1A2C2AD5F960A256A04AF; \
+    apt-key adv --keyserver keyserver.ubuntu.com --recv-key 95C0FAF38DB3CCAD0C080A7BDC78B2DDEABC47B7; \
     apt-get update; \
     apt-get install -y --no-install-recommends -t buster-cran40 r-base r-base-dev; \
     apt-get clean; \

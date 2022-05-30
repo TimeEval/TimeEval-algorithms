@@ -15,6 +15,7 @@ class CustomParameters:
     start_level: int = 3
     quantile_epsilon: float = 0.01
     random_state: int = 42
+    use_column_index: int = 0
 
 
 class AlgorithmArgs(argparse.Namespace):
@@ -30,7 +31,19 @@ class AlgorithmArgs(argparse.Namespace):
 
 def load_data(config: AlgorithmArgs) -> np.ndarray:
     df = pd.read_csv(config.dataInput)
-    data = df.iloc[:, 1].values
+    column_index = 0
+    if config.customParameters.use_column_index is not None:
+        column_index = config.customParameters.use_column_index
+    max_column_index = df.shape[1] - 3
+    if column_index > max_column_index:
+        print(f"Selected column index {column_index} is out of bounds (columns = {df.columns.values}; "
+              f"max index = {max_column_index} [column '{df.columns[max_column_index + 1]}'])! "
+              "Using last channel!", file=sys.stderr)
+        column_index = max_column_index
+    # jump over index column (timestamp)
+    column_index += 1
+
+    data = df.iloc[:, column_index].values
     return data
 
 

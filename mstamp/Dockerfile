@@ -1,4 +1,4 @@
-FROM mut:5000/akita/python3-base:0.2.3
+FROM mut:5000/akita/python3-base:0.2.1
 
 LABEL maintainer="phillip.wenig@hpi.de"
 

@@ -1,0 +1,30 @@
+{
+  "title": "mSTAMP",
+  "description": "Implementation of http://www.cs.ucr.edu/%7Eeamonn/Motif_Discovery_ICDM.pdf",
+  "inputDimensionality": "multivariate",
+  "version": "0.1",
+  "authors": "Chin-Chia Michael Yeh, Nickolas Kavantzas, and Eamonn Keogh",
+  "language": "Python",
+  "type": "Detector",
+  "mainFile": "algorithm.py",
+  "learningType": "unsupervised",
+  "executionStep": {
+    "parameters": [
+      {
+        "name": "anomaly_window_size",
+        "type": "int",
+        "defaultValue": 50,
+        "optional": "true",
+        "description": "Size of the sliding windows"
+      },
+      {
+        "name": "random_state",
+        "type": "int",
+        "defaultValue": 42,
+        "optional": "true",
+        "description": "Seed for the random number generator"
+      }
+    ],
+    "modelInput": "none"
+  }
+}
