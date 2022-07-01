@@ -1,4 +1,4 @@
-FROM mut:5000/akita/r4-base:0.2.1
+FROM registry.gitlab.hpi.de/akita/i/r4-base:0.2.1
 
 LABEL maintainer="richard.schulz@student.hpi.de"
 

@@ -1,4 +1,4 @@
-FROM mut:5000/akita/python36-base:0.2.1
+FROM registry.gitlab.hpi.de/akita/i/python36-base:0.2.1
 
 LABEL maintainer="phillip.wenig@hpi.de"
 

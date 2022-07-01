@@ -57,7 +57,7 @@ def load_es_algorithms() -> List[Tuple[str, str]]:
 
 
 def build_docker_image(path: str) -> str:
-    image_name = f"mut:5000/akita/{path}"
+    image_name = f"registry.gitlab.hpi.de/akita/i/{path}"
     client = docker.from_env()
     print()
     print(f"Building {image_name}")
