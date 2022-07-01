@@ -1,0 +1,47 @@
+{
+  "title": "DAMP",
+  "description": "Implementation of https://www.cs.ucr.edu/~eamonn/DAMP_long_version.pdf",
+  "inputDimensionality": "multivariate",
+  "version": "0.1",
+  "authors": "Yue Lu, Renjie Wu, Abdullah Mueen, Maria A. Zuluaga, Eamonn Keogh",
+  "language": "Python",
+  "type": "Detector",
+  "mainFile": "algorithm.py",
+  "learningType": "unsupervised",
+  "executionStep": {
+    "parameters": [
+      {
+        "name": "anomaly_window_size",
+        "type": "int",
+        "defaultValue": 50,
+        "optional": "true",
+        "description": "Size of the sliding windows"
+      }, {
+        "name": "n_init_train",
+        "type": "int",
+        "defaultValue": 100,
+        "optional": "true",
+        "description": "Fraction of data used to warmup streaming."
+      }, {
+        "name": "max_lag",
+        "type": "int",
+        "defaultValue": null,
+        "optional": "true",
+        "description": "Maximum size to look back in time."
+      }, {
+        "name": "lookahead",
+        "type": "int",
+        "defaultValue": null,
+        "optional": "true",
+        "description": "Amount of steps to look into the future for deciding which future windows to skip analyzing."
+      }, {
+        "name": "random_state",
+        "type": "int",
+        "defaultValue": 42,
+        "optional": "true",
+        "description": "Seed for the random number generator"
+      }
+    ],
+    "modelInput": "none"
+  }
+}
