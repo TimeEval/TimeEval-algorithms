@@ -1,4 +1,4 @@
-FROM mut:5000/akita/python3-torch:latest
+FROM registry.gitlab.hpi.de/akita/i/python3-torch:latest
 
 LABEL maintainer="phillip.wenig@hpi.de"
 

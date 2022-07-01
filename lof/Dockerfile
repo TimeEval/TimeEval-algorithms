@@ -1,4 +1,4 @@
-FROM mut:5000/akita/pyod:0.2.3
+FROM registry.gitlab.hpi.de/akita/i/pyod:0.2.3
 
 LABEL maintainer="sebastian.schmidl@hpi.de"
 

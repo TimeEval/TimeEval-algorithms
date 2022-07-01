@@ -1,4 +1,4 @@
-FROM mut:5000/akita/python3-base:0.2.2
+FROM registry.gitlab.hpi.de/akita/i/python3-base:0.2.2
 
 LABEL maintainer="sebastian.schmidl@hpi.de"
 

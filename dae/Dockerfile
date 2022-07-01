@@ -1,5 +1,5 @@
 # inherit from the python3-base base image
-FROM mut:5000/akita/python3-base:0.2.2
+FROM registry.gitlab.hpi.de/akita/i/python3-base:0.2.2
 
 # specify the main entrypoint to your algorithm code
 ENV ALGORITHM_MAIN="/app/algorithm.py"

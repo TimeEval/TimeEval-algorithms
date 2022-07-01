@@ -1,6 +1,6 @@
 # Separate build image!
 #----------------------------
-FROM mut:5000/akita/python3-base:0.2.1 as build
+FROM registry.gitlab.hpi.de/akita/i/python3-base:0.2.1 as build
 
 # install system dependencies
 RUN set -eux; \
@@ -13,7 +13,7 @@ RUN set -eux; \
 RUN pip install cython pylibspot
 #----------------------------
 
-FROM mut:5000/akita/python3-base:0.2.1 as base
+FROM registry.gitlab.hpi.de/akita/i/python3-base:0.2.1 as base
 
 LABEL maintainer="sebastian.schmidl@hpi.de"
 

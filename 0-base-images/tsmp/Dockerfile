@@ -1,4 +1,4 @@
-FROM mut:5000/akita/r-base
+FROM registry.gitlab.hpi.de/akita/i/r-base
 
 LABEL maintainer="sebastian.schmidl@hpi.de"
 

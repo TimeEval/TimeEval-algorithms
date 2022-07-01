@@ -1,4 +1,4 @@
-FROM mut:5000/akita/python3-base:latest
+FROM registry.gitlab.hpi.de/akita/i/python3-base:latest
 
 LABEL maintainer="yannik.schroeder@student.hpi.de"
 

@@ -7,7 +7,7 @@ def main():
     with open("es-log-out.txt", "r") as f:
         logs = f.read()
 
-    algos = logs.split("Training mut:5000/akita/")
+    algos = logs.split("Training registry.gitlab.hpi.de/akita/i/")
     del algos[0]
 
     loss_progression = dict()
