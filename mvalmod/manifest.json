@@ -1,0 +1,58 @@
+{
+    "title": "mVALMOD",
+    "description": "Implementation of https://doi.org/10.1007/s10618-020-00685-w summed up for every channel.",
+    "inputDimensionality": "multivariate",
+    "version": "0.1",
+    "authors": "Michele Linardi, Yan Zhu, Themis Palpanas, Eamonn Keogh",
+    "language": "R",
+    "type": "Detector",
+    "mainFile": "algorithm.r",
+    "learningType": "unsupervised",
+    "executionStep": {
+        "parameters": [
+            {
+                "name": "min_anomaly_window_size",
+                "type": "Int",
+                "defaultValue": 30,
+                "optional": "false",
+                "description": "Minimum sliding window size"
+            },
+            {
+                "name": "max_anomaly_window_size",
+                "type": "Int",
+                "defaultValue": 40,
+                "optional": "false",
+                "description": "Maximum sliding window size"
+            },
+            {
+                "name": "heap_size",
+                "type": "Int",
+                "defaultValue": 50,
+                "optional": "true",
+                "description": "Size of the distance profile heap buffer"
+            },
+            {
+                "name": "exclusion_zone",
+                "type": "Float",
+                "defaultValue": 0.5,
+                "optional": "true",
+                "description": "Size of the exclusion zone as a factor of the window_size. This prevents self-matches."
+            },
+            {
+                "name": "verbose",
+                "type": "Int",
+                "defaultValue": 1,
+                "optional": "true",
+                "description": "Controls logging verbosity."
+            },
+            {
+                "name": "random_state",
+                "type": "Int",
+                "defaultValue": 42,
+                "optional": "true",
+                "description": "Seed for random number generation."
+            }
+        ],
+        "modelInput": "none"
+    }
+}
