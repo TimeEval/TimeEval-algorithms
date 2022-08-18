@@ -2,3 +2,4 @@ Keras==2.4.3
 tensorflow==2.4.1
 numpy>=1.19.5
 pandas>=1.2.1
+protobuf==3.20.1
