@@ -1,3 +1,4 @@
 numpy>=1.19.5
 pandas>=1.2.1
 pyod==0.9.2
+scikit-learn>=0.24,<0.25

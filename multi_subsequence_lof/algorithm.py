@@ -20,6 +20,7 @@ class CustomParameters:
     algorithm: str = "auto"  # using default is fine
     distance_metric: str = "minkowski"  # using default is fine
     random_state: int = 42
+    dim_aggregation_method: str = "concat"  # or "sum"
 
 
 class AlgorithmArgs(argparse.Namespace):
@@ -49,20 +50,21 @@ def load_data(config: AlgorithmArgs) -> np.ndarray:
     return data, contamination
 
 
-def reduce_dimensions(data: np.ndarray):
-    data += abs(data.min()) + 1
-    return data.sum(axis=1)
-
-
 def main(config: AlgorithmArgs):
     set_random_state(config)
     data, contamination = load_data(config)
-    
-    if len(data.shape) > 1:
-        data = reduce_dimensions(data)
-    
+
     # preprocess data
-    data = sliding_window_view(data, window_shape=config.customParameters.window_size)
+    n_dims = data.shape[1]
+    if config.customParameters.dim_aggregation_method == "sum":
+        # move all channels above zero (minimum of each curve is 0)
+        if len(data.shape) > 1:
+            data = data - data.min()
+        data = sliding_window_view(data, window_shape=config.customParameters.window_size, axis=0)
+        data = data.sum(axis=1)
+    else:
+        data = sliding_window_view(data, window_shape=config.customParameters.window_size, axis=0)
+        data = data.reshape((-1, config.customParameters.window_size*n_dims))
 
     clf = LOF(
         contamination=contamination,
