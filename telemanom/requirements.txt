@@ -5,3 +5,4 @@ more_itertools==7.2.0
 keras==2.3.1
 tensorflow==2.0.1
 h5py==2.10.0
+protobuf==3.20.1
