@@ -1,6 +1,6 @@
-FROM mut:5000/numenta/nupic:latest as numenta
+FROM gitlab.hpi.de/akita/dependency_proxy/containers/numenta/nupic:latest as numenta
 
-FROM registry.gitlab.hpi.de/akita/i/python2-base:0.2.1 as timeeval
+FROM registry.gitlab.hpi.de/akita/i/python2-base:0.2.5 as timeeval
 
 LABEL maintainer="phillip.wenig@hpi.de"
 

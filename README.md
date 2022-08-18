@@ -128,8 +128,8 @@ Follow the below steps to test your algorithm using Docker:
    If this is not the case you have to build the base images yourself as follows:
 
    - change to the `0-base-images` folder: `cd 0-base-images`
-   - build your desired base image, e.g. `docker build -t registry.gitlab.hpi.de/akita/i/python3-base ./python3-base`
-   - (optionally: build derived base image, e.g. `docker build -t registry.gitlab.hpi.de/akita/i/pyod ./pyod`)
+   - build your desired base image, e.g. `docker build -t registry.gitlab.hpi.de/akita/i/python3-base:0.2.5 ./python3-base`
+   - (optionally: build derived base image, e.g. `docker build -t registry.gitlab.hpi.de/akita/i/pyod:0.2.5 ./pyod`)
    - now you can build your algorithm image from the base image (see next item)
 
 2. **Build algorithm image**

@@ -1,4 +1,4 @@
-FROM registry.gitlab.hpi.de/akita/i/python3-torch:0.2.1
+FROM registry.gitlab.hpi.de/akita/i/python3-torch:0.2.5
 
 LABEL maintainer="siddeshkanth.logonathan@student.hpi.de"
 

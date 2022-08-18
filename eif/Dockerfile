@@ -1,6 +1,6 @@
 # Separate build image!
 #----------------------------
-FROM registry.gitlab.hpi.de/akita/i/python3-base:0.2.1 as build
+FROM registry.gitlab.hpi.de/akita/i/python3-base:0.2.5 as build
 
 # install build dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends build-essential;
@@ -15,7 +15,7 @@ RUN pip install -r ./requirements.txt
 #----------------------------
 
 # inherit from the python3-base base image
-FROM registry.gitlab.hpi.de/akita/i/python3-base:0.2.1 as runtime
+FROM registry.gitlab.hpi.de/akita/i/python3-base:0.2.5 as runtime
 
 LABEL maintainer="rohan.sawahn@student.hpi.de"
 

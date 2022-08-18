@@ -1,6 +1,6 @@
 # Separate build image!
 #----------------------------
-FROM registry.gitlab.hpi.de/akita/i/python3-base:0.2.1 as build
+FROM registry.gitlab.hpi.de/akita/i/python3-base:0.2.5 as build
 
 # install system dependencies
 RUN set -eux; \
@@ -13,16 +13,16 @@ RUN set -eux; \
 RUN pip install cython pylibspot
 #----------------------------
 
-FROM registry.gitlab.hpi.de/akita/i/python3-base:0.2.1 as base
+FROM registry.gitlab.hpi.de/akita/i/python3-base:0.2.5 as base
 
 LABEL maintainer="sebastian.schmidl@hpi.de"
 
 ENV ALGORITHM_MAIN="/app/algorithm.py"
 
 # add pre-built dependencies
-COPY --from=build /usr/lib/x86_64-linux-gnu/libgomp.so.1.0.0 /usr/lib/x86_64-linux-gnu/libgomp.so.1.0.0
+# COPY --from=build /usr/lib/x86_64-linux-gnu/libgomp.so.1.0.0 /usr/lib/x86_64-linux-gnu/libgomp.so.1.0.0
+# RUN ln -s /usr/lib/x86_64-linux-gnu/libgomp.so.1.0.0 /usr/lib/x86_64-linux-gnu/libgomp.so.1
 COPY --from=build /usr/lib/libspot.so /usr/lib/libspot.so
-RUN ln -s /usr/lib/x86_64-linux-gnu/libgomp.so.1.0.0 /usr/lib/x86_64-linux-gnu/libgomp.so.1
 COPY --from=build /usr/lib/python3/dist-packages/pyspot.py /usr/local/lib/python3.7/site-packages/pyspot.py
 
 # install python dependencies

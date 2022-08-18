@@ -1,4 +1,4 @@
-FROM mut:5000/maven:3-openjdk-11-slim as build
+FROM gitlab.hpi.de/akita/dependency_proxy/containers/maven:3-openjdk-11-slim as build
 
 WORKDIR /app
 
@@ -7,7 +7,7 @@ COPY src src
 RUN mvn package -PsingleCLI -DskipTests
 
 
-FROM registry.gitlab.hpi.de/akita/i/java-base:0.2.3
+FROM registry.gitlab.hpi.de/akita/i/java-base:0.2.5
 
 LABEL maintainer="sebastian.schmidl@hpi.de"
 

@@ -1,6 +1,6 @@
 # Separate build image!
 #----------------------------
-FROM registry.gitlab.hpi.de/akita/i/python3-base:0.2.1 as build
+FROM registry.gitlab.hpi.de/akita/i/python3-base:0.2.5 as build
 
 LABEL maintainer="yannik.schroeder@student.hpi.de"
 
@@ -16,7 +16,7 @@ COPY requirements.txt .
 RUN pip install -r ./requirements.txt
 #----------------------------
 
-FROM registry.gitlab.hpi.de/akita/i/python3-base:0.2.1 as runtime
+FROM registry.gitlab.hpi.de/akita/i/python3-base:0.2.5 as runtime
 
 LABEL maintainer="yannik.schroeder@student.hpi.de"
 

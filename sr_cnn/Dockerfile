@@ -1,4 +1,4 @@
-FROM registry.gitlab.hpi.de/akita/i/python3-torch:0.2.1 as build
+FROM registry.gitlab.hpi.de/akita/i/python3-torch:0.2.5 as build
 
 COPY anomalydetector /app/anomalydetector
 
@@ -7,7 +7,7 @@ RUN apt-get install build-essential -y
 RUN pip install --no-cache-dir Cython tqdm torchvision==0.8.2
 RUN cd /app/anomalydetector/; python setup.py install
 
-FROM registry.gitlab.hpi.de/akita/i/python3-torch:0.2.1 as eval
+FROM registry.gitlab.hpi.de/akita/i/python3-torch:0.2.5 as eval
 
 LABEL maintainer="phillip.wenig@hpi.de"
 

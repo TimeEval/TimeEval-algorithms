@@ -1,4 +1,4 @@
-FROM registry.gitlab.hpi.de/akita/i/python3-base:0.2.1 as build
+FROM registry.gitlab.hpi.de/akita/i/python3-base:0.2.5 as build
 
 COPY anomalydetector /app/anomalydetector
 
@@ -11,7 +11,7 @@ RUN set -eux; \
 RUN pip install Cython
 RUN cd /app/anomalydetector/; python setup.py install
 
-FROM registry.gitlab.hpi.de/akita/i/python3-base:0.2.1 as eval
+FROM registry.gitlab.hpi.de/akita/i/python3-base:0.2.5 as eval
 
 LABEL maintainer="phillip.wenig@hpi.de"
 
