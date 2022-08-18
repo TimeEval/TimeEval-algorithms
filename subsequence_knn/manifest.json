@@ -1,0 +1,72 @@
+{
+    "title": "Sub-KNN",
+    "description": "KNN on sliding windows to detect subsequence anomalies.",
+    "inputDimensionality": "multivariate",
+    "version": "0.1",
+    "authors": "Sebastian Schmidl,Sridhar Ramaswamy,Rajeev Rastogi,Kyuseok Shim",
+    "language": "Python",
+    "type": "Detector",
+    "mainFile": "algorithm.py",
+    "learningType": "unsupervised",
+    "executionStep": {
+        "parameters": [
+            {
+                "name": "window_size",
+                "type": "int",
+                "defaultValue": 100,
+                "optional": "true",
+                "description": "Size of the sliding windows to extract subsequences as input to LOF."
+            },
+            {
+                "name": "n_neighbors",
+                "type": "int",
+                "defaultValue": 5,
+                "optional": "true",
+                "description": " Number of neighbors to use by default for `kneighbors` queries."
+            },
+            {
+                "name": "leaf_size",
+                "type": "int",
+                "defaultValue": 30,
+                "optional": "true",
+                "description": "Leaf size passed to `BallTree`. This can affect the speed of the construction and query, as well as the memory required to store the tree. The optimal value depends on the nature of the problem."
+            },
+            {
+                "name": "method",
+                "type": "enum[largest,mean,median]",
+                "defaultValue": "largest",
+                "optional": "true",
+                "description": "'largest': use the distance to the kth neighbor as the outlier score, 'mean': use the average of all k neighbors as the outlier score, 'median': use the median of the distance to k neighbors as the outlier score."
+            },
+            {
+                "name": "radius",
+                "type": "float",
+                "defaultValue": 1.0,
+                "optional": "true",
+                "description": " Range of parameter space to use by default for `radius_neighbors` queries."
+            },
+            {
+                "name": "distance_metric_order",
+                "type": "int",
+                "defaultValue": 2,
+                "optional": "true",
+                "description": "Parameter for the Minkowski metric from sklearn.metrics.pairwise.pairwise_distances. When p = 1, this is equivalent to using manhattan_distance (l1), and euclidean_distance (l2) for p = 2. For arbitrary p, minkowski_distance (l_p) is used. See http://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.pairwise_distances."
+            },
+            {
+                "name": "n_jobs",
+                "type": "int",
+                "defaultValue": 1,
+                "optional": "true",
+                "description": "The number of parallel jobs to run for neighbors search. If ``-1``, then the number of jobs is set to the number of CPU cores. Affects only kneighbors and kneighbors_graph methods."
+            },
+            {
+                "name": "random_state",
+                "type": "int",
+                "defaultValue": 42,
+                "optional": "true",
+                "description": "Seed for random number generation."
+            }
+        ],
+        "modelInput": "none"
+    }
+}
