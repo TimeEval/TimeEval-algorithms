@@ -123,27 +123,55 @@ The first option is specific to the programming language, so we won't cover it h
 Each algorithm in this repository will be bundled in a self-contained Docker image so that it can be executed with a single command and no additional dependencies must be installed.
 This allows you to test the algorithm without installing its dependencies on your machine.
 The only requirement is a (x86-)Docker runtime.
-Follow the below steps to test your algorithm using Docker:
+Follow the below steps to test your algorithm using Docker (examples assume that you want to build the image for the LOF algorithm):
 
 1. **Prepare base image**
    You'll need the required base Docker image to build your algorithm's image.
    If you find yourself situated in the HPI network (either VPN or physically), you are able to pull the docker images from our docker repository `registry.gitlab.hpi.de/akita/i/`.
    If this is not the case you have to build the base images yourself as follows:
 
-   - change to the `0-base-images` folder: `cd 0-base-images`
-   - build your desired base image, e.g. `docker build -t registry.gitlab.hpi.de/akita/i/python3-base:0.2.5 ./python3-base`
-   - (optionally: build derived base image, e.g. `docker build -t registry.gitlab.hpi.de/akita/i/pyod:0.2.5 ./pyod`)
-   - now you can build your algorithm image from the base image (see next item)
+   - change to the `0-base-images` folder:
+
+    ```bash
+    cd 0-base-images
+    ```
+
+   - build your desired base image:
+
+    ```bash
+    docker build -t registry.gitlab.hpi.de/akita/i/python3-base:0.2.5 ./python3-base
+    ```
+
+   - (optional step) because `lof` depends on a derived base image, we need to additionally build the `pyod`-image
+
+     - re-tag the base image `python3-base` with `latest` (because the `pyod`-image depends on the latest `python3-base`-image):
+
+      ```bash
+      docker tag registry.gitlab.hpi.de/akita/i/python3-base:latest registry.gitlab.hpi.de/akita/i/python3-base:0.2.5
+      ```
+
+     - build derived base image:
+
+      ```bash
+      docker build -t registry.gitlab.hpi.de/akita/i/pyod:0.2.5 ./pyod
+      ```
+
+   - now you can build your algorithm image from the base image (next item)
 
 2. **Build algorithm image**
    Next, you'll need to build the algorithm's Docker image.
    It is based on the previously built base image and contains the algorithm-specific source code.
 
-   - Change to the root directory of the `timeeval-algorithms`-repository.
-   - build the algorithm image, e.g. `docker build -t registry.gitlab.hpi.de/akita/i/lof ./lof`
+   - change to the root directory of the `timeeval-algorithms`-repository
+   - build the algorithm image
 
-3. **Train your algorithm (optional)**
-   If your algorithm is supervised or semi-supervised, execute the following command to perform the training step:
+   ```bash
+   cd ..
+   docker build -t registry.gitlab.hpi.de/akita/i/lof ./lof
+   ```
+
+1. **Train your algorithm (optional)**
+   If your algorithm is supervised or semi-supervised, execute the following command to perform the training step (_not necessary for LOF_):
 
    ```bash
    mkdir -p 2-results
@@ -162,19 +190,20 @@ Follow the below steps to test your algorithm using Docker:
      }'
    ```
 
-   Be warned that the result and model files will be written to the `2-results`-directory as the root-user if you do no pass the optional environment variables `LOCAL_UID` and `LOCAL_GID` to the container.
+   Be warned that the result and model files will be written to the `2-results`-directory as the root-user if you do not pass the optional environment variables `LOCAL_UID` and `LOCAL_GID` to the container.
 
-4. **Execute your algorithm**
+2. **Execute your algorithm**
    Run the following command to perform the execution step of your algorithm:
 
    ```bash
    mkdir -p 2-results
+   TIMEEVAL_ALGORITHM=lof
    docker run --rm \
        -v $(pwd)/1-data:/data:ro \
        -v $(pwd)/2-results:/results:rw \
    #    -e LOCAL_UID=<current user id> \
    #    -e LOCAL_GID=<current groupid> \
-     registry.gitlab.hpi.de/akita/i/<your_algorithm>:latest execute-algorithm '{ \
+     registry.gitlab.hpi.de/akita/i/${TIMEEVAL_ALGORITHM}:latest execute-algorithm '{ \
        "executionType": "execute", \
        "dataInput": "/data/dataset.csv", \
        "dataOutput": "/results/anomaly_scores.ts", \
@@ -184,4 +213,4 @@ Follow the below steps to test your algorithm using Docker:
      }'
    ```
 
-   Be warned that the result and model files will be written to the `2-results`-directory as the root-user if you do no pass the optional environment variables `LOCAL_UID` and `LOCAL_GID` to the container.
+   Be warned that the result and model files will be written to the `2-results`-directory as the root-user if you do not pass the optional environment variables `LOCAL_UID` and `LOCAL_GID` to the container.
