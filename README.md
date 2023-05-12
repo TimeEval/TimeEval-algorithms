@@ -180,13 +180,13 @@ Follow the below steps to test your algorithm using Docker (examples assume that
        -v $(pwd)/2-results:/results:rw \
    #    -e LOCAL_UID=<current user id> \
    #    -e LOCAL_GID=<current groupid> \
-     registry.gitlab.hpi.de/akita/i/<your_algorithm>:latest execute-algorithm '{ \
-       "executionType": "train", \
-       "dataInput": "/data/dataset.csv", \
-       "dataOutput": "/results/anomaly_scores.ts", \
-       "modelInput": "/results/model.pkl", \
-       "modelOutput": "/results/model.pkl", \
-       "customParameters": {} \
+     registry.gitlab.hpi.de/akita/i/<your_algorithm>:latest execute-algorithm '{
+       "executionType": "train",
+       "dataInput": "/data/dataset.csv",
+       "dataOutput": "/results/anomaly_scores.ts",
+       "modelInput": "/results/model.pkl",
+       "modelOutput": "/results/model.pkl",
+       "customParameters": {}
      }'
    ```
 
@@ -203,13 +203,13 @@ Follow the below steps to test your algorithm using Docker (examples assume that
        -v $(pwd)/2-results:/results:rw \
    #    -e LOCAL_UID=<current user id> \
    #    -e LOCAL_GID=<current groupid> \
-     registry.gitlab.hpi.de/akita/i/${TIMEEVAL_ALGORITHM}:latest execute-algorithm '{ \
-       "executionType": "execute", \
-       "dataInput": "/data/dataset.csv", \
-       "dataOutput": "/results/anomaly_scores.ts", \
-       "modelInput": "/results/model.pkl", \
-       "modelOutput": "/results/model.pkl", \
-       "customParameters": {} \
+     registry.gitlab.hpi.de/akita/i/${TIMEEVAL_ALGORITHM}:latest execute-algorithm '{
+       "executionType": "execute",
+       "dataInput": "/data/dataset.csv",
+       "dataOutput": "/results/anomaly_scores.ts",
+       "modelInput": "/results/model.pkl",
+       "modelOutput": "/results/model.pkl",
+       "customParameters": {}
      }'
    ```
 
