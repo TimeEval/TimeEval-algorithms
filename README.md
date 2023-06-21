@@ -130,24 +130,24 @@ Follow the below steps to test your algorithm using Docker (examples assume that
    If you find yourself situated in the HPI network (either VPN or physically), you are able to pull the docker images from our docker repository `registry.gitlab.hpi.de/akita/i/`.
    If this is not the case you have to build the base images yourself as follows:
 
-   - change to the `0-base-images` folder:
+   1.1 change to the `0-base-images` folder:
 
     ```bash
     cd 0-base-images
     ```
 
-   - build your desired base image:
+   1.2 build your desired base image:
 
     ```bash
     docker build -t registry.gitlab.hpi.de/akita/i/python3-base:0.2.5 ./python3-base
     ```
 
-   - (optional step) because `lof` depends on a derived base image, we need to additionally build the `pyod`-image
+   1.3 (conditional step) because `lof` depends on a derived base image, we need to additionally build the `pyod`-image
 
      - re-tag the base image `python3-base` with `latest` (because the `pyod`-image depends on the latest `python3-base`-image):
 
       ```bash
-      docker tag registry.gitlab.hpi.de/akita/i/python3-base:latest registry.gitlab.hpi.de/akita/i/python3-base:0.2.5
+      docker tag registry.gitlab.hpi.de/akita/i/python3-base:0.2.5 registry.gitlab.hpi.de/akita/i/python3-base:latest
       ```
 
      - build derived base image:
@@ -156,7 +156,7 @@ Follow the below steps to test your algorithm using Docker (examples assume that
       docker build -t registry.gitlab.hpi.de/akita/i/pyod:0.2.5 ./pyod
       ```
 
-   - now you can build your algorithm image from the base image (next item)
+   1.4 now you can build your algorithm image from the base image (next item)
 
 2. **Build algorithm image**
    Next, you'll need to build the algorithm's Docker image.
@@ -170,7 +170,7 @@ Follow the below steps to test your algorithm using Docker (examples assume that
    docker build -t registry.gitlab.hpi.de/akita/i/lof ./lof
    ```
 
-1. **Train your algorithm (optional)**
+3. **Train your algorithm (optional)**
    If your algorithm is supervised or semi-supervised, execute the following command to perform the training step (_not necessary for LOF_):
 
    ```bash
@@ -180,19 +180,19 @@ Follow the below steps to test your algorithm using Docker (examples assume that
        -v $(pwd)/2-results:/results:rw \
    #    -e LOCAL_UID=<current user id> \
    #    -e LOCAL_GID=<current groupid> \
-     registry.gitlab.hpi.de/akita/i/<your_algorithm>:latest execute-algorithm '{ \
-       "executionType": "train", \
-       "dataInput": "/data/dataset.csv", \
-       "dataOutput": "/results/anomaly_scores.ts", \
-       "modelInput": "/results/model.pkl", \
-       "modelOutput": "/results/model.pkl", \
-       "customParameters": {} \
+     registry.gitlab.hpi.de/akita/i/<your_algorithm>:latest execute-algorithm '{
+       "executionType": "train",
+       "dataInput": "/data/dataset.csv",
+       "dataOutput": "/results/anomaly_scores.ts",
+       "modelInput": "/results/model.pkl",
+       "modelOutput": "/results/model.pkl",
+       "customParameters": {}
      }'
    ```
 
    Be warned that the result and model files will be written to the `2-results`-directory as the root-user if you do not pass the optional environment variables `LOCAL_UID` and `LOCAL_GID` to the container.
 
-2. **Execute your algorithm**
+4. **Execute your algorithm**
    Run the following command to perform the execution step of your algorithm:
 
    ```bash
@@ -203,13 +203,13 @@ Follow the below steps to test your algorithm using Docker (examples assume that
        -v $(pwd)/2-results:/results:rw \
    #    -e LOCAL_UID=<current user id> \
    #    -e LOCAL_GID=<current groupid> \
-     registry.gitlab.hpi.de/akita/i/${TIMEEVAL_ALGORITHM}:latest execute-algorithm '{ \
-       "executionType": "execute", \
-       "dataInput": "/data/dataset.csv", \
-       "dataOutput": "/results/anomaly_scores.ts", \
-       "modelInput": "/results/model.pkl", \
-       "modelOutput": "/results/model.pkl", \
-       "customParameters": {} \
+     registry.gitlab.hpi.de/akita/i/${TIMEEVAL_ALGORITHM}:latest execute-algorithm '{
+       "executionType": "execute",
+       "dataInput": "/data/dataset.csv",
+       "dataOutput": "/results/anomaly_scores.ts",
+       "modelInput": "/results/model.pkl",
+       "modelOutput": "/results/model.pkl",
+       "customParameters": {}
      }'
    ```
 
