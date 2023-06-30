@@ -42,6 +42,7 @@ The namespace prefix (repository) for the built Docker images is `registry.gitla
 | [fft](./fft) | `registry.gitlab.hpi.de/akita/i/fft` | python 3.7 | [`registry.gitlab.hpi.de/akita/i/python3-base`](./0-base-images/python3-base) | unsupervised | univariate |
 | [generic_rf](./generic_rf) | `registry.gitlab.hpi.de/akita/i/generic_rf` | python 3.7 | [`registry.gitlab.hpi.de/akita/i/python3-base`](./0-base-images/python3-base) | semi-supervised | univariate |
 | [generic_xgb](./generic_xgb) | `registry.gitlab.hpi.de/akita/i/generic_xgb` | python 3.7 | [`registry.gitlab.hpi.de/akita/i/python3-base`](./0-base-images/python3-base) | semi-supervised | univariate |
+| [gdn](./gdn) | `registry.gitlab.hpi.de/akita/i/gdn` | python 3.7 | [`registry.gitlab.hpi.de/akita/i/python3-base`](./0-base-images/python3-base) | semi-supervised | multivariate |
 | [grammarviz3](./grammarviz3) | `registry.gitlab.hpi.de/akita/i/grammarviz3` | Java| [`registry.gitlab.hpi.de/akita/i/java-base`](./0-base-images/java-base) | unsupervised | univariate |
 | [grammarviz3_multi](./grammarviz3_multi) | `registry.gitlab.hpi.de/akita/i/grammarviz3_multi` | Java| [`registry.gitlab.hpi.de/akita/i/java-base`](./0-base-images/java-base) | unsupervised | multivariate |
 | [hbos](./hbos) | `registry.gitlab.hpi.de/akita/i/hbos` | python 3.7 | [`registry.gitlab.hpi.de/akita/i/pyod`](./0-base-images/pyod) -> [`registry.gitlab.hpi.de/akita/i/python3-base`](./0-base-images/python3-base) | unsupervised | multivariate |
