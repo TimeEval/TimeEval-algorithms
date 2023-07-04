@@ -8,6 +8,8 @@ import torch
 
 from dataclasses import dataclass
 
+from GDN.main import GDNtrain, GDNtest
+
 
 @dataclass
 class CustomParameters:
@@ -25,8 +27,12 @@ class CustomParameters:
 
 class AlgorithmArgs(argparse.Namespace):
     @property
-    def ts(self) -> np.ndarray:
-        return self.df.iloc[:, 1:-1].values
+    def ts(self) -> pd.DataFrame:
+        return self.df.iloc[:, 1:-1]
+
+    @property
+    def tsa(self) -> pd.Dataframe:
+        return self.df.iloc[:, 1:]
 
     @property
     def df(self) -> pd.DataFrame:
@@ -44,7 +50,7 @@ class AlgorithmArgs(argparse.Namespace):
 
 def train(args: AlgorithmArgs):
     ts = args.ts
-    
+
     train_config = {
         "batch": args.customParameters.batch_size,
         "epoch": args.customParameters.epochs,
@@ -59,22 +65,36 @@ def train(args: AlgorithmArgs):
         "val_ratio": args.customParameters.split,
         "topk": 20,
     }
-    
+
+    # load data
+    env_config = {
+        "dataset": ts,
+        "dataOutput": args.dataOutput,
+        "save_model_path": args.modelOutput,
+        "device": args.customParameters.device
+    }
+
+    GDNtrain(train_config, env_config)
+
+    # TODO remove
     raise NotImplementedError("GDN is not implemented yet!")
 
 
 def execute(args: AlgorithmArgs):
     ts = args.ts
 
-    env_config={
-        "save_path": ...,
-        "dataset": ...,
-        "report": ...,
-        "device": ...,
-        "load_model_path": ...
+    env_config = {
+        "dataset": ts,
+        "dataOutput": args.dataOutput,
+        "load_model_path": args.modelInput,
+        "device": args.customParameters.device
     }
 
+    GDNtest(env_config)
+
+    # TODO remove
     raise NotImplementedError("GDN is not implemented yet!")
+
 
 def set_random_state(config: AlgorithmArgs) -> None:
     seed = config.customParameters.random_state
@@ -82,6 +102,10 @@ def set_random_state(config: AlgorithmArgs) -> None:
     random.seed(seed)
     np.random.seed(seed)
     torch.manual_seed(seed)
+    torch.cuda.manual_seed(args.random_seed)
+    torch.cuda.manual_seed_all(args.random_seed)
+    torch.backends.cudnn.benchmark = False
+    torch.backends.cudnn.deterministic = True
 
 
 if __name__ == "__main__":
