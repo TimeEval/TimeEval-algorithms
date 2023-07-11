@@ -3,8 +3,8 @@ import torch
 import matplotlib.pyplot as plt
 import torch.nn as nn
 import time
-from util.time import *
-from util.env import *
+from GDN.util.time import *
+from GDN.util.env import *
 from torch_geometric.nn import GCNConv, GATConv, EdgeConv
 import math
 import torch.nn.functional as F
@@ -79,10 +79,10 @@ class GNNLayer(nn.Module):
         return self.relu(out)
 
 
-class GDN(nn.Module):
+class GDNModule(nn.Module):
     def __init__(self, edge_index_sets, node_num, dim=64, out_layer_inter_dim=256, input_dim=10, out_layer_num=1, topk=20):
 
-        super(GDN, self).__init__()
+        super(GDNModule, self).__init__()
 
         self.edge_index_sets = edge_index_sets
 

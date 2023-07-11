@@ -18,11 +18,13 @@ class CustomParameters:
     latent_size: int = 64
     n_out_layers: int = 1
     out_layer_dimensionality: int = 1
+    topk: int = 20
     epochs: int = 1
     batch_size: int = 128
     split: float = 0.9
     learning_rate_decay: float = 0.001
     random_state: int = 42
+    device: str = 'cpu'
 
 
 class AlgorithmArgs(argparse.Namespace):
@@ -31,7 +33,7 @@ class AlgorithmArgs(argparse.Namespace):
         return self.df.iloc[:, 1:-1]
 
     @property
-    def tsa(self) -> pd.Dataframe:
+    def tsa(self) -> pd.DataFrame:
         return self.df.iloc[:, 1:]
 
     @property
@@ -63,7 +65,7 @@ def train(args: AlgorithmArgs):
         "out_layer_inter_dim": args.customParameters.out_layer_dimensionality,
         "decay": args.customParameters.learning_rate_decay,
         "val_ratio": args.customParameters.split,
-        "topk": 20,
+        "topk": ts.shape[1] if args.customParameters.topk > ts.shape[1] else args.customParameters.topk
     }
 
     # load data
@@ -75,9 +77,6 @@ def train(args: AlgorithmArgs):
     }
 
     GDNtrain(train_config, env_config)
-
-    # TODO remove
-    raise NotImplementedError("GDN is not implemented yet!")
 
 
 def execute(args: AlgorithmArgs):
@@ -92,9 +91,6 @@ def execute(args: AlgorithmArgs):
 
     GDNtest(env_config)
 
-    # TODO remove
-    raise NotImplementedError("GDN is not implemented yet!")
-
 
 def set_random_state(config: AlgorithmArgs) -> None:
     seed = config.customParameters.random_state
@@ -102,8 +98,8 @@ def set_random_state(config: AlgorithmArgs) -> None:
     random.seed(seed)
     np.random.seed(seed)
     torch.manual_seed(seed)
-    torch.cuda.manual_seed(args.random_seed)
-    torch.cuda.manual_seed_all(args.random_seed)
+    torch.cuda.manual_seed(seed)
+    torch.cuda.manual_seed_all(seed)
     torch.backends.cudnn.benchmark = False
     torch.backends.cudnn.deterministic = True
 
