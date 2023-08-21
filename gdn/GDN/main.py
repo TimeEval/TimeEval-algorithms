@@ -14,6 +14,8 @@ from torch.utils.data import DataLoader, Subset
 from GDN.util.env import get_device, set_device
 from GDN.util.preprocess import build_loc_net, construct_data
 from GDN.util.net_struct import get_feature_map, get_fc_graph_struc
+from GDN.evaluate import get_full_err_scores, get_best_performance_data, get_val_performance_data, \
+    get_best_performance_data_sequence
 
 from GDN.datasets.TimeDataset import TimeDataset
 
@@ -57,9 +59,9 @@ def GDNtrain(train_config: dict, env_config: dict) -> None:
     model = create_gdn_model(train_config, edge_index_sets,
                              feature_map, device)
 
-    model_save_path = get_save_path(env_config["save_model_path"])[0]
+    save_path = get_save_path(env_config["modelOutput"])
 
-    train_log = train(model, model_save_path,
+    train_log = train(model, save_path[0],
                       config=train_config,
                       train_dataloader=train_dataloader,
                       val_dataloader=val_dataloader,
@@ -71,15 +73,18 @@ def GDNtrain(train_config: dict, env_config: dict) -> None:
                       )
 
     _, train_result = test(model, full_train_dataloader)
-    save_result_output(train_result, env_config)
+    _, val_result = test(model, val_dataloader)
+    top1_best_info = get_score(train_result, val_result)
 
-    save_config_element(env_config["save_model_path"],
-                        train_config, feature_map, fc_edge_index)
+    save_result_output(top1_best_info[4], env_config)
+
+    save_config_element(save_path,
+                        train_config, feature_map, fc_edge_index, val_result)
 
 
 def GDNtest(env_config: dict) -> None:
-    elements = load_config_element()
-    train_config, feature_map, fc_edge_index = elements[0], elements[1], elements[2]
+    elements = load_config_element(env_config["modelInput"])
+    train_config, feature_map, fc_edge_index, val_result = elements[0], elements[1], elements[2], elements[3]
 
     set_device(env_config["device"]
                if "device" in env_config else
@@ -90,8 +95,9 @@ def GDNtest(env_config: dict) -> None:
     edge_index_sets.append(fc_edge_index)
 
     test_ts = env_config["dataset"]
+    # TODO check how to work around the need for the label during the test phase
     test_dataset_indata = construct_data(test_ts, feature_map,
-                                         labels=test["is_anomaly"].tolist())
+                                         labels=0)  # test_ts["is_anomaly"].tolist())
 
     cfg = {
         'slide_win': train_config['slide_win'],
@@ -103,7 +109,7 @@ def GDNtest(env_config: dict) -> None:
     test_dataloader = DataLoader(test_dataset, batch_size=train_config['batch'],
                                  shuffle=False, num_workers=0)
 
-    model_load_path = get_save_path(env_config["load_model_path"])[0]
+    model_load_path = get_save_path(env_config["modelInput"])[0]
 
     model = create_gdn_model(train_config, edge_index_sets,
                              feature_map, device)
@@ -112,7 +118,9 @@ def GDNtest(env_config: dict) -> None:
     best_model = model.to(device)
 
     _, test_result = test(best_model, test_dataloader)
-    save_result_output(test_result, env_config["dataOutput"])
+    top1_best_info = get_score(test_result, val_result)
+
+    save_result_output(top1_best_info[4], env_config)
 
 
 def create_gdn_model(train_config,
@@ -149,22 +157,27 @@ def get_loaders(train_dataset, seed, batch, val_ratio=0.1):
     return train_dataloader, val_dataloader
 
 
-def get_save_path(model_path: str):
-    # TODO change to TimeEval format of given locations
-    if len(model_path) > 0:
-        base_dir = os.path.dirname(model_path)
-    else:
-        base_dir = "results"
+def get_score(full_result, val_result):
+    np_result = np.array(full_result)
 
-    now = datetime.now()
-    datestr = now.strftime('%m|%d-%H:%M:%S')
+    labels = np_result[2, :, 0].tolist()
+
+    scores, _ = get_full_err_scores(full_result, val_result)
+
+    top1_info = get_best_performance_data_sequence(scores, labels, topk=1)
+
+    return top1_info
+
+
+def get_save_path(model_path: str):
+    base_dir = os.path.dirname(model_path)
 
     paths = [
-        f'{base_dir}/best_{datestr}.pt',
-        f'{base_dir}/results.tmp',
+        f'{model_path}',
         f'{base_dir}/train_config.pkl',
         f'{base_dir}/feature_map.pkl',
-        f'{base_dir}/fc_edge_index.pkl'
+        f'{base_dir}/fc_edge_index.pkl',
+        f'{base_dir}/val_result.pkl'
     ]
 
     for path in paths:
@@ -174,18 +187,17 @@ def get_save_path(model_path: str):
     return paths
 
 
-def save_config_element(model_path, train_config, feature_map, fc_edge_index) -> None:
-    paths = get_save_path(model_path)
-    for p, e in zip(paths[-3:],
-                    [train_config, feature_map, fc_edge_index]):
+def save_config_element(paths, train_config, feature_map, fc_edge_index, val_result) -> None:
+    for p, e in zip(paths[1:],
+                    [train_config, feature_map, fc_edge_index, val_result]):
         with open(p, 'wb') as file:
             pkl.dump(e, file, protocol=pkl.HIGHEST_PROTOCOL)
 
 
-def load_config_element() -> List[Any]:
-    paths = get_save_path()
+def load_config_element(model_path) -> List[Any]:
+    paths = get_save_path(model_path)
     elements = []
-    for p in paths[-3:]:
+    for p in paths[1:]:
         if not Path(p).exists():
             raise FileNotFoundError("Base element not found in required path."
                                     "Run training first", p)
@@ -195,7 +207,7 @@ def load_config_element() -> List[Any]:
 
 
 def save_result_output(result, env_config) -> None:
-    path = get_save_path(env_config["save_model_path"])[1].replace("results.tmp", env_config["dataOutput"])
+    path = env_config["dataOutput"]
     np_result = np.array(result)
     np.savetxt(path, np_result, delimiter=",")
 

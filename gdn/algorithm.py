@@ -72,7 +72,7 @@ def train(args: AlgorithmArgs):
     env_config = {
         "dataset": ts,
         "dataOutput": args.dataOutput,
-        "save_model_path": args.modelOutput,
+        "modelOutput": args.modelOutput,
         "device": args.customParameters.device
     }
 
@@ -85,7 +85,7 @@ def execute(args: AlgorithmArgs):
     env_config = {
         "dataset": ts,
         "dataOutput": args.dataOutput,
-        "load_model_path": args.modelInput,
+        "modelInput": args.modelInput,
         "device": args.customParameters.device
     }
 
