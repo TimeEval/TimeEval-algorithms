@@ -1,0 +1,98 @@
+{
+  "title": "GDN",
+  "description": "Implementation of https://doi.org/10.1609/aaai.v35i5.16523",
+  "inputDimensionality": "multivariate",
+  "version": "0.1",
+  "authors": "Ailin Deng, Bryan Hooi",
+  "language": "Python",
+  "type": "Detector",
+  "mainFile": "algorithm.py",
+  "learningType": "semi-supervised",
+  "trainingStep": {
+    "parameters": [
+      {
+        "name": "window_size",
+        "type": "int",
+        "defaultValue": 15,
+        "optional": "true",
+        "description": "Size of the sliding windows"
+      },
+      {
+        "name": "stride",
+        "type": "int",
+        "defaultValue": 5,
+        "optional": "true",
+        "description": "Stride for the sliding windows"
+      },
+      {
+        "name": "latent_size",
+        "type": "int",
+        "defaultValue": 64,
+        "optional": "true",
+        "description": "Dimensionality of the latent embedding space"
+      },
+      {
+        "name": "n_out_layers",
+        "type": "int",
+        "defaultValue": 1,
+        "optional": "true",
+        "description": "Number of output layers"
+      },
+      {
+        "name": "out_layer_dimensionality",
+        "type": "int",
+        "defaultValue": 1,
+        "optional": "true",
+        "description": "Interim dimensionality of the output layers."
+      },
+      {
+        "name": "epochs",
+        "type": "int",
+        "defaultValue": 1,
+        "optional": "true",
+        "description": "Number of training iterations over entire dataset; recommended value: 100"
+      },
+      {
+        "name": "batch_size",
+        "type": "int",
+        "defaultValue": 128,
+        "optional": "true",
+        "description": "Number of instances trained at the same time"
+      },
+      {
+        "name": "split",
+        "type": "float",
+        "defaultValue": 0.9,
+        "optional": "true",
+        "description": "Train-validation split"
+      },
+      {
+        "name": "learning_rate_decay",
+        "type": "float",
+        "defaultValue": 0.001,
+        "optional": "true",
+        "description": "Learning rate decay for Adam optimizer"
+      },
+      {
+        "name": "random_state",
+        "type": "int",
+        "defaultValue": 42,
+        "optional": "true",
+        "description": "Seed for the random number generator"
+      }
+    ],
+    "modelInput": "none"
+  },
+  "executionStep": {
+    "parameters": [
+      {
+        "name": "random_state",
+        "type": "int",
+        "defaultValue": 42,
+        "optional": "true",
+        "description": "Seed for the random number generator"
+      }
+    ],
+    "modelInput": "required"
+  }
+}
