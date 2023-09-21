@@ -95,7 +95,6 @@ def GDNtest(env_config: dict) -> None:
     edge_index_sets.append(fc_edge_index)
 
     test_ts = env_config["dataset"]
-    # TODO check how to work around the need for the label during the test phase
     test_dataset_indata = construct_data(test_ts, feature_map,
                                          labels=0)  # test_ts["is_anomaly"].tolist())
 

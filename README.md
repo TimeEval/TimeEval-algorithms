@@ -179,11 +179,9 @@ Follow the below steps to test your algorithm using Docker (examples assume that
    docker run --rm \
        -v $(pwd)/1-data:/data:ro \
        -v $(pwd)/2-results:/results:rw \
-   #    -e LOCAL_UID=<current user id> \
-   #    -e LOCAL_GID=<current groupid> \
-     registry.gitlab.hpi.de/akita/i/<your_algorithm>:latest execute-algorithm '{
+     registry.gitlab.hpi.de/akita/i/gdn:0.2.6 execute-algorithm '{
        "executionType": "train",
-       "dataInput": "/data/dataset.csv",
+       "dataInput": "/data/multi-dataset.csv",
        "dataOutput": "/results/anomaly_scores.ts",
        "modelInput": "/results/model.pkl",
        "modelOutput": "/results/model.pkl",

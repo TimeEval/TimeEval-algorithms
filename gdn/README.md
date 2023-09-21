@@ -11,6 +11,9 @@
 ## Dependencies
 
 - python 3
+- numpy
+- pandas
 - pytorch
 - pytorch-geometric
-- torch-scatter, torch-sparse, torch-cluster, torch-spline-conv
+- torch-scatter, 
+- torch-sparse,

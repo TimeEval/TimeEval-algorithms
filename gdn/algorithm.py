@@ -19,7 +19,7 @@ class CustomParameters:
     n_out_layers: int = 1
     out_layer_dimensionality: int = 1
     topk: int = 20
-    epochs: int = 1
+    epochs: int = 10
     batch_size: int = 128
     split: float = 0.9
     learning_rate_decay: float = 0.001
@@ -30,7 +30,10 @@ class CustomParameters:
 class AlgorithmArgs(argparse.Namespace):
     @property
     def ts(self) -> pd.DataFrame:
-        return self.df.iloc[:, 1:-1]
+        ds = self.df.iloc[:, 1:-1]
+        if ds.shape[1] == 1:
+            raise RuntimeError("No multivariate time series provided as dataset")
+        return ds
 
     @property
     def tsa(self) -> pd.DataFrame:

@@ -1,7 +1,5 @@
 numpy>=1.19.5
 pandas>=1.2.1
-torch==1.13.1
 torch-geometric==1.5.0
 torch-scatter==2.1.1
 torch-sparse==0.6.17
-matplotlib==3.7.2

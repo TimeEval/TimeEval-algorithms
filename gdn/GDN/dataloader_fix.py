@@ -9,7 +9,7 @@ from torch._six import string_classes
 
 int_classes = (bool, int)
 
-
+# NOTE: This overrides the default dataloader from torch_geometric to fix an issue
 class Collater(object):
     def __init__(self, follow_batch):
         self.follow_batch = follow_batch

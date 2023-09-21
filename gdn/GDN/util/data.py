@@ -6,17 +6,17 @@ import numpy as np
 from numpy import percentile
 
 
-def get_attack_interval(attack): 
+def get_attack_interval(attack):
     heads = []
     tails = []
     for i in range(len(attack)):
         if attack[i] == 1:
-            if attack[i-1] == 0:
+            if attack[i - 1] == 0:
                 heads.append(i)
-            
-            if i < len(attack)-1 and attack[i+1] == 0:
+
+            if i < len(attack) - 1 and attack[i + 1] == 0:
                 tails.append(i)
-            elif i == len(attack)-1:
+            elif i == len(attack) - 1:
                 tails.append(i)
     res = []
     for i in range(len(heads)):
@@ -24,9 +24,10 @@ def get_attack_interval(attack):
     # print(heads, tails)
     return res
 
+
 # calculate F1 scores
-def eval_scores(scores, true_scores, th_steps, return_thresold=False):
-    padding_list = [0]*(len(true_scores) - len(scores))
+def eval_scores(scores, true_scores, th_steps, return_threshold=False):
+    padding_list = [0] * (len(true_scores) - len(scores))
     # print(padding_list)
 
     if len(padding_list) > 0:
@@ -43,19 +44,18 @@ def eval_scores(scores, true_scores, th_steps, return_thresold=False):
 
         fmeas[i] = f1_score(true_scores, cur_pred)
 
-        score_index = scores_sorted.tolist().index(int(th_vals[i] * len(scores)+1))
+        score_index = scores_sorted.tolist().index(int(th_vals[i] * len(scores) + 1))
         thresholds[i] = scores[score_index]
 
-    if return_thresold:
+    if return_threshold:
         return fmeas, thresholds
     return fmeas
 
-def eval_mseloss(predicted, ground_truth):
 
+def eval_mseloss(predicted, ground_truth):
     ground_truth_list = np.array(ground_truth)
     predicted_list = np.array(predicted)
 
-    
     # mask = (ground_truth_list == 0) | (predicted_list == 0)
 
     # ground_truth_list = ground_truth_list[~mask]
@@ -72,8 +72,8 @@ def eval_mseloss(predicted, ground_truth):
 
     return loss
 
-def get_err_median_and_iqr(predicted, groundtruth):
 
+def get_err_median_and_iqr(predicted, groundtruth):
     np_arr = np.abs(np.subtract(np.array(predicted), np.array(groundtruth)))
 
     err_median = np.median(np_arr)
@@ -81,28 +81,28 @@ def get_err_median_and_iqr(predicted, groundtruth):
 
     return err_median, err_iqr
 
-def get_err_median_and_quantile(predicted, groundtruth, percentage):
 
+def get_err_median_and_quantile(predicted, groundtruth, percentage):
     np_arr = np.abs(np.subtract(np.array(predicted), np.array(groundtruth)))
 
     err_median = np.median(np_arr)
     # err_iqr = iqr(np_arr)
-    err_delta = percentile(np_arr, int(percentage*100)) - percentile(np_arr, int((1-percentage)*100))
+    err_delta = percentile(np_arr, int(percentage * 100)) - percentile(np_arr, int((1 - percentage) * 100))
 
     return err_median, err_delta
 
-def get_err_mean_and_quantile(predicted, groundtruth, percentage):
 
+def get_err_mean_and_quantile(predicted, groundtruth, percentage):
     np_arr = np.abs(np.subtract(np.array(predicted), np.array(groundtruth)))
 
     err_median = trim_mean(np_arr, percentage)
     # err_iqr = iqr(np_arr)
-    err_delta = percentile(np_arr, int(percentage*100)) - percentile(np_arr, int((1-percentage)*100))
+    err_delta = percentile(np_arr, int(percentage * 100)) - percentile(np_arr, int((1 - percentage) * 100))
 
     return err_median, err_delta
 
-def get_err_mean_and_std(predicted, groundtruth):
 
+def get_err_mean_and_std(predicted, groundtruth):
     np_arr = np.abs(np.subtract(np.array(predicted), np.array(groundtruth)))
 
     err_mean = np.mean(np_arr)
@@ -112,8 +112,7 @@ def get_err_mean_and_std(predicted, groundtruth):
 
 
 def get_f1_score(scores, gt, contamination):
-
-    padding_list = [0]*(len(gt) - len(scores))
+    padding_list = [0] * (len(gt) - len(scores))
     # print(padding_list)
 
     threshold = percentile(scores, 100 * (1 - contamination))
