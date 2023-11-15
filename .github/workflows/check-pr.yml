@@ -56,9 +56,7 @@ jobs:
           echo "${{ matrix.algorithm_name }}_dataset_name=$dataset_name" >> "$GITHUB_OUTPUT"
 
       - name: Prepare build
-        run: |
-          echo "${DATASET_NAME}"
-          mkdir results && chmod -R 777 results
+        run: mkdir results && chmod -R 777 results
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
       - name: Build algorithm image
@@ -76,7 +74,7 @@ jobs:
         uses: addnab/docker-run-action@v3
         with:
           image: "${{ matrix.algorithm_name }}:${{ github.sha }}"
-          options: -e LOCAL_UID=1000 -e LOCAL_GID=1000 -v "${DATASET_NAME}:/data/dataset.csv:ro" -v "$(pwd)/results:/results:rw"
+          options: -e LOCAL_UID=1000 -e LOCAL_GID=1000 -v "${${{ matrix.algorithm_name }}_dataset_name}:/data/dataset.csv:ro" -v "$(pwd)/results:/results:rw"
           run: |
             execute-algorithm '{
               "dataInput": "/data/dataset.csv", "dataOutput": "/results/scores.csv",
@@ -89,7 +87,7 @@ jobs:
         uses: addnab/docker-run-action@v3
         with:
           image: "${{ matrix.algorithm_name }}:${{ github.sha }}"
-          options: -e LOCAL_UID=1000 -e LOCAL_GID=1000 -v "${DATASET_NAME}:/data/dataset.csv:ro" -v "$(pwd)/results:/results:rw"
+          options: -e LOCAL_UID=1000 -e LOCAL_GID=1000 -v "${${{ matrix.algorithm_name }}_dataset_name}:/data/dataset.csv:ro" -v "$(pwd)/results:/results:rw"
           run: |
             execute-algorithm '{
               "dataInput": "/data/dataset.csv", "dataOutput": "/results/scores.csv",
