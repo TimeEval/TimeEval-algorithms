@@ -47,7 +47,7 @@ jobs:
       - name: Set up Python 3.10
         uses: actions/setup-python@v4
         with:
-          python-version: 3.10
+          python-version: "3.10"
       - name: Validate manifest
         run: python validate_manifest.py --path ${{ matrix.algorithm_name }}/manifest.json
       - name: Determine correct test dataset
