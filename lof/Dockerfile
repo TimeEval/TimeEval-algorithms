@@ -1,6 +1,9 @@
-FROM registry.gitlab.hpi.de/akita/i/pyod:0.2.5
+FROM ghcr.io/HPI-Information-Systems/pyod:0.3.0
 
 LABEL maintainer="sebastian.schmidl@hpi.de"
+LABEL org.opencontainers.image.source=https://github.com/HPI-Information-Systems/TimeEval-algorithms
+LABEL org.opencontainers.image.licenses=MIT
+# LABEL org.opencontainers.image.description=""
 
 ENV ALGORITHM_MAIN="/app/algorithm.py"
 
