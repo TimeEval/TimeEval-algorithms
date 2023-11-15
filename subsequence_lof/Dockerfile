@@ -1,4 +1,4 @@
-FROM ghcr.io/HPI-Information-Systems/pyod:0.3.0
+FROM ghcr.io/hpi-information-systems/pyod:0.3.0
 
 LABEL maintainer="sebastian.schmidl@hpi.de"
 LABEL org.opencontainers.image.source=https://github.com/HPI-Information-Systems/TimeEval-algorithms

@@ -37,9 +37,9 @@ jobs:
       # or with multiple variables:
       # include:
       # - algorithm_name: "subsequence_lof"
-      #   image_name: "ghcr.io/HPI-Information-Systems/pyod/subsequence_lof"
+      #   image_name: "ghcr.io/hpi-information-systems/pyod/subsequence_lof"
       # - algorithm_name: "lof"
-      #   image_name: "ghcr.io/HPI-Information-Systems/pyod/lof"
+      #   image_name: "ghcr.io/hpi-information-systems/pyod/lof"
       fail-fast: false
 
     steps:
