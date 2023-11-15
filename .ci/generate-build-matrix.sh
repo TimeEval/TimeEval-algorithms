@@ -39,17 +39,10 @@ fi
 changed_algos=$( echo "$changes_in_basedir" | sort | uniq | grep -x -v -E "${ignore_pattern}" || [[ $? == 1 ]] )
 # filter changes: remove non-existing algos (e.g. when branch is not up-to-date with CI_DEFAULT_BRANCH)
 changed_algos=$( echo "$changed_algos" | while read -r f; do [[ -d "$f" ]] && echo "$f" || true; done )
-# flatten list
-changed_algos=$( xargs <<<"${changed_algos}" )
 
 if [[ -z "$changed_algos" ]]; then
   echo "No algorithm changed!" >&2
 fi
 
-echo "Generating pipeline for algorithms: $changed_algos" >&2
-jq -Rc '{"algorithm_name":[.]}' <<<"${changed_algos}"
-
-
-
-# use jq: input = whitespace-separated JSON-values
-# jq -c '' <<<"${changed_algos}"
+echo "Generating pipeline for algorithms: $(xargs <<<$changed_algos)" >&2
+(jq -Rc '[.]' | jq -sc '{"algorithm_name": add}') <<<"${changed_algos}"
