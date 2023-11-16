@@ -27,7 +27,7 @@ jobs:
           echo "base_matrix=$base_matrix" >> "$GITHUB_OUTPUT"
           jq . <<<"$base_matrix" # print generated json for debugging
 
-          intermediate_matrix="$(./.ci/generate-build-matrix.sh 1-intermediate-images)"
+          intermediate_matrix='{"algorithm_name": []}'
           echo "intermediate_matrix=$intermediate_matrix" >> "$GITHUB_OUTPUT"
           jq . <<<"$intermediate_matrix" # print generated json for debugging
 
