@@ -23,11 +23,16 @@ jobs:
       - id: generate-jobs
         name: Generate Jobs for modified base images or algorithms
         run: |
-          echo "base_matrix=$(./.ci/generate-build-matrix.sh 0-base-images)" >> "$GITHUB_OUTPUT"
-          echo "intermediate_matrix=$(./.ci/generate-build-matrix.sh 1-intermediate-images)" >> "$GITHUB_OUTPUT"
-          echo "algo_matrix=$(./.ci/generate-build-matrix.sh)" >> "$GITHUB_OUTPUT"
+          base_matrix="$(./.ci/generate-build-matrix.sh 0-base-images)"
+          echo "base_matrix=$base_matrix" >> "$GITHUB_OUTPUT"
           jq . <<<"$base_matrix" # print generated json for debugging
+
+          intermediate_matrix="$(./.ci/generate-build-matrix.sh 1-intermediate-images)"
+          echo "intermediate_matrix=$intermediate_matrix" >> "$GITHUB_OUTPUT"
           jq . <<<"$intermediate_matrix" # print generated json for debugging
+
+          algo_matrix="$(./.ci/generate-build-matrix.sh)"
+          echo "algo_matrix=$algo_matrix" >> "$GITHUB_OUTPUT"
           jq . <<<"$algo_matrix" # print generated json for debugging
 
   build-base-images:
