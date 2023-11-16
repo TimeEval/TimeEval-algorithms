@@ -93,7 +93,7 @@ jobs:
     permissions:
       contents: read
       packages: write
-    if: !cancelled() && fromJson(needs.init.outputs.intermediate_matrix).algorithm_name[0] != null
+    if: ${{ !cancelled() && fromJson(needs.init.outputs.intermediate_matrix).algorithm_name[0] != null }}
     strategy:
       max-parallel: 3
       matrix: ${{ fromJson(needs.init.outputs.intermediate_matrix) }}
@@ -145,7 +145,7 @@ jobs:
     permissions:
       contents: read
       packages: write
-    if: !cancelled() && fromJson(needs.init.outputs.algo_matrix).algorithm_name[0] != null
+    if: ${{ !cancelled() && fromJson(needs.init.outputs.algo_matrix).algorithm_name[0] != null }}
     strategy:
       max-parallel: 3
       matrix: ${{ fromJson(needs.init.outputs.algo_matrix) }}
