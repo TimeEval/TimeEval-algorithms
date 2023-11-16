@@ -92,6 +92,7 @@ jobs:
     permissions:
       contents: read
       packages: write
+    if: fromJson(needs.init.outputs.intermediate_matrix).algorithm_name[0] != null
     strategy:
       max-parallel: 3
       matrix: ${{ fromJson(needs.init.outputs.intermediate_matrix) }}
