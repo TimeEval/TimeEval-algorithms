@@ -1,6 +1,6 @@
 results
 **/__pycache__/
-2-results
+!results/.gitkeep
 
 ########################################
 # JetBrains.gitignore from github/gitignore

@@ -12,8 +12,6 @@ VOLUME ["/data", "/results"]
 
 WORKDIR /app
 
-COPY entrypoint.sh /entrypoint.sh
-
 COPY requirements.txt /tmp/
 # install requirements and cleanup afterwards (also removes tests and cached cython files of the dependencies)
 RUN set -eux; \
@@ -26,6 +24,8 @@ RUN set -eux; \
 		\) -exec rm -rf '{}' +; \
     rm -rf /tmp/* /var/tmp/* ~/.cache/pip
 
+COPY version.txt ./version.txt
+COPY entrypoint.sh /entrypoint.sh
 
 ENTRYPOINT [ "/entrypoint.sh" ]
 CMD [ "execute-algorithm" ]
