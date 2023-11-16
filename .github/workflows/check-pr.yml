@@ -60,6 +60,7 @@ jobs:
           tags: |
             type=ref,event=branch
             type=sha
+            type=raw,value=latest
 #            type=raw,${{ version }}
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
@@ -109,6 +110,7 @@ jobs:
           tags: |
             type=ref,event=branch
             type=sha
+            type=raw,value=latest
 #            type=raw,${{ version }}
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3

@@ -1,4 +1,4 @@
-FROM registry.gitlab.hpi.de/akita/i/r-base
+FROM ghcr.io/hpi-information-systems/r-base:sha-12345
 
 LABEL maintainer="sebastian.schmidl@hpi.de"
 

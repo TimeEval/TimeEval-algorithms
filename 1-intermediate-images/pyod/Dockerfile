@@ -1,4 +1,4 @@
-FROM registry.gitlab.hpi.de/akita/i/python3-base
+FROM ghcr.io/hpi-information-systems/python3-base:latest
 
 LABEL maintainer="sebastian.schmidl@hpi.de"
 
