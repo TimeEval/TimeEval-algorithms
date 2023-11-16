@@ -24,7 +24,7 @@ if [[ "$GITHUB_EVENT_NAME" == "pull_request" ]] && [[ "$GITHUB_BASE_REF" == "$de
   # build diff to main
   echoerr "Detected pipeline for a non-default branch (assuming pull request with target $GITHUB_BASE_REF)"
   git fetch origin || echoerr "Could not update remote 'origin'! Repository might be out of date."
-  changes_in_basedir=$( git diff --name-only "refs/remotes/origin/$GITHUB_BASE_REF..HEAD" -- "$folder" | sed "s#${folder}\/##" | cut -d '/' -f 1 )
+  changes_in_basedir=$( git diff --name-only "refs/remotes/origin/$GITHUB_BASE_REF..HEAD" -- "$folder" | sed "s#${folder//\./\\.}/##" | cut -d '/' -f 1 )
   #changes_in_basedir=$( git diff --name-only "$GITHUB_BASE_REF..HEAD" | cut -d '/' -f 1 )
 
 # if this is a workflow for the default branch
@@ -48,7 +48,7 @@ fi
 # filter changes: remove non-algorithm-files/-folders and allow grep to find nothing (exit code 1)
 changed_algos=$( echo "$changes_in_basedir" | sort | uniq | grep -x -v -E "${ignore_pattern}" || [[ $? == 1 ]] )
 # filter changes: remove non-existing algos (e.g. when branch is not up-to-date with default branch or an algorithm was removed)
-changed_algos=$( echo "$changed_algos" | while read -r f; do [[ -d "$f" ]] && echo "$f" || true; done )
+changed_algos=$( echo "$changed_algos" | while read -r f; do [[ -d "$folder/$f" ]] && echo "$f" || true; done )
 
 if [[ -z "$changed_algos" ]]; then
   echoerr "No algorithm changed!"
