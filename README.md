@@ -8,7 +8,7 @@
 
 ## Description
 
-This repository contains a collection of containerized (dockerized) time series anomaly detection methods that can easily be evaluated using [TimeEval](https://github.com/HPI-Information-Systems/TimeEval).
+This repository contains a collection of containerized (dockerized) time series anomaly detection methods that can easily be evaluated using [TimeEval](https://github.com/TimeEval/TimeEval).
 Some of the algorithm's source code is access restricted and we just provide the TimeEval stubs and manifests. We are happy to share our TimeEval adaptations of excluded algorithms upon request, if the original authors approve this.
 
 Each folder contains the implementation of an algorithm that will be build into a runnable Docker container using CI.
