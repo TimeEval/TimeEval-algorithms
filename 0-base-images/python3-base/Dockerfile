@@ -24,7 +24,6 @@ RUN set -eux; \
 		\) -exec rm -rf '{}' +; \
     rm -rf /tmp/* /var/tmp/* ~/.cache/pip
 
-COPY version.txt ./version.txt
 COPY entrypoint.sh /entrypoint.sh
 
 ENTRYPOINT [ "/entrypoint.sh" ]

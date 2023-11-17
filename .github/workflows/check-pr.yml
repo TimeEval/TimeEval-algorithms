@@ -51,18 +51,21 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+      - name: Compute (and check) version
+        id: version
+        run: |
+          version="$(./.ci/get-image-version.sh 0-base-images/${{ matrix.algorithm_name }})"
+          echo "version=$version" >> "$GITHUB_OUTPUT"
       - name: Compute Docker metadata
         id: meta
         uses: docker/metadata-action@v5
         with:
           images: |
             ${{ matrix.algorithm_name }}
-            ghcr.io/hpi-information-systems/${{ matrix.algorithm_name }}
+            ghcr.io/timeeval/${{ matrix.algorithm_name }}
           tags: |
-            type=ref,event=branch
-            type=sha
             type=raw,value=latest
-#            type=raw,${{ version }}
+            type=raw,value=${{ steps.version.outputs.version }}
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
       - name: Login to registry
@@ -80,20 +83,18 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           pull: true
           load: true
-          # push: ${{ github.event_name != 'pull_request' }}
+          push: ${{ github.event_name != 'pull_request' }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
   build-intermediate-images:
     name: Build intermediate images
     runs-on: ubuntu-latest
-    needs:
-      - init
-      - build-base-images
+    needs: init
     permissions:
       contents: read
       packages: write
-    if: ${{ !cancelled() && fromJson(needs.init.outputs.intermediate_matrix).algorithm_name[0] != null }}
+    if: fromJson(needs.init.outputs.intermediate_matrix).algorithm_name[0] != null
     strategy:
       max-parallel: 3
       matrix: ${{ fromJson(needs.init.outputs.intermediate_matrix) }}
@@ -102,18 +103,21 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+      - name: Compute (and check) version
+        id: version
+        run: |
+          version="$(./.ci/get-image-version.sh 1-intermediate-images/${{ matrix.algorithm_name }})"
+          echo "version=$version" >> "$GITHUB_OUTPUT"
       - name: Compute Docker metadata
         id: meta
         uses: docker/metadata-action@v5
         with:
           images: |
             ${{ matrix.algorithm_name }}
-            ghcr.io/hpi-information-systems/${{ matrix.algorithm_name }}
+            ghcr.io/timeeval/${{ matrix.algorithm_name }}
           tags: |
-            type=ref,event=branch
-            type=sha
             type=raw,value=latest
-#            type=raw,${{ version }}
+            type=raw,value=${{ steps.version.outputs.version }}
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
       - name: Login to registry
@@ -131,21 +135,19 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           pull: true
           load: true
-          # push: ${{ github.event_name != 'pull_request' }}
+          push: ${{ github.event_name != 'pull_request' }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
   test-algorithms:
-    name: Test algorithms
+    name: Build and test algorithm images
     runs-on: ubuntu-latest
     needs:
       - init
-      - build-base-images
-      - build-intermediate-images
     permissions:
       contents: read
       packages: write
-    if: ${{ !cancelled() && fromJson(needs.init.outputs.algo_matrix).algorithm_name[0] != null }}
+    if: fromJson(needs.init.outputs.algo_matrix).algorithm_name[0] != null
     strategy:
       max-parallel: 3
       matrix: ${{ fromJson(needs.init.outputs.algo_matrix) }}
@@ -153,9 +155,9 @@ jobs:
       # or with multiple variables:
       # include:
       # - algorithm_name: "subsequence_lof"
-      #   image_name: "ghcr.io/hpi-information-systems/pyod/subsequence_lof"
+      #   image_name: "ghcr.io/timeeval/pyod/subsequence_lof"
       # - algorithm_name: "lof"
-      #   image_name: "ghcr.io/hpi-information-systems/pyod/lof"
+      #   image_name: "ghcr.io/timeeval/pyod/lof"
       fail-fast: false
 
     steps:
@@ -171,17 +173,21 @@ jobs:
           dataset_name="$(python .ci/get_dataset_name.py ${{ matrix.algorithm_name }} > dataset_name.txt)"
           echo "${{ matrix.algorithm_name }}_dataset_name=$dataset_name" >> "$GITHUB_OUTPUT"
 
+      - name: Compute (and check) version
+        id: version
+        run: |
+          version="$(./.ci/get-image-version.sh ${{ matrix.algorithm_name }})"
+          echo "version=$version" >> "$GITHUB_OUTPUT"
       - name: Compute Docker metadata
         id: meta
         uses: docker/metadata-action@v5
         with:
           images: |
             ${{ matrix.algorithm_name }}
-            ghcr.io/hpi-information-systems/${{ matrix.algorithm_name }}
+            ghcr.io/timeeval/${{ matrix.algorithm_name }}
           tags: |
-            type=ref,event=branch
-            type=sha
-#            type=raw,${{ version }}
+            type=raw,value=latest
+            type=raw,value=${{ steps.version.outputs.version }}
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
       - name: Build algorithm image
@@ -192,7 +198,7 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           pull: true
           load: true
-          push: false # TODO: push when tests are successfull!
+          push: false
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
@@ -229,28 +235,24 @@ jobs:
           ls -alh results/*
           python .ci/check_output.py "${{ matrix.algorithm_name }}"
 
-# deployment for non-PRs and if all checks are successfull:
-      # - name: Login to registry
-      #   uses: docker/login-action@v4
-      #   if: github.event_name != 'pull_request'
-      #   with:
-      #     registry: ghcr.io
-      #     username: ${{ github.actor }}
-      #     password: ${{ secrets.GITHUB_TOKEN }}
-      # - name: Build and push algorithm image
-      #   uses: docker/build-push-action@v5
-      #   if: github.event_name != 'pull_request'
-      #   with:
-      #     context: "./${{ matrix.algorithm_name }}"
-      #     tags: |
-      #       ghcr.io/hpi-information-systems/"${{ matrix.algorithm_name }}:latest"
-      #       ghcr.io/hpi-information-systems/"${{ matrix.algorithm_name }}:0.0.0"
-      #     labels: ${{ steps.meta.outputs.labels }}
-      #     pull: true
-      #     load: true
-      #     push: true # TODO: push when tests are successfull!
-      #     cache-from: type=gha
-      #     cache-to: type=gha,mode=max
+      # deployment for non-PRs and if all checks are successfull:
+      - name: Login to registry
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@v4
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build and push algorithm image
+        if: github.event_name != 'pull_request'
+        uses: docker/build-push-action@v5
+        with:
+          context: "./${{ matrix.algorithm_name }}"
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          push: true
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
 
 # GITHUB_EVENT_NAME=pull_request
 # GITHUB_BASE_REF=PR target branch (probably main)

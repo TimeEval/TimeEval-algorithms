@@ -32,7 +32,7 @@ elif [[ "$GITHUB_EVENT_NAME" == "push" ]] && [[ "$GITHUB_BASE_REF" == "$default_
   # build latest commit for the default branch
   echoerr "Detected pipeline for default branch"
   #changes_in_basedir=$( git diff --name-only "$CI_COMMIT_BEFORE_SHA..$CI_COMMIT_SHA" )
-  changes_in_basedir=$( git diff --name-only HEAD~1..HEAD -- "$folder" | sed "s#${folder}##" | cut -d '/' -f 1 )
+  changes_in_basedir=$( git diff --name-only HEAD~1..HEAD -- "$folder" | sed "s#${folder//\./\\.}/##" | cut -d '/' -f 1 )
 
 # if this is a tag-workflow: build all algorithm images
 elif [[ "$GITHUB_EVENT_NAME" == "push" ]] && [[ "$GITHUB_REF_TYPE" == "tag" ]]; then

@@ -1,4 +1,4 @@
-FROM ghcr.io/hpi-information-systems/r-base:sha-12345
+FROM ghcr.io/timeeval/r-base:0.3.0
 
 LABEL maintainer="sebastian.schmidl@hpi.de"
 

@@ -2,6 +2,13 @@
 
 set -e
 
+# Check for algorithm main file
+if [[ -z "$ALGORITHM_MAIN" ]]; then
+    echo 'No algorithm main file specified. Environment variable $ALGORITHM_MAIN is empty!' >&2
+    echo "Add the following to your Dockerfile: 'ENV ALGORITHM_MAIN=/app/<your algorithm main file>'" >&2
+    exit 1
+fi
+
 # Create user with the supplied user ID and group ID to use the correct privileges on the mounted volumes
 #   -- more information at the end of the file.
 Z_UID=0
@@ -17,17 +24,11 @@ if [[ ! -z "$LOCAL_UID" ]] && [[ ! -z "$LOCAL_GID" ]]; then
 fi
 
 # check and execute command
-if [[ "$1" == "version" ]]; then
-    cat version.txt
+if [[ "$1" == "manifest" ]]; then
+    # output the algorithm manifest
+    cat /app/manifest.json
 
 elif [[ "$1" == "execute-algorithm" ]]; then
-    # Check for algorithm main file
-    if [[ -z "$ALGORITHM_MAIN" ]]; then
-        echo 'No algorithm main file specified. Environment variable $ALGORITHM_MAIN is empty!' >&2
-        echo "Add the following to your Dockerfile: 'ENV ALGORITHM_MAIN=/app/<your algorithm main file>'" >&2
-        exit 1
-    fi
-
     # run algorithm
     shift
     exec setpriv --reuid=$Z_UID --regid=$Z_GID --init-groups -- python "$ALGORITHM_MAIN" "$@"

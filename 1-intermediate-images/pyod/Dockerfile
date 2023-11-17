@@ -1,4 +1,4 @@
-FROM ghcr.io/hpi-information-systems/python3-base:latest
+FROM ghcr.io/timeeval/python3-base:0.3.0
 
 LABEL maintainer="sebastian.schmidl@hpi.de"
 
