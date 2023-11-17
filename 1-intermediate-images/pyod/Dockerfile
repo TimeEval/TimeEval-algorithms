@@ -1,6 +1,7 @@
 FROM ghcr.io/timeeval/python3-base:0.3.0
 
 LABEL maintainer="sebastian.schmidl@hpi.de"
+LABEL org.opencontainers.image.licenses=MIT
 
 # install pyod library and cleanup afterwards
 RUN set -eux; \
