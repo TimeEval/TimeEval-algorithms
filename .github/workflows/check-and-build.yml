@@ -20,6 +20,8 @@ jobs:
       algo_matrix: ${{ steps.generate-jobs.outputs.algo_matrix }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 3
       - id: generate-jobs
         name: Generate Jobs for modified base images or algorithms
         run: |
