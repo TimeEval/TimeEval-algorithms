@@ -25,7 +25,7 @@ if [[ "$GITHUB_EVENT_NAME" == "pull_request" ]] && [[ "$GITHUB_BASE_REF" == "$de
   # build diff to main
   echoerr "Detected pipeline for a non-default branch (assuming pull request with target $GITHUB_BASE_REF)"
   git fetch origin || echoerr "Could not update remote 'origin'! Repository might be out of date."
-  changes_in_basedir=$( git diff --name-only "refs/remotes/origin/$GITHUB_BASE_REF..HEAD" -- "$folder" | sed "s#${folder//\./\\.}/##" | cut -d '/' -f 1 )
+  changes_in_basedir=$( git diff --name-only "refs/remotes/origin/$GITHUB_BASE_REF...HEAD" -- "$folder" | sed "s#${folder//\./\\.}/##" | cut -d '/' -f 1 )
   #changes_in_basedir=$( git diff --name-only "$GITHUB_BASE_REF..HEAD" | cut -d '/' -f 1 )
 
 # if this is a workflow for the default branch
@@ -33,7 +33,7 @@ elif [[ "$GITHUB_EVENT_NAME" == "push" ]] && [[ "$GITHUB_REF_NAME" == "$default_
   # build latest commit for the default branch
   echoerr "Detected pipeline for default branch"
   #changes_in_basedir=$( git diff --name-only "$CI_COMMIT_BEFORE_SHA..$CI_COMMIT_SHA" )
-  changes_in_basedir=$( git diff --name-only HEAD~1..HEAD -- "$folder" | sed "s#${folder//\./\\.}/##" | cut -d '/' -f 1 )
+  changes_in_basedir=$( git diff --name-only HEAD~1...HEAD -- "$folder" | sed "s#${folder//\./\\.}/##" | cut -d '/' -f 1 )
 
 # if this is a tag-workflow: build all algorithm images
 elif [[ "$GITHUB_EVENT_NAME" == "push" ]] && [[ "$GITHUB_REF_TYPE" == "tag" ]]; then
