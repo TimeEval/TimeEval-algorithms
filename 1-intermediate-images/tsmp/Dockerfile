@@ -1,7 +1,6 @@
 FROM ghcr.io/timeeval/r-base:0.3.0
 
 LABEL maintainer="sebastian.schmidl@hpi.de"
-LABEL org.opencontainers.image.licenses=MIT
 
 # install tsmp library and cleanup afterwards
 RUN set -eux; \
