@@ -81,7 +81,6 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           pull: true
-          load: true
           push: true
           # push: ${{ github.event_name != 'pull_request' }}
           cache-from: type=gha
@@ -133,7 +132,6 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           pull: true
-          load: true
           push: ${{ github.event_name != 'pull_request' }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
@@ -249,6 +247,7 @@ jobs:
           context: "./${{ matrix.algorithm_name }}"
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+          load: false
           push: true
           cache-from: type=gha
           cache-to: type=gha,mode=max
