@@ -46,7 +46,6 @@ jobs:
     strategy:
       max-parallel: 3
       matrix: ${{ fromJson(needs.init.outputs.base_matrix) }}
-        # algorithm_name: ["python3-base", "java-base"]
       fail-fast: false
 
     steps:
@@ -98,7 +97,6 @@ jobs:
     strategy:
       max-parallel: 3
       matrix: ${{ fromJson(needs.init.outputs.intermediate_matrix) }}
-        # algorithm_name: ["tsmp"]
       fail-fast: false
 
     steps:
@@ -151,13 +149,6 @@ jobs:
     strategy:
       max-parallel: 3
       matrix: ${{ fromJson(needs.init.outputs.algo_matrix) }}
-      # algorithm_name: ["subsequence_lof", "lof"]
-      # or with multiple variables:
-      # include:
-      # - algorithm_name: "subsequence_lof"
-      #   image_name: "ghcr.io/timeeval/pyod/subsequence_lof"
-      # - algorithm_name: "lof"
-      #   image_name: "ghcr.io/timeeval/pyod/lof"
       fail-fast: false
 
     steps:
@@ -204,6 +195,13 @@ jobs:
 
       - name: Prepare result folder
         run: mkdir results && chmod -R 777 results
+      - name: Check manifest available in container
+        uses: addnab/docker-run-action@v3
+        with:
+          image: "${{ matrix.algorithm_name }}:${{ github.sha }}"
+          options: -e LOCAL_UID=1000 -e LOCAL_GID=1000
+          run: manifest
+
       - name: Test training call
         uses: addnab/docker-run-action@v3
         with:
@@ -253,11 +251,3 @@ jobs:
           push: true
           cache-from: type=gha
           cache-to: type=gha,mode=max
-
-# GITHUB_EVENT_NAME=pull_request
-# GITHUB_BASE_REF=PR target branch (probably main)
-# GITHUB_HEAD_REF=PR source branch
-# GITHUB_REF=refs/pull/<pr_number>/merge
-# GITHUB_REF_TYPE=tag or branch
-# RUNNER_ARCH=X86, X64, ARM, or ARM64
-# RUNNER_OD=Linux, Windows, or macOS
