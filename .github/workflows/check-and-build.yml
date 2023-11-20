@@ -211,7 +211,7 @@ jobs:
 
       - name: Test training call
         run: |
-          docker run --rm -e LOCAL_UID=1000 -e LOCAL_GID=1000 -v "${${{ matrix.algorithm_name }}_dataset_name}:/data/dataset.csv:ro" -v "$(pwd)/results:/results:rw "ghcr.io/timeeval/${{ matrix.algorithm_name }}:latest" execute-algorithm '{"dataInput": "/data/dataset.csv", "dataOutput": "/results/scores.csv", "modelInput": "/results/model.pkl", "modelOutput": "/results/model.pkl", "executionType": "train", "customParameters": {"epochs": 1}}'
+          docker run --rm -e LOCAL_UID=1000 -e LOCAL_GID=1000 -v "${${{ matrix.algorithm_name }}_dataset_name}:/data/dataset.csv:ro" -v "$(pwd)/results:/results:rw" "ghcr.io/timeeval/${{ matrix.algorithm_name }}:latest" execute-algorithm '{"dataInput": "/data/dataset.csv", "dataOutput": "/results/scores.csv", "modelInput": "/results/model.pkl", "modelOutput": "/results/model.pkl", "executionType": "train", "customParameters": {"epochs": 1}}'
 
       - name: Test execution call
         run: |
