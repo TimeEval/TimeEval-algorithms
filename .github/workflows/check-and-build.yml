@@ -209,14 +209,14 @@ jobs:
       - name: Check manifest available in container
         uses: addnab/docker-run-action@v3
         with:
-          image: "${{ matrix.algorithm_name }}:${{ github.sha }}"
+          image: "${{ matrix.algorithm_name }}:latest"
           options: -e LOCAL_UID=1000 -e LOCAL_GID=1000
           run: manifest
 
       - name: Test training call
         uses: addnab/docker-run-action@v3
         with:
-          image: "${{ matrix.algorithm_name }}:${{ github.sha }}"
+          image: "${{ matrix.algorithm_name }}:latest"
           options: -e LOCAL_UID=1000 -e LOCAL_GID=1000 -v "${${{ matrix.algorithm_name }}_dataset_name}:/data/dataset.csv:ro" -v "$(pwd)/results:/results:rw"
           run: |
             execute-algorithm '{
@@ -229,7 +229,7 @@ jobs:
       - name: Test execution call
         uses: addnab/docker-run-action@v3
         with:
-          image: "${{ matrix.algorithm_name }}:${{ github.sha }}"
+          image: "${{ matrix.algorithm_name }}:latest"
           options: -e LOCAL_UID=1000 -e LOCAL_GID=1000 -v "${${{ matrix.algorithm_name }}_dataset_name}:/data/dataset.csv:ro" -v "$(pwd)/results:/results:rw"
           run: |
             execute-algorithm '{
