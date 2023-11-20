@@ -166,13 +166,13 @@ jobs:
       - name: Determine correct test dataset
         run: |
           dataset_name="$(python .ci/get_dataset_name.py ${{ matrix.algorithm_name }})"
-          echo "${{ matrix.algorithm_name }}_dataset_name=$dataset_name" >> "$GITHUB_OUTPUT"
+          echo "${{ matrix.algorithm_name }}_dataset_name=$dataset_name" >> tee "$GITHUB_OUTPUT"
 
       - name: Compute (and check) version
         id: version
         run: |
           version="$(./.ci/get-image-version.sh ${{ matrix.algorithm_name }})"
-          echo "version=$version" >> "$GITHUB_OUTPUT"
+          echo "version=$version" >> tee "$GITHUB_OUTPUT"
       - name: Compute Docker metadata
         id: meta
         uses: docker/metadata-action@v5
@@ -206,8 +206,6 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-      - name: Prepare result folder
-        run: mkdir results && chmod -R 777 results
       - name: Check manifest available in container
         uses: addnab/docker-run-action@v3
         with:
