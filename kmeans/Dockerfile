@@ -9,4 +9,4 @@ ENV ALGORITHM_MAIN="/app/algorithm.py"
 COPY requirements.txt /app/
 RUN pip install -r /app/requirements.txt
 
-COPY . /app/kmeans
+COPY . /app/
