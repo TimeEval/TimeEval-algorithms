@@ -24,9 +24,9 @@ The namespace prefix (repository) for the built Docker images is `registry.gitla
 | [baseline_increasing](./baseline_increasing) | `registry.gitlab.hpi.de/akita/i/baseline_increasing` | Python 3.7 | [`registry.gitlab.hpi.de/akita/i/python3-base`](./0-base-images/python3-base) | unsupervised | multivariate |
 | [baseline_normal](./baseline_normal) | `registry.gitlab.hpi.de/akita/i/baseline_normal` | Python 3.7 | [`registry.gitlab.hpi.de/akita/i/python3-base`](./0-base-images/python3-base) | unsupervised | multivariate |
 | [baseline_random](./baseline_random) | `registry.gitlab.hpi.de/akita/i/baseline_random` | Python 3.7 | [`registry.gitlab.hpi.de/akita/i/python3-base`](./0-base-images/python3-base) | unsupervised | multivariate |
-| [cblof](./cblof) | `registry.gitlab.hpi.de/akita/i/cblof` | python 3.7 | [`registry.gitlab.hpi.de/akita/i/pyod`](./0-base-images/pyod) -> [`registry.gitlab.hpi.de/akita/i/python3-base`](./0-base-images/python3-base) | unsupervised | multivariate |
-| [cof](./cof) | `registry.gitlab.hpi.de/akita/i/cof` | python 3.7 | [`registry.gitlab.hpi.de/akita/i/pyod`](./0-base-images/pyod) -> [`registry.gitlab.hpi.de/akita/i/python3-base`](./0-base-images/python3-base) | unsupervised | multivariate |
-| [copod](./copod) | `registry.gitlab.hpi.de/akita/i/copod` | python 3.7 | [`registry.gitlab.hpi.de/akita/i/pyod`](./0-base-images/pyod) -> [`registry.gitlab.hpi.de/akita/i/python3-base`](./0-base-images/python3-base) | unsupervised | multivariate |
+| [cblof](./cblof) | `registry.gitlab.hpi.de/akita/i/cblof` | python 3.7 | [`registry.gitlab.hpi.de/akita/i/pyod`](./1-intermediate-images/pyod) -> [`registry.gitlab.hpi.de/akita/i/python3-base`](./0-base-images/python3-base) | unsupervised | multivariate |
+| [cof](./cof) | `registry.gitlab.hpi.de/akita/i/cof` | python 3.7 | [`registry.gitlab.hpi.de/akita/i/pyod`](./1-intermediate-images/pyod) -> [`registry.gitlab.hpi.de/akita/i/python3-base`](./0-base-images/python3-base) | unsupervised | multivariate |
+| [copod](./copod) | `registry.gitlab.hpi.de/akita/i/copod` | python 3.7 | [`registry.gitlab.hpi.de/akita/i/pyod`](./1-intermediate-images/pyod) -> [`registry.gitlab.hpi.de/akita/i/python3-base`](./0-base-images/python3-base) | unsupervised | multivariate |
 | [dae](./dae) (DeNoising Autoencoder) | `registry.gitlab.hpi.de/akita/i/dae` | python 3.7 | [`registry.gitlab.hpi.de/akita/i/python3-base`](./0-base-images/python3-base) | semi-supervised | multivariate |
 | [damp](./damp) | `registry.gitlab.hpi.de/akita/i/damp` | Python 3.7 | [`registry.gitlab.hpi.de/akita/i/python3-base`](./0-base-images/python3-base) | unsupervised | multivariate |
 | [dbstream](./dbstream) | `registry.gitlab.hpi.de/akita/i/dbstream` | R 4.0.5 | [`registry.gitlab.hpi.de/akita/i/r4-base`](./0-base-images/r4-base) | unsupervised | multivariate
@@ -44,19 +44,19 @@ The namespace prefix (repository) for the built Docker images is `registry.gitla
 | [generic_xgb](./generic_xgb) | `registry.gitlab.hpi.de/akita/i/generic_xgb` | python 3.7 | [`registry.gitlab.hpi.de/akita/i/python3-base`](./0-base-images/python3-base) | semi-supervised | univariate |
 | [grammarviz3](./grammarviz3) | `registry.gitlab.hpi.de/akita/i/grammarviz3` | Java| [`registry.gitlab.hpi.de/akita/i/java-base`](./0-base-images/java-base) | unsupervised | univariate |
 | [grammarviz3_multi](./grammarviz3_multi) | `registry.gitlab.hpi.de/akita/i/grammarviz3_multi` | Java| [`registry.gitlab.hpi.de/akita/i/java-base`](./0-base-images/java-base) | unsupervised | multivariate |
-| [hbos](./hbos) | `registry.gitlab.hpi.de/akita/i/hbos` | python 3.7 | [`registry.gitlab.hpi.de/akita/i/pyod`](./0-base-images/pyod) -> [`registry.gitlab.hpi.de/akita/i/python3-base`](./0-base-images/python3-base) | unsupervised | multivariate |
+| [hbos](./hbos) | `registry.gitlab.hpi.de/akita/i/hbos` | python 3.7 | [`registry.gitlab.hpi.de/akita/i/pyod`](./1-intermediate-images/pyod) -> [`registry.gitlab.hpi.de/akita/i/python3-base`](./0-base-images/python3-base) | unsupervised | multivariate |
 | [health_esn](./health_esn) | `registry.gitlab.hpi.de/akita/i/health_esn` | Python 3.7 | [`registry.gitlab.hpi.de/akita/i/python3-base`](./0-base-images/python3-base) | semi-supervised | multivariate |
 | [hif](./hif) | `registry.gitlab.hpi.de/akita/i/hif` | python 3.7 | [`registry.gitlab.hpi.de/akita/i/python3-base`](./0-base-images/python3-base) | supervised | multivariate |
 | [hotsax](./hotsax) | `registry.gitlab.hpi.de/akita/i/hotsax` | python 3.7 | [`registry.gitlab.hpi.de/akita/i/python3-base`](./0-base-images/python3-base) | unsupervised | univariate |
 | [hybrid_knn](./hybrid_knn) | `registry.gitlab.hpi.de/akita/i/hybrid_knn` | python 3.7 | [`registry.gitlab.hpi.de/akita/i/python3-torch`](./0-base-images/python3-torch) -> [`registry.gitlab.hpi.de/akita/i/python3-base`](./0-base-images/python3-base) | semi-supervised | multivariate |
 | [if_lof](./if_lof) | `registry.gitlab.hpi.de/akita/i/if_lof` | python 3.7 | [`registry.gitlab.hpi.de/akita/i/python3-base`](./0-base-images/python3-base) | unsupervised | multivariate |
-| [iforest](./iforest) | `registry.gitlab.hpi.de/akita/i/iforest` | python 3.7 | [`registry.gitlab.hpi.de/akita/i/pyod`](./0-base-images/pyod) -> [`registry.gitlab.hpi.de/akita/i/python3-base`](./0-base-images/python3-base) | unsupervised | multivariate |
+| [iforest](./iforest) | `registry.gitlab.hpi.de/akita/i/iforest` | python 3.7 | [`registry.gitlab.hpi.de/akita/i/pyod`](./1-intermediate-images/pyod) -> [`registry.gitlab.hpi.de/akita/i/python3-base`](./0-base-images/python3-base) | unsupervised | multivariate |
 | [img_embedding_cae](./img_embedding_cae) | `registry.gitlab.hpi.de/akita/i/img_embedding_cae` | python 3.7 | [`registry.gitlab.hpi.de/akita/i/python3-torch`](./0-base-images/python3-torch) -> [`registry.gitlab.hpi.de/akita/i/python3-base`](./0-base-images/python3-base) | semi-supervised | univariate |
 | [kmeans](./kmeans) | `registry.gitlab.hpi.de/akita/i/kmeans` | Python 3.7 | [`registry.gitlab.hpi.de/akita/i/python3-base`](./0-base-images/python3-base) | unsupervised | multivariate |
-| [knn](./knn) | `registry.gitlab.hpi.de/akita/i/knn` | python 3.7 | [`registry.gitlab.hpi.de/akita/i/pyod`](./0-base-images/pyod) -> [`registry.gitlab.hpi.de/akita/i/python3-base`](./0-base-images/python3-base) | unsupervised | multivariate |
+| [knn](./knn) | `registry.gitlab.hpi.de/akita/i/knn` | python 3.7 | [`registry.gitlab.hpi.de/akita/i/pyod`](./1-intermediate-images/pyod) -> [`registry.gitlab.hpi.de/akita/i/python3-base`](./0-base-images/python3-base) | unsupervised | multivariate |
 | [laser_dbn](./laser_dbn) | `registry.gitlab.hpi.de/akita/i/laser_dbn` | Python 3.7 |[`registry.gitlab.hpi.de/akita/i/python3-base`](./0-base-images/python3-base) | semi-supervised | multivariate |
 | [left_stampi](./left_stampi) | `registry.gitlab.hpi.de/akita/i/left_stampi` | Python 3.7 | [`registry.gitlab.hpi.de/akita/i/python3-base`](./0-base-images/python3-base) | unsupervised | univariate |
-| [lof](./lof) | `registry.gitlab.hpi.de/akita/i/lof` | python 3.7 | [`registry.gitlab.hpi.de/akita/i/pyod`](./0-base-images/pyod) -> [`registry.gitlab.hpi.de/akita/i/python3-base`](./0-base-images/python3-base) | unsupervised | multivariate |
+| [lof](./lof) | `registry.gitlab.hpi.de/akita/i/lof` | python 3.7 | [`registry.gitlab.hpi.de/akita/i/pyod`](./1-intermediate-images/pyod) -> [`registry.gitlab.hpi.de/akita/i/python3-base`](./0-base-images/python3-base) | unsupervised | multivariate |
 | [lstm_ad](./lstm_ad) | `registry.gitlab.hpi.de/akita/i/lstm_ad` | python 3.7 | [`registry.gitlab.hpi.de/akita/i/python3-torch`](./0-base-images/python3-torch) -> [`registry.gitlab.hpi.de/akita/i/python3-base`](./0-base-images/python3-base) | semi-supervised | multivariate |
 | [lstm_vae](./lstm_vae) | `registry.gitlab.hpi.de/akita/i/lstm_vae` | python 3.7 | [`registry.gitlab.hpi.de/akita/i/python3-torch`](./0-base-images/python3-torch) -> [`registry.gitlab.hpi.de/akita/i/python3-base`](./0-base-images/python3-base) | semi-supervised | univariate |
 | [median_method](./median_method) | `registry.gitlab.hpi.de/akita/i/median_method` | python 3.7 | [`registry.gitlab.hpi.de/akita/i/python3-base`](./0-base-images/python3-base) | unsupervised | univariate |
@@ -64,15 +64,15 @@ The namespace prefix (repository) for the built Docker images is `registry.gitla
 | [mstamp](./mstamp) | `registry.gitlab.hpi.de/akita/i/mstamp` | python 3.7 | [`registry.gitlab.hpi.de/akita/i/python3-base`](./0-base-images/python3-base) | unsupervised | multivariate |
 | [mtad_gat](./mtad_gat) | `registry.gitlab.hpi.de/akita/i/mtad_gat` | python 3.7 | [`registry.gitlab.hpi.de/akita/i/python3-torch`](./0-base-images/python3-torch) -> [`registry.gitlab.hpi.de/akita/i/python3-base`](./0-base-images/python3-base) | semi-supervised | multivariate |
 | [multi_hmm](./multi_hmm) | `registry.gitlab.hpi.de/akita/i/multi_hmm` | Python 3.7 |[`registry.gitlab.hpi.de/akita/i/python3-base`](./0-base-images/python3-base) | supervised | multivariate |
-| [multi_subsequence_lof](./multi_subsquence_lof) | `registry.gitlab.hpi.de/akita/i/multi_subsequence_lof` | python 3.7 | [`registry.gitlab.hpi.de/akita/i/pyod`](./0-base-images/pyod) -> [`registry.gitlab.hpi.de/akita/i/python3-base`](./0-base-images/python3-base) | unsupervised | multivariate |
-| [mvalmod](./mvalmod) | `registry.gitlab.hpi.de/akita/i/mvalmod` | R 3.5.2 | [`registry.gitlab.hpi.de/akita/i/tsmp`](./0-base-images/tsmp) -> [`registry.gitlab.hpi.de/akita/i/r-base`](./0-base-images/r-base) | unsupervised | multivariate |
+| [multi_subsequence_lof](./multi_subsquence_lof) | `registry.gitlab.hpi.de/akita/i/multi_subsequence_lof` | python 3.7 | [`registry.gitlab.hpi.de/akita/i/pyod`](./1-intermediate-images/pyod) -> [`registry.gitlab.hpi.de/akita/i/python3-base`](./0-base-images/python3-base) | unsupervised | multivariate |
+| [mvalmod](./mvalmod) | `registry.gitlab.hpi.de/akita/i/mvalmod` | R 3.5.2 | [`registry.gitlab.hpi.de/akita/i/tsmp`](./1-intermediate-images/tsmp) -> [`registry.gitlab.hpi.de/akita/i/r-base`](./0-base-images/r-base) | unsupervised | multivariate |
 | [norma](./norma) (_restricted access_) | `registry.gitlab.hpi.de/akita/i/norma` | Python 3.7 |[`registry.gitlab.hpi.de/akita/i/python3-base`](./0-base-images/python3-base) | unsupervised | univariate |
 | [normalizing_flows](./normalizing_flows) | `registry.gitlab.hpi.de/akita/i/normalizing_flows` | python 3.7 | [`registry.gitlab.hpi.de/akita/i/python3-torch`](./0-base-images/python3-torch) -> [`registry.gitlab.hpi.de/akita/i/python3-base`](./0-base-images/python3-base) | supervised | multivariate |
 | [novelty_svr](./novelty_svr) | `registry.gitlab.hpi.de/akita/i/novelty_svr` | python 3.7 | [`registry.gitlab.hpi.de/akita/i/python3-base`](./0-base-images/python3-base) | unsupervised | univariate |
 | [numenta_htm](./numenta_htm) | `registry.gitlab.hpi.de/akita/i/numenta_htm` | Python 2.7 |[`registry.gitlab.hpi.de/akita/i/python2-base`](./0-base-images/python2-base) | unsupervised | univariate |
 | [ocean_wnn](./ocean_wnn) | `registry.gitlab.hpi.de/akita/i/ocean_wnn` | python 3.7 | [`registry.gitlab.hpi.de/akita/i/python3-torch`](./0-base-images/python3-torch) -> [`registry.gitlab.hpi.de/akita/i/python3-base`](./0-base-images/python3-base) | semi-supervised | univariate |
 | [omnianomaly](./omnianomaly) | `registry.gitlab.hpi.de/akita/i/omnianomaly` | Python 3.6 |[`registry.gitlab.hpi.de/akita/i/python36-base`](./0-base-images/python36-base) | semi-supervised | multivariate |
-| [pcc](./pcc) | `registry.gitlab.hpi.de/akita/i/pcc` | Python 3.7 | [`registry.gitlab.hpi.de/akita/i/pyod`](./0-base-images/pyod) -> [`registry.gitlab.hpi.de/akita/i/python3-base`](./0-base-images/python3-base) | unsupervised | multivariate |
+| [pcc](./pcc) | `registry.gitlab.hpi.de/akita/i/pcc` | Python 3.7 | [`registry.gitlab.hpi.de/akita/i/pyod`](./1-intermediate-images/pyod) -> [`registry.gitlab.hpi.de/akita/i/python3-base`](./0-base-images/python3-base) | unsupervised | multivariate |
 | [pci](./pci) | `registry.gitlab.hpi.de/akita/i/pci` | Python 3.7 | [`registry.gitlab.hpi.de/akita/i/python3-base`](./0-base-images/python3-base) | unsupervised | univariate |
 | [phasespace_svm](./phasespace_svm) | `registry.gitlab.hpi.de/akita/i/phasespace_svm` | python 3.7 | [`registry.gitlab.hpi.de/akita/i/python3-base`](./0-base-images/python3-base) | unsupervised | univariate |
 | [pst](./pst) | `registry.gitlab.hpi.de/akita/i/pst` | R 3.5.2 | [`registry.gitlab.hpi.de/akita/i/r-base`](./0-base-images/r-base) | |
@@ -85,19 +85,19 @@ The namespace prefix (repository) for the built Docker images is `registry.gitla
 | [sr](./sr) | `registry.gitlab.hpi.de/akita/i/sr` | Python 3.7 | [`registry.gitlab.hpi.de/akita/i/python3-base`](./0-base-images/python3-base) | unsupervised | univariate |
 | [sr_cnn](./sr_cnn) | `registry.gitlab.hpi.de/akita/i/sr_cnn` | Python 3.7 | [`registry.gitlab.hpi.de/akita/i/python3-torch`](./0-base-images/python3-base) | semi-supervised | univariate |
 | [ssa](./ssa) (_restricted access_) | `registry.gitlab.hpi.de/akita/i/ssa` | python 3.7 | [`registry.gitlab.hpi.de/akita/i/python3-base`](./0-base-images/python3-base) | semi-supervised | univariate |
-| [stamp](./stamp) | `registry.gitlab.hpi.de/akita/i/stamp` | R 3.5.2 | [`registry.gitlab.hpi.de/akita/i/tsmp`](./0-base-images/tsmp) -> [`registry.gitlab.hpi.de/akita/i/r-base`](./0-base-images/r-base) | unsupervised | univariate |
-| [stomp](./stomp) | `registry.gitlab.hpi.de/akita/i/stomp` | R 3.5.2 | [`registry.gitlab.hpi.de/akita/i/tsmp`](./0-base-images/tsmp) -> [`registry.gitlab.hpi.de/akita/i/r-base`](./0-base-images/r-base) | unsupervised | univariate |
+| [stamp](./stamp) | `registry.gitlab.hpi.de/akita/i/stamp` | R 3.5.2 | [`registry.gitlab.hpi.de/akita/i/tsmp`](./1-intermediate-images/tsmp) -> [`registry.gitlab.hpi.de/akita/i/r-base`](./0-base-images/r-base) | unsupervised | univariate |
+| [stomp](./stomp) | `registry.gitlab.hpi.de/akita/i/stomp` | R 3.5.2 | [`registry.gitlab.hpi.de/akita/i/tsmp`](./1-intermediate-images/tsmp) -> [`registry.gitlab.hpi.de/akita/i/r-base`](./0-base-images/r-base) | unsupervised | univariate |
 | [subsequence_fast_mcd](./subsequence_fast_mcd) | `registry.gitlab.hpi.de/akita/i/subsequence_fast_mcd` | python 3.7 | [`registry.gitlab.hpi.de/akita/i/python3-base`](./0-base-images/python3-base) | semi-supervised | univariate |
-| [subsequence_knn](./subsequence_knn) | `registry.gitlab.hpi.de/akita/i/subsequence_knn` | python 3.7 | [`registry.gitlab.hpi.de/akita/i/pyod`](./0-base-images/pyod) -> [`registry.gitlab.hpi.de/akita/i/python3-base`](./0-base-images/python3-base) | unsupervised | multivariate |
-| [subsequence_if](./subsequence_if) | `registry.gitlab.hpi.de/akita/i/subsequence_if` | python 3.7 | [`registry.gitlab.hpi.de/akita/i/pyod`](./0-base-images/pyod) -> [`registry.gitlab.hpi.de/akita/i/python3-base`](./0-base-images/python3-base) | unsupervised | univariate |
-| [subsequence_lof](./subsequence_lof) | `registry.gitlab.hpi.de/akita/i/subsequence_lof` | python 3.7 | [`registry.gitlab.hpi.de/akita/i/pyod`](./0-base-images/pyod) -> [`registry.gitlab.hpi.de/akita/i/python3-base`](./0-base-images/python3-base) | unsupervised | univariate |
+| [subsequence_knn](./subsequence_knn) | `registry.gitlab.hpi.de/akita/i/subsequence_knn` | python 3.7 | [`registry.gitlab.hpi.de/akita/i/pyod`](./1-intermediate-images/pyod) -> [`registry.gitlab.hpi.de/akita/i/python3-base`](./0-base-images/python3-base) | unsupervised | multivariate |
+| [subsequence_if](./subsequence_if) | `registry.gitlab.hpi.de/akita/i/subsequence_if` | python 3.7 | [`registry.gitlab.hpi.de/akita/i/pyod`](./1-intermediate-images/pyod) -> [`registry.gitlab.hpi.de/akita/i/python3-base`](./0-base-images/python3-base) | unsupervised | univariate |
+| [subsequence_lof](./subsequence_lof) | `registry.gitlab.hpi.de/akita/i/subsequence_lof` | python 3.7 | [`registry.gitlab.hpi.de/akita/i/pyod`](./1-intermediate-images/pyod) -> [`registry.gitlab.hpi.de/akita/i/python3-base`](./0-base-images/python3-base) | unsupervised | univariate |
 | [tanogan](./tanogan) | `registry.gitlab.hpi.de/akita/i/tanogan` | python 3.7 | [`registry.gitlab.hpi.de/akita/i/python3-torch`](./0-base-images/python3-torch) -> [`registry.gitlab.hpi.de/akita/i/python3-base`](./0-base-images/python3-base) | semi-supervised | multivariate |
 | [tarzan](./tarzan) | `registry.gitlab.hpi.de/akita/i/tarzan` | Python 3.7 | [`registry.gitlab.hpi.de/akita/i/python3-torch`](./0-base-images/python3-base) | semi-supervised | univariate |
 | [telemanom](./telemanom) | `registry.gitlab.hpi.de/akita/i/telemanom` | python 3.7 | [`registry.gitlab.hpi.de/akita/i/python3-base`](./0-base-images/python3-base) | semi-supervised | multivariate |
 | [torsk](./torsk) | `registry.gitlab.hpi.de/akita/i/torsk` | python 3.7 | [`registry.gitlab.hpi.de/akita/i/python3-base`](./0-base-images/python3-base) | unsupervised | multivariate |
 | [triple_es](./triple_es) | `registry.gitlab.hpi.de/akita/i/triple_es` | python 3.7 | [`registry.gitlab.hpi.de/akita/i/python3-base`](./0-base-images/python3-base) | unsupervised | univariate |
 | [ts_bitmap](./ts_bitmap) | `registry.gitlab.hpi.de/akita/i/ts_bitmap` | python 3.7 | [`registry.gitlab.hpi.de/akita/i/python3-base`](./0-base-images/python3-base) | unsupervised | univariate |
-| [valmod](./valmod) | `registry.gitlab.hpi.de/akita/i/valmod` | R 3.5.2 | [`registry.gitlab.hpi.de/akita/i/tsmp`](./0-base-images/tsmp) -> [`registry.gitlab.hpi.de/akita/i/r-base`](./0-base-images/r-base) | unsupervised | univariate |
+| [valmod](./valmod) | `registry.gitlab.hpi.de/akita/i/valmod` | R 3.5.2 | [`registry.gitlab.hpi.de/akita/i/tsmp`](./1-intermediate-images/tsmp) -> [`registry.gitlab.hpi.de/akita/i/r-base`](./0-base-images/r-base) | unsupervised | univariate |
 
 ## Usage
 
@@ -150,9 +150,10 @@ Follow the below steps to test your algorithm using Docker (examples assume that
       docker tag registry.gitlab.hpi.de/akita/i/python3-base:0.2.5 registry.gitlab.hpi.de/akita/i/python3-base:latest
       ```
 
-     - build derived base image:
+     - build intermediate image:
 
       ```bash
+      cd ../1-intermediate-images
       docker build -t registry.gitlab.hpi.de/akita/i/pyod:0.2.5 ./pyod
       ```
 
@@ -174,10 +175,10 @@ Follow the below steps to test your algorithm using Docker (examples assume that
    If your algorithm is supervised or semi-supervised, execute the following command to perform the training step (_not necessary for LOF_):
 
    ```bash
-   mkdir -p 2-results
+   mkdir -p results
    docker run --rm \
-       -v $(pwd)/1-data:/data:ro \
-       -v $(pwd)/2-results:/results:rw \
+       -v $(pwd)/data:/data:ro \
+       -v $(pwd)/results:/results:rw \
    #    -e LOCAL_UID=<current user id> \
    #    -e LOCAL_GID=<current groupid> \
      registry.gitlab.hpi.de/akita/i/<your_algorithm>:latest execute-algorithm '{
@@ -190,17 +191,17 @@ Follow the below steps to test your algorithm using Docker (examples assume that
      }'
    ```
 
-   Be warned that the result and model files will be written to the `2-results`-directory as the root-user if you do not pass the optional environment variables `LOCAL_UID` and `LOCAL_GID` to the container.
+   Be warned that the result and model files will be written to the `results`-directory as the root-user if you do not pass the optional environment variables `LOCAL_UID` and `LOCAL_GID` to the container.
 
 4. **Execute your algorithm**
    Run the following command to perform the execution step of your algorithm:
 
    ```bash
-   mkdir -p 2-results
+   mkdir -p results
    TIMEEVAL_ALGORITHM=lof
    docker run --rm \
-       -v $(pwd)/1-data:/data:ro \
-       -v $(pwd)/2-results:/results:rw \
+       -v $(pwd)/data:/data:ro \
+       -v $(pwd)/results:/results:rw \
    #    -e LOCAL_UID=<current user id> \
    #    -e LOCAL_GID=<current groupid> \
      registry.gitlab.hpi.de/akita/i/${TIMEEVAL_ALGORITHM}:latest execute-algorithm '{
@@ -213,4 +214,4 @@ Follow the below steps to test your algorithm using Docker (examples assume that
      }'
    ```
 
-   Be warned that the result and model files will be written to the `2-results`-directory as the root-user if you do not pass the optional environment variables `LOCAL_UID` and `LOCAL_GID` to the container.
+   Be warned that the result and model files will be written to the `results`-directory as the root-user if you do not pass the optional environment variables `LOCAL_UID` and `LOCAL_GID` to the container.

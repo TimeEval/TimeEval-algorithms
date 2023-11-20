@@ -23,11 +23,18 @@ if [[ ! -z "$LOCAL_UID" ]] && [[ ! -z "$LOCAL_GID" ]]; then
     chown -R "$Z_UID:$Z_GID" .
 fi
 
-# Either run algorithm or the supplied executable
-if [[ "$1" = "execute-algorithm" ]]; then
+# check and execute command
+if [[ "$1" == "manifest" ]]; then
+    # output the algorithm manifest
+    cat /app/manifest.json
+
+elif [[ "$1" = "execute-algorithm" ]]; then
+    # run algorithm
     shift
     exec setpriv --reuid=$Z_UID --regid=$Z_GID --init-groups -- Rscript "$ALGORITHM_MAIN" "$@"
+
 else
+    # just run supplied command inside container
     exec setpriv --reuid=$Z_UID --regid=$Z_GID --init-groups -- "$@"
 fi
 
