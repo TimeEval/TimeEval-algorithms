@@ -15,6 +15,7 @@ function echoerr () {
 # GITHUB_BASE_REF=PR target branch (probably default branch)
 # GITHUB_HEAD_REF=PR source branch
 # GITHUB_REF=refs/pull/<pr_number>/merge
+# GITHUB_REF_NAME=main (if push event)
 # GITHUB_REF_TYPE=tag or branch
 # RUNNER_ARCH=X86, X64, ARM, or ARM64
 # RUNNER_OD=Linux, Windows, or macOS
@@ -28,7 +29,7 @@ if [[ "$GITHUB_EVENT_NAME" == "pull_request" ]] && [[ "$GITHUB_BASE_REF" == "$de
   #changes_in_basedir=$( git diff --name-only "$GITHUB_BASE_REF..HEAD" | cut -d '/' -f 1 )
 
 # if this is a workflow for the default branch
-elif [[ "$GITHUB_EVENT_NAME" == "push" ]] && [[ "$GITHUB_BASE_REF" == "$default_branch" ]]; then
+elif [[ "$GITHUB_EVENT_NAME" == "push" ]] && [[ "$GITHUB_REF_NAME" == "$default_branch" ]]; then
   # build latest commit for the default branch
   echoerr "Detected pipeline for default branch"
   #changes_in_basedir=$( git diff --name-only "$CI_COMMIT_BEFORE_SHA..$CI_COMMIT_SHA" )
