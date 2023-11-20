@@ -49,7 +49,6 @@ RUN set -eux; \
     rm -rf /tmp/* /var/tmp/*
 
 # Setup TimeEval integration
-
 VOLUME ["/data", "/results"]
 
 WORKDIR /app
