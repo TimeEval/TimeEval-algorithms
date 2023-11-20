@@ -1,7 +1,6 @@
 FROM python:3.7.9-slim-buster
 
 LABEL maintainer="sebastian.schmidl@hpi.de"
-LABEL org.opencontainers.image.licenses=MIT
 
 RUN set -eux; \
     apt-get update; \

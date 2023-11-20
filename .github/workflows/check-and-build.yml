@@ -64,7 +64,8 @@ jobs:
             type=raw,value=latest
             type=raw,value=${{ steps.version.outputs.version }}
           labels: |
-            org.opencontainers.image.title=TimeEval algorithm ${{ matrix.algorithm_name }}
+            org.opencontainers.image.licenses=MIT
+            org.opencontainers.image.title=TimeEval ${{ matrix.algorithm_name }} base image
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
       - name: Login to registry
@@ -115,7 +116,8 @@ jobs:
             type=raw,value=latest
             type=raw,value=${{ steps.version.outputs.version }}
           labels: |
-            org.opencontainers.image.title=TimeEval algorithm ${{ matrix.algorithm_name }}
+            org.opencontainers.image.licenses=MIT
+            org.opencontainers.image.title=TimeEval ${{ matrix.algorithm_name }} intermediate image
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
       - name: Login to registry
@@ -185,7 +187,15 @@ jobs:
         with:
           context: "./${{ matrix.algorithm_name }}"
           tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          # filter out license label, because it is set in the Dockerfile
+          labels: |
+            org.opencontainers.image.title=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.title'] }}
+            org.opencontainers.image.description=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.description'] }}
+            org.opencontainers.image.url=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.url'] }}
+            org.opencontainers.image.source=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.source'] }}
+            org.opencontainers.image.version=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.version'] }}
+            org.opencontainers.image.created=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.created'] }}
+            org.opencontainers.image.revision=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.revision'] }}
           pull: true
           load: true
           push: false

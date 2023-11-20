@@ -1,7 +1,6 @@
 FROM debian:buster-slim
 
 LABEL maintainer="sebastian.schmidl@hpi.de"
-LABEL org.opencontainers.image.licenses=MIT
 
 RUN set -eux; \
     apt-get update; \
