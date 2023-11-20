@@ -2,7 +2,7 @@
     "title": "k-Means",
     "description": "Implementation of http://robotics.estec.esa.int/i-SAIRAS/isairas2001/papers/Paper_AS012.pdf",
     "inputDimensionality": "multivariate",
-    "version": "0.3.0",
+    "version": "0.1",
     "authors": "Takehisa Yairi, Yoshikiyo Kato, Koichi Hori",
     "language": "Python",
     "type": "Detector",
