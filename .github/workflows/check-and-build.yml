@@ -57,6 +57,7 @@ jobs:
         run: |
           version="$(./.ci/get-image-version.sh 0-base-images/${{ matrix.algorithm_name }})"
           echo "version=$version" >> "$GITHUB_OUTPUT"
+          echo "$version"
       - name: Compute Docker metadata
         id: meta
         uses: docker/metadata-action@v5
@@ -109,6 +110,7 @@ jobs:
         run: |
           version="$(./.ci/get-image-version.sh 1-intermediate-images/${{ matrix.algorithm_name }})"
           echo "version=$version" >> "$GITHUB_OUTPUT"
+          echo "$version"
       - name: Compute Docker metadata
         id: meta
         uses: docker/metadata-action@v5
@@ -174,7 +176,8 @@ jobs:
         id: version
         run: |
           version="$(./.ci/get-image-version.sh ${{ matrix.algorithm_name }})"
-          echo "version=$version" >> tee "$GITHUB_OUTPUT"
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          echo "$version"
       - name: Compute Docker metadata
         id: meta
         uses: docker/metadata-action@v5
