@@ -16,8 +16,8 @@ if __name__ == "__main__":
 
     value = manifest["inputDimensionality"]
     if value.lower() == "univariate":
-        print("data/dataset.csv")
+        print(Path("data/dataset.csv").resolve())
     elif value.lower() == "multivariate":
-        print("data/multi-dataset.csv")
+        print(Path("data/multi-dataset.csv").resolve())
     else:
         raise ValueError(f"Input dimensionality ({value}) of {algorithm}'s manifest is unknown!")

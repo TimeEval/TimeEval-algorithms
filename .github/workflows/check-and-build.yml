@@ -164,15 +164,17 @@ jobs:
       - name: Validate manifest
         run: python validate_manifest.py --path ${{ matrix.algorithm_name }}/manifest.json
       - name: Determine correct test dataset
+        id: dataset
         run: |
           dataset_name="$(python .ci/get_dataset_name.py ${{ matrix.algorithm_name }})"
-          echo "${{ matrix.algorithm_name }}_dataset_name=$dataset_name" >> "$GITHUB_OUTPUT"
+          echo "dataset_name=$dataset_name" >> "$GITHUB_OUTPUT"
+          echo "$dataset_name"
 
       - name: Compute (and check) version
         id: version
         run: |
           version="$(./.ci/get-image-version.sh ${{ matrix.algorithm_name }})"
-          echo "version=$version" >> "$GITHUB_OUTPUT"
+          echo "version=$version" >> tee "$GITHUB_OUTPUT"
       - name: Compute Docker metadata
         id: meta
         uses: docker/metadata-action@v5
@@ -206,40 +208,20 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-      - name: Prepare result folder
-        run: mkdir results && chmod -R 777 results
-      - name: Check manifest available in container
-        uses: addnab/docker-run-action@v3
-        with:
-          image: "${{ matrix.algorithm_name }}:${{ github.sha }}"
-          options: -e LOCAL_UID=1000 -e LOCAL_GID=1000
-          run: manifest
+      - name: Check if manifest is in the container
+        run: docker run --rm -e LOCAL_UID=1000 -e LOCAL_GID=1000 "ghcr.io/timeeval/${{ matrix.algorithm_name }}:latest" manifest
 
+      - name: Fix permissions of result folder
+        run: |
+          mkdir -p results
+          chmod 777 results
       - name: Test training call
-        uses: addnab/docker-run-action@v3
-        with:
-          image: "${{ matrix.algorithm_name }}:${{ github.sha }}"
-          options: -e LOCAL_UID=1000 -e LOCAL_GID=1000 -v "${${{ matrix.algorithm_name }}_dataset_name}:/data/dataset.csv:ro" -v "$(pwd)/results:/results:rw"
-          run: |
-            execute-algorithm '{
-              "dataInput": "/data/dataset.csv", "dataOutput": "/results/scores.csv",
-              "modelInput": "/results/model.pkl", "modelOutput": "/results/model.pkl",
-              "executionType": "train",
-              "customParameters": {"epochs": 1}
-            }'
+        run: |
+          docker run --rm -e LOCAL_UID=1000 -e LOCAL_GID=1000 -v "${{ steps.dataset.outputs.dataset_name}}:/data/dataset.csv:ro" -v "$(pwd)/results:/results:rw" "ghcr.io/timeeval/${{ matrix.algorithm_name }}:latest" execute-algorithm '{"dataInput": "/data/dataset.csv", "dataOutput": "/results/scores.csv", "modelInput": "/results/model.pkl", "modelOutput": "/results/model.pkl", "executionType": "train", "customParameters": {"epochs": 1}}'
 
       - name: Test execution call
-        uses: addnab/docker-run-action@v3
-        with:
-          image: "${{ matrix.algorithm_name }}:${{ github.sha }}"
-          options: -e LOCAL_UID=1000 -e LOCAL_GID=1000 -v "${${{ matrix.algorithm_name }}_dataset_name}:/data/dataset.csv:ro" -v "$(pwd)/results:/results:rw"
-          run: |
-            execute-algorithm '{
-              "dataInput": "/data/dataset.csv", "dataOutput": "/results/scores.csv",
-              "modelInput": "/results/model.pkl", "modelOutput": "/results/model.pkl",
-              "executionType": "execute",
-              "customParameters": {"epochs": 1}
-            }'
+        run: |
+          docker run --rm -e LOCAL_UID=1000 -e LOCAL_GID=1000 -v "${{ steps.dataset.outputs.dataset_name}}:/data/dataset.csv:ro" -v "$(pwd)/results:/results:rw" "ghcr.io/timeeval/${{ matrix.algorithm_name }}:latest" execute-algorithm '{"dataInput": "/data/dataset.csv", "dataOutput": "/results/scores.csv", "modelInput": "/results/model.pkl", "modelOutput": "/results/model.pkl", "executionType": "execute", "customParameters": {"epochs": 1}}'
 
       - name: Validate output
         run: |
