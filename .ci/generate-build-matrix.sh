@@ -48,8 +48,9 @@ fi
 
 # filter changes: remove non-algorithm-files/-folders and allow grep to find nothing (exit code 1)
 changed_algos=$( echo "$changes_in_basedir" | sort | uniq | grep -x -v -E "${ignore_pattern}" || [[ $? == 1 ]] )
-# filter changes: remove non-existing algos (e.g. when branch is not up-to-date with default branch or an algorithm was removed)
-changed_algos=$( echo "$changed_algos" | while read -r f; do [[ -d "$folder/$f" ]] && echo "$f" || true; done )
+# filter changes: remove non-existing algos (e.g. when branch is not up-to-date with default branch or an algorithm was removed) and
+# algorithms that we are not allowed to share (no image to build)
+changed_algos=$( echo "$changed_algos" | while read -r f; do [[ -d "$folder/$f" ]] && [[ ! -f "$folder/$f/AVAILABILITY.md" ]] && echo "$f" || true; done )
 
 if [[ -z "$changed_algos" ]]; then
   echoerr "No algorithm changed!"

@@ -5,7 +5,7 @@
 |||
 | :--- | :--- |
 | Citekey | Unpublished |
-| Source Code | Leo and Ben, based on code from Paul and Themis |
+| Source Code | own, based on NormA from Paul and Themis |
 | Learning type | unsupervised |
 | Input dimensionality | multivariate |
 |||
