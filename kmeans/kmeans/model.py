@@ -30,7 +30,7 @@ class KMeansAD(BaseEstimator, OutlierMixin):
         unwindowed_length = self.stride * (scores.shape[0] - 1) + self.window_size + self.padding_length
         mapped = np.full(unwindowed_length, fill_value=np.nan)
 
-        # only interate over window intersections
+        # only iterate over window intersections
         indices = np.unique(np.r_[begins, ends])
         for i, j in zip(indices[:-1], indices[1:]):
             window_indices = np.flatnonzero((begins <= i) & (j-1 < ends))
