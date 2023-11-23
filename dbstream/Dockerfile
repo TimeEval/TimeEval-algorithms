@@ -1,6 +1,7 @@
-FROM registry.gitlab.hpi.de/akita/i/r4-base:0.2.5
+FROM ghcr.io/timeeval/r4-base:0.3.0
 
 LABEL maintainer="richard.schulz@student.hpi.de"
+LABEL org.opencontainers.image.licenses=MIT
 
 # install stream and other libraries and cleanup afterwards
 RUN set -eux; \

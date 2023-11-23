@@ -2,7 +2,7 @@
   "title": "DAMP",
   "description": "Implementation of https://www.cs.ucr.edu/~eamonn/DAMP_long_version.pdf",
   "inputDimensionality": "multivariate",
-  "version": "0.1",
+  "version": "0.3.0",
   "authors": "Yue Lu, Renjie Wu, Abdullah Mueen, Maria A. Zuluaga, Eamonn Keogh",
   "language": "Python",
   "type": "Detector",

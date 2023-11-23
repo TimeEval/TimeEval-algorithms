@@ -2,7 +2,7 @@
   "title": "AutoEncoder (AE)",
   "description": "Implementation of https://dl.acm.org/doi/10.1145/2689746.2689747",
   "inputDimensionality": "multivariate",
-  "version": "0.1",
+  "version": "0.3.0",
   "authors": "Mayu Sakurada, Takehisa Yairi",
   "language": "Python",
   "type": "Detector",
