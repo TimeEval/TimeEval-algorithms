@@ -1,13 +1,13 @@
-FROM ghcr.io/timeeval/r4-base:0.3.0
+FROM ghcr.io/timeeval/r4-base
 
 LABEL maintainer="richard.schulz@student.hpi.de"
 LABEL org.opencontainers.image.licenses=MIT
 
 # install stream and other libraries and cleanup afterwards
 RUN set -eux; \
-    R -e 'install.packages("BBmisc")';\
-    R -e 'install.packages("stream")';\
-    find /usr/lib/R/library -depth \
+    R -e 'install.packages("BBmisc", version="1.12")';\
+    R -e 'install.packages("stream", version="1.5.1")';\
+    find /opt/R/${R_VERSION}/lib/R/library -depth \
       \( \
         -type d -a \( -name doc -o -name html \) \
       \) -exec rm -rf '{}' +; \
