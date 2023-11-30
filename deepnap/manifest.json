@@ -2,7 +2,7 @@
   "title": "DeepNAP",
   "description": "Implementation of https://doi.org/10.1016/j.ins.2018.05.020",
   "inputDimensionality": "multivariate",
-  "version": "0.1",
+  "version": "0.3.0",
   "authors": "Jingchu Liu, Bhaskar Krishnamachari, Sheng Zhou, Zhisheng Niu",
   "language": "Python",
   "type": "Detector",

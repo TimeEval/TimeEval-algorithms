@@ -2,7 +2,7 @@
     "title": "Donut",
     "description": "Implementation of https://doi.org/10.1145/3178876.3185996",
     "inputDimensionality": "univariate",
-    "version": "0.1",
+    "version": "0.3.0",
     "authors": "Haowen Xu, Wenxiao Chen, Nengwen Zhao, Zeyan Li, Jiahao Bu, Zhihan Li, Ying Liu, Youjian Zhao, Dan Pei, Yang Feng, Jie Chen, Zhaogang Wang, Honglin Qiao",
     "language": "Python",
     "type": "Detector",

@@ -2,7 +2,7 @@
     "title": "Normal Baseline",
     "description": "Baseline that returns a score of all zeros",
     "inputDimensionality": "multivariate",
-    "version": "0.1",
+    "version": "0.3.0",
     "authors": "",
     "language": "Python",
     "type": "Detector",
