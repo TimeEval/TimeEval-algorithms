@@ -1,6 +1,7 @@
-FROM registry.gitlab.hpi.de/akita/i/r4-base:0.2.5
+FROM ghcr.io/timeeval/r4-base:0.3.1
 
 LABEL maintainer="richard.schulz@student.hpi.de"
+LABEL org.opencontainers.image.licenses=MIT
 
 # install R-install requirements
 RUN set -eux; \
@@ -11,11 +12,11 @@ RUN set -eux; \
 
 # install PST, TraMineR and other libraries and cleanup afterwards
 RUN set -eux; \
-    R -e 'install.packages("TraMineR"); library("TraMineR")'; \
-    R -e 'install.packages("PST"); library("PST")'; \
-    R -e 'install.packages("arules"); library("arules")'; \
-    R -e 'install.packages("BBmisc"); library("BBmisc")';\
-    find /usr/lib/R/library -depth \
+    R -e 'install_version("TraMineR", version="2.2"); library("TraMineR")'; \
+    R -e 'install_version("PST", version="0.94"); library("PST")'; \
+    R -e 'install_version("arules", version="1.7"); library("arules")'; \
+    R -e 'install_version("BBmisc", version="1.13"); library("BBmisc")';\
+    find /opt/R/${R_VERSION}/lib/R/library -depth \
       \( \
         -type d -a \( -name doc -o -name html \) \
       \) -exec rm -rf '{}' +; \
