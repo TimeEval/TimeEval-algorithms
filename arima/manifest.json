@@ -2,7 +2,7 @@
     "title": "ARIMA",
     "description": "Anomoly detector using ARIMA estimation and (default: euclidean) distance function to calculate prediction error as anomaly score",
     "inputDimensionality": "univariate",
-    "version": "1.0",
+    "version": "0.3.0",
     "authors": "Yinchen Wu",
     "language": "Python",
     "type": "Detector",

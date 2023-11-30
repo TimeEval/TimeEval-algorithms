@@ -2,7 +2,7 @@
     "title": "DSPOT",
     "description": "Implementation of https://doi.org/10.1145/3097983.3098144.",
     "inputDimensionality": "univariate",
-    "version": "0.1",
+    "version": "0.3.0",
     "authors": "Alban Siffer, Pierre-Alain Fouque, Alexandre Termier, Christine Largouët",
     "language": "Python",
     "type": "Detector",

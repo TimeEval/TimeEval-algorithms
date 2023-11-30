@@ -1,6 +1,6 @@
 # DeepAnT
 
-Adapted version of the community implementation of DeepAnT from https://gitlab.hpi.de/akita/bp2020fn1/raw-algorithm-collection/-/tree/master/DeepAnT.
+Adapted version of the community implementation of DeepAnT from https://github.com/dev-aadarsh/DeepAnT.
 
 |||
 | :--- | :--- |
