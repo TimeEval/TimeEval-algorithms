@@ -2,7 +2,7 @@
   "title": "DWT-MLEAD",
   "description": "Implementation of http://blogs.gm.fh-koeln.de/ciop/files/2019/01/thillwavelet.pdf.",
   "inputDimensionality": "univariate",
-  "version": "0.1",
+  "version": "0.3.0",
   "authors": "Markus Thill, Wolfgang Konen, and Thomas Bäck",
   "language": "Python",
   "type": "Detector",

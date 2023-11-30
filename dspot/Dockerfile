@@ -1,6 +1,6 @@
 # Separate build image!
 #----------------------------
-FROM registry.gitlab.hpi.de/akita/i/python3-base:0.2.5 as build
+FROM ghcr.io/timeeval/python3-base:0.3.0 as build
 
 # install system dependencies
 RUN set -eux; \
@@ -13,9 +13,10 @@ RUN set -eux; \
 RUN pip install cython pylibspot
 #----------------------------
 
-FROM registry.gitlab.hpi.de/akita/i/python3-base:0.2.5 as base
+FROM ghcr.io/timeeval/python3-base:0.3.0 as base
 
 LABEL maintainer="sebastian.schmidl@hpi.de"
+LABEL org.opencontainers.image.licenses="GPL-3.0"
 
 ENV ALGORITHM_MAIN="/app/algorithm.py"
 
@@ -26,8 +27,8 @@ COPY --from=build /usr/lib/libspot.so /usr/lib/libspot.so
 COPY --from=build /usr/lib/python3/dist-packages/pyspot.py /usr/local/lib/python3.7/site-packages/pyspot.py
 
 # install python dependencies
-COPY requirements.txt .
-RUN pip install -r ./requirements.txt
+COPY requirements.txt /app/
+RUN pip install -r /app/requirements.txt
 
-COPY algorithm.py .
-COPY manifest.json .
+COPY manifest.json /app/
+COPY algorithm.py /app/

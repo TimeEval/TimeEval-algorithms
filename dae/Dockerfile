@@ -1,5 +1,8 @@
 # inherit from the python3-base base image
-FROM registry.gitlab.hpi.de/akita/i/python3-base:0.2.5
+FROM ghcr.io/timeeval/python3-base:0.3.0
+
+LABEL maintainer="sebastian.schmidl@hpi.de"
+LABEL org.opencontainers.image.licenses=MIT
 
 # specify the main entrypoint to your algorithm code
 ENV ALGORITHM_MAIN="/app/algorithm.py"
@@ -8,7 +11,7 @@ ENV ALGORITHM_MAIN="/app/algorithm.py"
 COPY requirements.txt /app/
 RUN pip install -r /app/requirements.txt
 
-# add the algorithm code (in this case only a single file)
-COPY algorithm.py /app/
-
+# add the algorithm code
 COPY model.py /app/
+COPY manifest.json /app/
+COPY algorithm.py /app/

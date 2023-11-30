@@ -2,7 +2,7 @@
   "title": "Bagel",
   "description": "Implementation of https://doi.org/10.1109/PCCC.2018.8710885",
   "inputDimensionality": "univariate",
-  "version": "0.1",
+  "version": "0.3.0",
   "authors": "Zeyan Li, Wenxiao Chen, Dan Pei",
   "language": "Python",
   "type": "Detector",
