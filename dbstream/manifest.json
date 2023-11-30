@@ -2,7 +2,7 @@
     "title": "DBStream",
     "description": "A simple density-based clustering algorithm that assigns data points to micro-clusters with a given radius and implements shared-density-based reclustering.",
     "inputDimensionality": "multivariate",
-    "version": "0.3.0",
+    "version": "1.0",
     "authors": "Michael Hahsler, Matthew Bolanos, John Forrest, Matthias Carnein, Dennis Assenmacher, Dalibor Krleža, Richard Schulz",
     "language": "R",
     "type": "Detector",
