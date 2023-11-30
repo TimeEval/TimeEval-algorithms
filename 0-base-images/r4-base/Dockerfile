@@ -16,6 +16,7 @@ RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen \
 
 ENV LC_ALL en_US.UTF-8
 ENV LANG en_US.UTF-8
+ENV R_VERSION=4.2.0
 
 RUN set -eux; \
     apt-get update; \
@@ -25,17 +26,22 @@ RUN set -eux; \
 
 # Install R
 RUN set -eux; \
-    echo "deb http://cloud.r-project.org/bin/linux/debian buster-cran40/" >> /etc/apt/sources.list; \
-    apt-key adv --keyserver keyserver.ubuntu.com --recv-key 95C0FAF38DB3CCAD0C080A7BDC78B2DDEABC47B7; \
     apt-get update; \
-    apt-get install -y --no-install-recommends -t buster-cran40 r-base r-base-dev; \
+    apt-get install -y --no-install-recommends gdebi; \
+    wget https://cdn.rstudio.com/r/debian-10/pkgs/r-${R_VERSION}_1_amd64.deb; \
+    gdebi -n r-${R_VERSION}_1_amd64.deb; \
+    ln -s /opt/R/${R_VERSION}/bin/R /usr/local/bin/R; \
+    ln -s /opt/R/${R_VERSION}/bin/Rscript /usr/local/bin/Rscript; \
+    /opt/R/${R_VERSION}/bin/R --version; \
+    rm -f r-${R_VERSION}_1_amd64.deb; \
+    apt-get purge -y gdebi && apt-get autoremove -y --purge; \
     apt-get clean; \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/* /usr/share/R/doc/*; \
-    find /usr/lib/R/library -depth \
+    find /opt/R/${R_VERSION}/lib/R/library -depth \
       \( \
         -type d -a \( -name doc -o -name html \) \
       \) -exec rm -rf '{}' +; \
-    find /usr/lib/R/library/translations/* -type d \
+    find /opt/R/${R_VERSION}/lib/R/library/translations/* -type d \
       \( \
           -name en -prune \
           -o -name de -prune \
@@ -43,12 +49,13 @@ RUN set -eux; \
       \) -o -exec rm -rf '{}' +;
 
 # Set default CRAN mirror
-COPY Rprofile.site /etc/R/Rprofile.site
+COPY Rprofile.site /opt/R/${R_VERSION}/lib/R/etc/Rprofile.site
 
 # Install common dependencies
 RUN set -eux; \
     R -e 'install.packages("jsonlite")'; \
-    find /usr/lib/R/library -depth \
+    R -e 'install.packages("remotes")'; \
+    find /opt/R/${R_VERSION}/lib/R/library -depth \
       \( \
         -type d -a \( -name doc -o -name html \) \
       \) -exec rm -rf '{}' +; \

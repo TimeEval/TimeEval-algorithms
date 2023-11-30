@@ -3,3 +3,6 @@ local({
     r["CRAN"] <- "http://cran.r-project.org"
     options(repos=r)
 })
+if(length(find.package("remotes", quiet=TRUE)) != 0) {
+    library("remotes")
+}
