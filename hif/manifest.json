@@ -2,7 +2,7 @@
     "title": "Hybrid Isolation Forest (HIF)",
     "description": "Implementation of https://arxiv.org/abs/1705.03800",
     "inputDimensionality": "multivariate",
-    "version": "0.1",
+    "version": "0.3.0",
     "authors": "Pierre-Franccois Marteau, Saeid Soheily-Khah, Nicolas Bechet",
     "language": "Python",
     "type": "Detector",

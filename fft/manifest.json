@@ -2,7 +2,7 @@
     "title": "FFT",
     "description": "Implementation of https://dl.acm.org/doi/10.5555/1789574.1789615 proudly provided by members of the HPI AKITA project.",
     "inputDimensionality": "univariate",
-    "version": "0.1",
+    "version": "0.3.0",
     "authors": "Faraz Rasheed, Peter Peng, Reda Alhajj, Jon Rokne",
     "language": "Python",
     "type": "Detector",

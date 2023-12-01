@@ -2,7 +2,7 @@
     "title": "HBOS",
     "description": "Implementation of https://citeseerx.ist.psu.edu/viewdoc/citations;jsessionid=2B4E3FB2BB07448253B4D45C3DAC2E95?doi=10.1.1.401.5686.",
     "inputDimensionality": "multivariate",
-    "version": "0.1",
+    "version": "0.3.0",
     "authors": "Markus Goldstein, Andreas Dengel",
     "language": "Python",
     "type": "Detector",

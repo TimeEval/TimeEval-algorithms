@@ -2,7 +2,7 @@
   "title": "ImageEmbeddingCAE",
   "description": "Implementation of http://arxiv.org/abs/2009.02040",
   "inputDimensionality": "univariate",
-  "version": "0.1",
+  "version": "0.3.0",
   "authors": "Gabriel Rodriguez Garcia, Gabriel Michau, Melanie Ducoffe, Jayant Sen Gupta",
   "language": "Python",
   "type": "Detector",

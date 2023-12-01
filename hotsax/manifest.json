@@ -2,7 +2,7 @@
     "title": "HOT SAX",
     "description": "Implementation of https://doi.org/10.1109/ICDM.2005.79.",
     "inputDimensionality": "univariate",
-    "version": "0.1",
+    "version": "0.3.0",
     "authors": "Eamonn Keogh, Jessica Lin, Ada Fu",
     "language": "Python",
     "type": "Detector",

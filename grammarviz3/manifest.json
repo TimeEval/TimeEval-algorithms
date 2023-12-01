@@ -2,7 +2,7 @@
     "title": "GrammarViz",
     "description": "Implementation of https://doi.org/10.1145/3051126.",
     "inputDimensionality": "univariate",
-    "version": "0.1",
+    "version": "0.3.0",
     "authors": "Pavel Senin, Jessica Lin, Xing Wang, Tim Oates, Sunil Gandhi, Arnold P. Boedihardjo, Crystal Chen, Susan Frankenstein",
     "language": "Java",
     "type": "Detector",

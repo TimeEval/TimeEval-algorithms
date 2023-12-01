@@ -3,7 +3,7 @@
     "description": "A generic windowed forecasting method using random forest regression (requested by RollsRoyce). The forecasting error is used as anomaly score.",
     "inputDimensionality": "univariate",
     "learningType": "semi-supervised",
-    "version": "0.1",
+    "version": "0.3.0",
     "authors": "Sebastian Schmidl",
     "language": "Python",
     "type": "Detector",

@@ -2,7 +2,7 @@
     "title": "IF-LOF",
     "description": "Isolation Forest - Local Outlier Factor: Uses a 3 step process - Building an isolation forest, pruning the forest with a computed treshhold, and applies local outlier factor to the resulting dataset",
     "inputDimensionality": "multivariate",
-    "version": "0.1",
+    "version": "0.3.0",
     "authors": "Cheng, Zhangyu and Zou, Chengming and Dong, Jianwei",
     "type": "Detector",
     "language": "Python",
