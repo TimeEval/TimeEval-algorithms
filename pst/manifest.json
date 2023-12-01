@@ -2,7 +2,7 @@
     "title": "PST",
     "description": "Implementation of a modified version (with preceding discretization) of https://doi.org/10.1137/1.9781611972764.9.",
     "inputDimensionality": "univariate",
-    "version": "1.0",
+    "version": "0.3.0",
     "authors": "Pei Sun, Sanjay Chawla, Bavani Arunasalam",
     "language": "R",
     "type": "Detector",
