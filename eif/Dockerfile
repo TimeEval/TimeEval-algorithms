@@ -10,8 +10,8 @@ ENV PATH="/opt/venv/bin:$PATH"
 
 # build and install dependencies
 RUN pip install cython
-COPY requirements.txt .
-RUN pip install -r ./requirements.txt
+COPY requirements.txt /app/
+RUN pip install -r /app/requirements.txt
 #----------------------------
 
 # inherit from the python3-base base image

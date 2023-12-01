@@ -1,4 +1,4 @@
 numpy
 cython
 pathlib
-eif
+eif==2.0.2
