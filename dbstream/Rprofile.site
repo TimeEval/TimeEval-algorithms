@@ -1,0 +1,9 @@
+local({
+    r <- getOption("repos")
+    r["CRAN"] <- "https://cloud.r-project.org"
+    options(repos=r)
+    options(timeout=600)
+})
+if(length(find.package("remotes", quiet=TRUE)) != 0) {
+    library("remotes")
+}

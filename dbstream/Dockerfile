@@ -3,10 +3,12 @@ FROM ghcr.io/timeeval/r4-base:0.3.1
 LABEL maintainer="richard.schulz@student.hpi.de"
 LABEL org.opencontainers.image.licenses=MIT
 
+COPY Rprofile.site /opt/R/${R_VERSION}/lib/R/etc/Rprofile.site
+
 # install stream and other libraries and cleanup afterwards
 RUN set -eux; \
-    R -e 'options(timeout=600); install_version("BBmisc", version="1.12"); library("BBmisc")';\
-    R -e 'options(timeout=600); install_version("stream", version="1.5.1"); library("stream")';\
+    R -e 'install_version("BBmisc", version="1.12"); library("BBmisc")';\
+    R -e 'install_version("stream", version="1.5.1"); library("stream")';\
     find /opt/R/${R_VERSION}/lib/R/library -depth \
       \( \
         -type d -a \( -name doc -o -name html \) \
