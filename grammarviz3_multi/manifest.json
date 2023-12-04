@@ -2,7 +2,7 @@
     "title": "GrammarViz-Multivariate",
     "description": "Multivariate extension of the GrammarViz3 algorithm.",
     "inputDimensionality": "multivariate",
-    "version": "0.1",
+    "version": "0.3.0",
     "authors": "Yannik Schröder, Niklas Köhnecke",
     "language": "Java",
     "type": "Detector",

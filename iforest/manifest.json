@@ -2,7 +2,7 @@
     "title": "Isolation Forest (iForest)",
     "description": "Implementation of https://doi.org/10.1145/2133360.2133363.",
     "inputDimensionality": "multivariate",
-    "version": "0.1",
+    "version": "0.3.0",
     "authors": "Fei Tony Liu and Kai Ming Ting and Zhi-Hua Zhou",
     "language": "Python",
     "type": "Detector",
