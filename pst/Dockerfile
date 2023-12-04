@@ -1,4 +1,4 @@
-FROM ghcr.io/timeeval/r4-base:0.3.1
+FROM ghcr.io/timeeval/r4-base:0.3.2
 
 LABEL maintainer="richard.schulz@student.hpi.de"
 LABEL org.opencontainers.image.licenses=MIT
@@ -12,10 +12,10 @@ RUN set -eux; \
 
 # install PST, TraMineR and other libraries and cleanup afterwards
 RUN set -eux; \
-    R -e 'options(timeout=600); install_version("TraMineR", version="2.2"); library("TraMineR")'; \
-    R -e 'options(timeout=600); install_version("PST", version="0.94"); library("PST")'; \
-    R -e 'options(timeout=600); install_version("arules", version="1.7"); library("arules")'; \
-    R -e 'options(timeout=600); install_version("BBmisc", version="1.13"); library("BBmisc")';\
+    R -e 'install_version("TraMineR", version="2.2"); library("TraMineR")'; \
+    R -e 'install_version("PST", version="0.94"); library("PST")'; \
+    R -e 'install_version("arules", version="1.7"); library("arules")'; \
+    R -e 'install_version("BBmisc", version="1.13"); library("BBmisc")';\
     find /opt/R/${R_VERSION}/lib/R/library -depth \
       \( \
         -type d -a \( -name doc -o -name html \) \
