@@ -9,7 +9,7 @@ RUN python -m venv --system-site-packages /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
 
 # build and install dependencies
-RUN pip install cython
+RUN pip install cython==0.29.36
 COPY requirements.txt /app/
 RUN pip install -r /app/requirements.txt
 #----------------------------
