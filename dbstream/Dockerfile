@@ -1,4 +1,4 @@
-FROM ghcr.io/timeeval/r4-base:0.3.1
+FROM ghcr.io/timeeval/r4-base:0.3.2
 
 LABEL maintainer="richard.schulz@student.hpi.de"
 LABEL org.opencontainers.image.licenses=MIT
