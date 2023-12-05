@@ -2,7 +2,7 @@
   "title": "Hybrid KNN",
   "description": "Implementation of https://www.hindawi.com/journals/cin/2017/8501683/",
   "inputDimensionality": "multivariate",
-  "version": "0.1",
+  "version": "0.3.0",
   "authors": "Hongchao Song, Zhuqing Jiang, Aidong Men, Bo Yang",
   "language": "Python",
   "type": "Detector",

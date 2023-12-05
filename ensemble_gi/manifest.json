@@ -2,7 +2,7 @@
     "title": "Ensemble GI",
     "description": "Implementation of https://doi.org/10.5441/002/edbt.2020.09",
     "inputDimensionality": "univariate",
-    "version": "0.1",
+    "version": "0.3.0",
     "authors": "Yifeng Gao, Jessica Lin, Constantin Brif",
     "language": "Python",
     "type": "Detector",

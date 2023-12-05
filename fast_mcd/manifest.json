@@ -2,7 +2,7 @@
     "title": "Fast-MCD",
     "description": "Implementation of https://doi.org/10.2307/1270566",
     "inputDimensionality": "multivariate",
-    "version": "0.1",
+    "version": "0.3.0",
     "authors": "Peter J. Rousseeuw, Katrien Van Driessen",
     "language": "Python",
     "type": "Detector",

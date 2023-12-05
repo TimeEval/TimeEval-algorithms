@@ -2,7 +2,7 @@
     "title": "Extended Isolation Forest (EIF)",
     "description": "Extenstion to the basic isolation forest. Implementation of https://doi.org/10.1109/TKDE.2019.2947676. Code from https://github.com/sahandha/eif",
     "inputDimensionality": "multivariate",
-    "version": "0.1",
+    "version": "0.3.0",
     "authors": "S. Hariri, M. Carrasco Kind, R. J. Brunner",
     "type": "Detector",
     "language": "Python",

@@ -2,7 +2,7 @@
     "title": "HealthESN",
     "description": "Implementation of https://doi.org/10.1007/s00521-018-3747-z",
     "inputDimensionality": "multivariate",
-    "version": "0.1",
+    "version": "0.3.0",
     "authors": "Qing Chen, Anguo Zhang, Tingwen Huang, Qianping He, Yongduan Song",
     "language": "Python",
     "type": "Detector",

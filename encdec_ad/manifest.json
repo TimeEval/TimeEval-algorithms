@@ -2,7 +2,7 @@
   "title": "EncDec-AD",
   "description": "Implementation of https://arxiv.org/pdf/1607.00148.pdf",
   "inputDimensionality": "multivariate",
-  "version": "0.1",
+  "version": "0.3.0",
   "authors": "Pankaj Malhotra, Anusha Ramakrishnan, Gaurangi Anand, Lovekesh Vig, Puneet Agarwal, Gautam Shroff",
   "language": "Python",
   "type": "Detector",
