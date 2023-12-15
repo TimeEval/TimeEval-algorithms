@@ -1,12 +1,25 @@
-FROM gitlab.hpi.de/akita/dependency_proxy/containers/numenta/nupic:latest as numenta
+FROM ghcr.io/timeeval/python2-base:0.3.0 as build
 
-FROM registry.gitlab.hpi.de/akita/i/python2-base:0.2.5 as timeeval
+RUN set -eux; \
+    apt-get update; \
+    apt-get install -y --no-install-recommends build-essential; \
+    apt-get clean; \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+RUN pip install nupic
+
+# FROM ghcr.io/timeeval/python2-base:0.3.0 as timeeval
 
 LABEL maintainer="phillip.wenig@hpi.de"
+LABEL org.opencontainers.image.licenses="GPL-3.0"
 
 ENV ALGORITHM_MAIN="/app/algorithm.py"
 
-COPY --from=numenta /usr/local/lib/python2.7/dist-packages /usr/local/lib/python2.7/site-packages
+# COPY --from=build /usr/local/lib/python2.7/site-packages /usr/local/lib/python2.7/site-packages
+# RUN pip install nupic
+
+RUN pip install python-dateutil==2.5.0
 
 COPY ./htm /app/htm
+COPY manifest.json /app/
 COPY algorithm.py /app/

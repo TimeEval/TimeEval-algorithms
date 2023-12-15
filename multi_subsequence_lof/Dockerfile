@@ -1,6 +1,7 @@
-FROM registry.gitlab.hpi.de/akita/i/pyod:0.2.5
+FROM ghcr.io/timeeval/pyod:0.3.0
 
 LABEL maintainer="sebastian.schmidl@hpi.de"
+LABEL org.opencontainers.image.licenses=MIT
 
 ENV ALGORITHM_MAIN="/app/algorithm.py"
 
@@ -8,4 +9,5 @@ ENV ALGORITHM_MAIN="/app/algorithm.py"
 COPY requirements.txt /app/
 RUN pip install -r /app/requirements.txt
 
-COPY algorithm.py .
+COPY manifest.json /app/
+COPY algorithm.py /app/

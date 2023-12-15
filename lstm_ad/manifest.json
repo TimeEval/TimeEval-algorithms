@@ -2,7 +2,7 @@
   "title": "LSTM-AD",
   "description": "Implementation of https://www.elen.ucl.ac.be/Proceedings/esann/esannpdf/es2015-56.pdf",
   "inputDimensionality": "multivariate",
-  "version": "0.1",
+  "version": "0.3.0",
   "authors": "Pankaj Malhotra, Lovekesh Vig, Gautam Shroff, Puneet Agarwal",
   "language": "Python",
   "type": "Detector",

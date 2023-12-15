@@ -2,7 +2,7 @@
   "title": "MSCRED",
   "description": "Implementation of https://doi.org/10.1609/aaai.v33i01.33011409",
   "inputDimensionality": "multivariate",
-  "version": "0.1",
+  "version": "0.3.0",
   "authors": "Chuxu Zhang, Dongjin Song, Yuncong Chen, Xinyang Feng, Cristian Lumezanu, Wei Cheng, Jingchao Ni, Bo Zong, Haifeng Chen, Nitesh V. Chawla",
   "language": "Python",
   "type": "Detector",

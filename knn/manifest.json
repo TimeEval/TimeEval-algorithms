@@ -2,7 +2,7 @@
     "title": "KNN",
     "description": "Implementation of https://doi.org/10.1145/342009.335437.",
     "inputDimensionality": "multivariate",
-    "version": "0.1",
+    "version": "0.3.0",
     "authors": "Sridhar Ramaswamy,Rajeev Rastogi, Kyuseok Shim",
     "language": "Python",
     "type": "Detector",

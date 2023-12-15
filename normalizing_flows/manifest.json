@@ -2,7 +2,7 @@
   "title": "Normalizing Flows",
   "description": "Implementation of https://arxiv.org/abs/1912.09323",
   "inputDimensionality": "multivariate",
-  "version": "0.1",
+  "version": "0.3.0",
   "authors": "Artem Ryzhikov, Maxim Borisyak, Andrey Ustyuzhanin, Denis Derkach",
   "language": "Python",
   "type": "Detector",

@@ -2,7 +2,7 @@
     "title": "LSTM-VAE",
     "description": "self implementation of: https://ieeexplore.ieee.org/document/8279425",
     "inputDimensionality": "univariate",
-    "version": "0.1",
+    "version": "0.3.0",
     "authors": "Siddeshkanth Logonathan",
     "learningType": "Semi-Supervised",
     "language": "Python",

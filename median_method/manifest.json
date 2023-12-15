@@ -2,7 +2,7 @@
     "title": "MedianMethod",
     "description": "Implementation of https://doi.org/10.1007/s10115-006-0026-6",
     "inputDimensionality": "univariate",
-    "version": "0.1",
+    "version": "0.3.0",
     "authors": "",
     "language": "Python",
     "type": "Detector",
