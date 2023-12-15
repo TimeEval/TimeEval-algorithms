@@ -1,5 +1,10 @@
 FROM ghcr.io/timeeval/python2-base:0.3.0 as build
 
+LABEL maintainer="phillip.wenig@hpi.de"
+LABEL org.opencontainers.image.licenses="GPL-3.0"
+
+ENV ALGORITHM_MAIN="/app/algorithm.py"
+
 RUN set -eux; \
     apt-get update; \
     apt-get install -y --no-install-recommends build-essential; \
@@ -8,16 +13,7 @@ RUN set -eux; \
 
 RUN pip install nupic
 
-# FROM ghcr.io/timeeval/python2-base:0.3.0 as timeeval
-
-LABEL maintainer="phillip.wenig@hpi.de"
-LABEL org.opencontainers.image.licenses="GPL-3.0"
-
-ENV ALGORITHM_MAIN="/app/algorithm.py"
-
-# COPY --from=build /usr/local/lib/python2.7/site-packages /usr/local/lib/python2.7/site-packages
-# RUN pip install nupic
-
+# overwrite certain library versions
 RUN pip install python-dateutil==2.5.0
 
 COPY ./htm /app/htm
