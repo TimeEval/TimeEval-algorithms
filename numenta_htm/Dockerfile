@@ -1,4 +1,4 @@
-FROM ghcr.io/timeeval/python2-base:0.3.0 as build
+FROM ghcr.io/timeeval/python2-base:0.3.0
 
 LABEL maintainer="phillip.wenig@hpi.de"
 LABEL org.opencontainers.image.licenses="GPL-3.0"

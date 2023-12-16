@@ -1,4 +1,4 @@
-# SAND (unsupervised subsequence anomaly detection in data streams.))
+# SAND (unsupervised subsequence anomaly detection in data streams.)
 
 > **Restricted Access!!**
 

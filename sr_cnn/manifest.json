@@ -2,7 +2,7 @@
   "title": "SR-CNN",
   "description": "Implementation of https://doi.org/10.1145/3292500.3330680",
   "inputDimensionality": "univariate",
-  "version": "0.1",
+  "version": "0.3.0",
   "authors": "Hansheng Ren, Bixiong Xu, Yujing Wang, Chao Yi, Congrui Huang, Xiaoyu Kou, Tony Xing, Mao Yang, Jie Tong, Qi Zhang",
   "language": "Python",
   "type": "Detector",

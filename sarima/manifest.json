@@ -2,7 +2,7 @@
     "title": "SARIMA",
     "description": "Implementation of SARIMA method described in https://milets18.github.io/papers/milets18_paper_19.pdf.",
     "inputDimensionality": "univariate",
-    "version": "0.1",
+    "version": "0.3.0",
     "authors": "Sebastian Schmidl",
     "language": "Python",
     "type": "Detector",

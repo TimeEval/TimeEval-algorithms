@@ -3,7 +3,7 @@
     "description": "An ensemble of multiple multi-output random forest regressors based on different feature subsets (requested by RollsRoyce). The forecasting error is used as anomaly score.",
     "inputDimensionality": "multivariate",
     "learningType": "semi-supervised",
-    "version": "0.1",
+    "version": "0.3.0",
     "authors": "Sebastian Schmidl",
     "language": "Python",
     "type": "Detector",

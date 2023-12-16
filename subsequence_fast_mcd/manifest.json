@@ -2,7 +2,7 @@
     "title": "Subsequence Fast-MCD",
     "description": "Implementation of https://doi.org/10.2307/1270566 with sliding windows as input",
     "inputDimensionality": "univariate",
-    "version": "0.1",
+    "version": "0.3.0",
     "authors": "Sebastian Schmidl",
     "language": "Python",
     "type": "Detector",

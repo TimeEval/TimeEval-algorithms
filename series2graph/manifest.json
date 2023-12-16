@@ -2,7 +2,7 @@
     "title": "Series2Graph",
     "description": "Implementation of https://doi.org/10.14778/3407790.3407792.",
     "inputDimensionality": "univariate",
-    "version": "0.1",
+    "version": "0.3.0",
     "authors": "Paul Boniol, Themis Palpanas, Mohammed Meftah, Emmanuel Remy",
     "language": "Python",
     "type": "Detector",

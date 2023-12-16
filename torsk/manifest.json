@@ -2,7 +2,7 @@
     "title": "Torsk",
     "description": "Implementation of http://arxiv.org/abs/1909.01709",
     "inputDimensionality": "multivariate",
-    "version": "0.1",
+    "version": "0.3.0",
     "authors": "Niklas Heim, James E. Avery",
     "language": "Python",
     "type": "Detector",

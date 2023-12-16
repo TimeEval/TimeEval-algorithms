@@ -2,7 +2,7 @@
     "title": "PCI",
     "description": "Implementation of https://doi.org/10.1155/2014/879736",
     "inputDimensionality": "univariate",
-    "version": "0.1",
+    "version": "0.3.0",
     "authors": "Yufeng Yu, Yuelong Zhu, Shijin Li, Dingsheng Wan",
     "language": "Python",
     "type": "Detector",

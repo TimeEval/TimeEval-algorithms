@@ -2,7 +2,7 @@
   "title": "OceanWNN",
   "description": "Implementation of https://doi.org/10.1016/j.oceaneng.2019.106129",
   "inputDimensionality": "univariate",
-  "version": "0.1",
+  "version": "0.3.0",
   "authors": "Yi Wang, Linsheng Han, Wei Liu, Shujia Yang, Yanbo Gao",
   "language": "Python",
   "type": "Detector",
