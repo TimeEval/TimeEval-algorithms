@@ -2,7 +2,7 @@
   "title": "mSTAMP",
   "description": "Implementation of http://www.cs.ucr.edu/%7Eeamonn/Motif_Discovery_ICDM.pdf",
   "inputDimensionality": "multivariate",
-  "version": "0.1",
+  "version": "0.3.0",
   "authors": "Chin-Chia Michael Yeh, Nickolas Kavantzas, and Eamonn Keogh",
   "language": "Python",
   "type": "Detector",

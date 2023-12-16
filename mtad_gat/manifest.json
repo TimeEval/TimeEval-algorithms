@@ -2,7 +2,7 @@
   "title": "MTAD-GAT",
   "description": "Implementation of http://arxiv.org/abs/2009.02040",
   "inputDimensionality": "multivariate",
-  "version": "0.1",
+  "version": "0.3.0",
   "authors": "Hang Zhao, Yujing Wang, Juanyong Duan, Congrui Huang, Defu Cao, Yunhai Tong, Bixiong Xu, Jing Bai, Jie Tong, Qi Zhang",
   "language": "Python",
   "type": "Detector",

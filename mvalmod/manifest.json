@@ -2,7 +2,7 @@
     "title": "mVALMOD",
     "description": "Implementation of https://doi.org/10.1007/s10618-020-00685-w summed up for every channel.",
     "inputDimensionality": "multivariate",
-    "version": "0.1",
+    "version": "0.3.0",
     "authors": "Michele Linardi, Yan Zhu, Themis Palpanas, Eamonn Keogh",
     "language": "R",
     "type": "Detector",

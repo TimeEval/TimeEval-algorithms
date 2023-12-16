@@ -2,7 +2,7 @@
     "title": "MultiHMM",
     "description": "Implementation of https://doi.org/10.1016/j.asoc.2017.06.035",
     "inputDimensionality": "multivariate",
-    "version": "0.1",
+    "version": "0.3.0",
     "authors": "Jinbo Li, Witold Pedrycz, Iqbal Jamal",
     "language": "Python",
     "type": "Detector",

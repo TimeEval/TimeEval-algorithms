@@ -2,7 +2,7 @@
     "title": "NoveltySVR",
     "description": "Implementation of https://doi.org/10.1145/956750.956828.",
     "inputDimensionality": "univariate",
-    "version": "0.1",
+    "version": "0.3.0",
     "authors": "Junshui Ma and Simon Perkins",
     "language": "Python",
     "type": "Detector",

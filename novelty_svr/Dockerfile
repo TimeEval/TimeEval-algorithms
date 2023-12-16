@@ -1,13 +1,15 @@
-FROM registry.gitlab.hpi.de/akita/i/python3-base:0.2.5
+FROM ghcr.io/timeeval/python3-base:0.3.0
+
 
 LABEL maintainer="sebastian.schmidl@hpi.de"
+LABEL org.opencontainers.image.licenses="GPL-3.0"
 
 ENV ALGORITHM_MAIN="/app/algorithm.py"
 
 # install python dependencies
-COPY requirements.txt .
-RUN pip install -r ./requirements.txt
+COPY requirements.txt /app/
+RUN pip install -r /app/requirements.txt
 
-COPY model.py .
-COPY algorithm.py .
-COPY manifest.json .
+COPY model.py /app/
+COPY manifest.json /app/
+COPY algorithm.py /app/

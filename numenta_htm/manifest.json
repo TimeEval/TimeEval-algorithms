@@ -2,7 +2,7 @@
     "title": "NumentaHTM",
     "description": "Implementation of https://doi.org/10.1016/j.neucom.2017.04.070",
     "inputDimensionality": "univariate",
-    "version": "0.1",
+    "version": "0.3.0",
     "authors": "Subutai Ahmad, Alexander Lavin, Scott Purdy, Zuha Agha",
     "language": "Python",
     "type": "Detector",

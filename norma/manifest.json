@@ -2,7 +2,7 @@
     "title": "NormA",
     "description": "Improved algorithm based on NorM (https://doi.org/10.1109/ICDE48307.2020.00182).",
     "inputDimensionality": "univariate",
-    "version": "0.1",
+    "version": "0.3.0",
     "authors": "Paul Boniol, Michele Linardi, Federico Roncallo, Themis Palpanas",
     "language": "Python",
     "type": "Detector",

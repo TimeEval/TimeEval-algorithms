@@ -3,3 +3,4 @@ pandas
 scikit-learn
 pomegranate==0.14.5
 fuzzy-c-means==1.2.4
+jax==0.2.10

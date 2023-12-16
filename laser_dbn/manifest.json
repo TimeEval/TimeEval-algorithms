@@ -2,7 +2,7 @@
     "title": "LaserDBN",
     "description": "Implementation of https://doi.org/10.1007/978-3-662-53806-7_3",
     "inputDimensionality": "multivariate",
-    "version": "0.1",
+    "version": "0.3.0",
     "authors": "Alberto Ogbechie, Javier Díaz-Rozo, Pedro Larrañaga, Concha Bielza",
     "language": "Python",
     "type": "Detector",
