@@ -2,7 +2,7 @@
     "title": "Subsequence LOF",
     "description": "LOF on sliding windows to detect subsequence anomalies.",
     "inputDimensionality": "univariate",
-    "version": "0.1",
+    "version": "0.3.0",
     "authors": "Sebastian Schmidl",
     "language": "Python",
     "type": "Detector",

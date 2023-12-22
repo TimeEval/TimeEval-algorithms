@@ -2,7 +2,7 @@
   "title": "OmniAnomaly",
   "description": "Implementation of https://doi.org/10.1145/3292500.3330672",
   "inputDimensionality": "multivariate",
-  "version": "0.1",
+  "version": "0.3.0",
   "authors": "Ya Su, Youjian Zhao, Chenhao Niu, Rong Liu, Wei Sun, Dan Pei",
   "language": "Python",
   "type": "Detector",

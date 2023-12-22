@@ -2,7 +2,7 @@
     "title": "STOMP",
     "description": "Implementation of https://doi.org/10.1109/ICDM.2016.0085.",
     "inputDimensionality": "univariate",
-    "version": "0.1",
+    "version": "0.3.0",
     "authors": "Yan Zhu, Zachary Zimmerman, Nader Shakibay Senobari, Chin-Chia Michael Yeh, Gareth Funning, Abdullah Mueen, Philip Brisk, Eamonn Keogh",
     "language": "R",
     "type": "Detector",

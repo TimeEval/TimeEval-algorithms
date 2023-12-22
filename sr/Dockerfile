@@ -1,4 +1,4 @@
-FROM registry.gitlab.hpi.de/akita/i/python3-base:0.2.5 as build
+FROM ghcr.io/timeeval/python3-base:0.3.0 as build
 
 COPY anomalydetector /app/anomalydetector
 
@@ -11,11 +11,13 @@ RUN set -eux; \
 RUN pip install Cython
 RUN cd /app/anomalydetector/; python setup.py install
 
-FROM registry.gitlab.hpi.de/akita/i/python3-base:0.2.5 as eval
+FROM ghcr.io/timeeval/python3-base:0.3.0 as eval
 
 LABEL maintainer="phillip.wenig@hpi.de"
+LABEL org.opencontainers.image.licenses=MIT
 
 ENV ALGORITHM_MAIN="/app/algorithm.py"
 
 COPY --from=build /usr/local/lib/python3.7/site-packages /usr/local/lib/python3.7/site-packages
+COPY manifest.json /app/
 COPY algorithm.py /app/

@@ -2,7 +2,7 @@
     "title": "PhaseSpace-SVM",
     "description": "Implementation of https://doi.org/10.1109/IJCNN.2003.1223670.",
     "inputDimensionality": "univariate",
-    "version": "0.1",
+    "version": "0.3.0",
     "authors": "Junshui Ma and Simon Perkins",
     "language": "Python",
     "type": "Detector",

@@ -2,7 +2,7 @@
   "title": "TAnoGan",
   "description": "Implementation of http://arxiv.org/abs/2008.09567",
   "inputDimensionality": "multivariate",
-  "version": "0.1",
+  "version": "0.3.0",
   "authors": "Md Abul Bashar, Richi Nayak",
   "language": "Python",
   "type": "Detector",

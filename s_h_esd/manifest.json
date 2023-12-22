@@ -2,7 +2,7 @@
   "title": "S-H-ESD (Twitter)",
   "description": "Implementation of http://citeseerx.ist.psu.edu/viewdoc/summary;jsessionid=003008C2CF2373B9C332D4A1DB035515?doi=10.1.1.66.299",
   "inputDimensionality": "univariate",
-  "version": "0.1",
+  "version": "0.3.0",
   "authors": "Jordan Hochenbaum, Owen S. Vallis, Arun Kejarival",
   "language": "Python",
   "type": "Detector",

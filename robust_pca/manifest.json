@@ -2,7 +2,7 @@
     "title": "RobustPCA",
     "description": "Implementation of https://arxiv.org/pdf/1801.01571.pdf",
     "inputDimensionality": "multivariate",
-    "version": "0.1",
+    "version": "0.3.0",
     "authors": "Randy Paffenroth, Kathleen Kay, Les Servi",
     "language": "Python",
     "type": "Detector",

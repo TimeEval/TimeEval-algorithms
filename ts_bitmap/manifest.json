@@ -2,7 +2,7 @@
     "title": "TSBitmap",
     "description": "Implementation of https://dl.acm.org/doi/abs/10.5555/1116877.1116907",
     "inputDimensionality": "univariate",
-    "version": "0.1",
+    "version": "0.3.0",
     "authors": "Li Wei, Nitin Kumar, Venkata Lolla, Eamonn Keogh, Stefano Lonardi, Chotirat Ann Ratanamahatana",
     "language": "Python",
     "type": "Detector",

@@ -2,7 +2,7 @@
     "title": "SAND",
     "description": "Implementation of SAND described in http://www.vldb.org/pvldb/vol14/p1717-boniol.pdf.",
     "inputDimensionality": "univariate",
-    "version": "0.1",
+    "version": "0.3.0",
     "authors": "Sebastian Schmidl",
     "language": "Python",
     "type": "Detector",

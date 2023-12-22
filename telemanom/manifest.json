@@ -2,7 +2,7 @@
     "title": "Telemanom",
     "description": "Implementation of https://doi.org/10.1145/3219819.3219845.",
     "inputDimensionality": "multivariate",
-    "version": "0.1",
+    "version": "0.3.0",
     "authors": "Kyle Hundman, Valentino Constantinou, Christopher Laporte, Ian Colwell, Tom Soderstrom",
     "language": "Python",
     "type": "Detector",

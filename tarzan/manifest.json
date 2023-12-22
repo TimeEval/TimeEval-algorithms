@@ -2,7 +2,7 @@
     "title": "TARZAN",
     "description": "Implementation of https://dl.acm.org/doi/10.1145/775047.775128",
     "inputDimensionality": "univariate",
-    "version": "0.1",
+    "version": "0.3.0",
     "authors": "Eamonn Keogh, Stefano Leonardi, Bill Chiu",
     "language": "Python",
     "type": "Detector",

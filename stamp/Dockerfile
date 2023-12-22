@@ -1,6 +1,7 @@
-FROM registry.gitlab.hpi.de/akita/i/tsmp:0.2.5
+FROM ghcr.io/timeeval/tsmp:0.3.0
 
 LABEL maintainer="sebastian.schmidl@hpi.de"
+LABEL org.opencontainers.image.licenses=MIT
 
 ENV ALGORITHM_MAIN="/app/algorithm.r"
 

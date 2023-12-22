@@ -1,7 +1,7 @@
 FROM ghcr.io/timeeval/r4-base:0.3.2
 
 LABEL maintainer="richard.schulz@student.hpi.de"
-LABEL org.opencontainers.image.licenses=MIT
+LABEL org.opencontainers.image.licenses="GPL-3.0"
 
 # install R-install requirements
 RUN set -eux; \
