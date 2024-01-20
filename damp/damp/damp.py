@@ -92,7 +92,7 @@ class DAMP(BaseEstimator, TransformerMixin):
                     break
                 else:
                     prefix = 2*prefix
-                    expansion_num *= 1
+                    expansion_num += 1
 
         return amp_i
 
