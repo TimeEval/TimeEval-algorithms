@@ -2,7 +2,7 @@
     "title": "LOF",
     "description": "Implementation of https://doi.org/10.1145/342009.335388.",
     "inputDimensionality": "multivariate",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "authors": "Markus M. Breunig, Hans-Peter Kriegel, Raymond T. Ng, Jörg Sander",
     "language": "Python",
     "type": "Detector",

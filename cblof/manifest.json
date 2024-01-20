@@ -2,7 +2,7 @@
     "title": "CBLOF",
     "description": "Implementation of https://doi.org/10.1016/S0167-8655(03)00003-5.",
     "inputDimensionality": "multivariate",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "authors": "Zengyou He, Xiaofei Xu, Shengchun Deng",
     "language": "Python",
     "type": "Detector",

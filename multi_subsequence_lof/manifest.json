@@ -2,7 +2,7 @@
     "title": "Multi-Sub-LOF",
     "description": "LOF on sliding windows of multivariate time series to detect subsequence anomalies.",
     "inputDimensionality": "multivariate",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "authors": "Sebastian Schmidl, Niklas Köhnecke",
     "language": "Python",
     "type": "Detector",
