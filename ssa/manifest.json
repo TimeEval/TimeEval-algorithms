@@ -3,7 +3,7 @@
     "description": "Segmented Sequence Analysis calculates two piecewise linear models, aligns them and then computes the similarity between them. Finally a treshhold based approach is used to classify data as anomalous.",
     "inputDimensionality": "univariate",
     "learningType": "Unsupervised",
-    "version": "1.0",
+    "version": "1.0.0",
     "authors": "Yuan Yao et al.",
     "language": "Python",
     "type": "Detector",
