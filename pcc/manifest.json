@@ -2,7 +2,7 @@
     "title": "PCC",
     "description": "Implementation of http://citeseerx.ist.psu.edu/viewdoc/summary;jsessionid=003008C2CF2373B9C332D4A1DB035515?doi=10.1.1.66.299.",
     "inputDimensionality": "multivariate",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "authors": "Mei-ling Shyu, Shu-ching Chen, Kanoksri Sarinnapakorn, Liwu Chang",
     "language": "Python",
     "type": "Detector",

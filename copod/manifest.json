@@ -2,7 +2,7 @@
     "title": "COPOD",
     "description": "Implementation of https://publications.pik-potsdam.de/pubman/faces/ViewItemOverviewPage.jsp?itemId=item_24536.",
     "inputDimensionality": "multivariate",
-    "version": "0.3.0",
+    "version": "0.4.0",
     "authors": "Zheng Li, Yue Zhao, Nicola Botta, Cezar Ionescu, Xiyang Hu, ",
     "language": "Python",
     "type": "Detector",
