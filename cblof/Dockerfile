@@ -1,4 +1,4 @@
-FROM ghcr.io/timeeval/python3-base:0.3.1
+FROM ghcr.io/timeeval/pyod:0.3.1
 
 LABEL maintainer="sebastian.schmidl@hpi.de"
 LABEL org.opencontainers.image.licenses=MIT
