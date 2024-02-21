@@ -120,7 +120,29 @@ def save_model(model, outfile: Path) -> None:
 def load_model(config: AlgorithmArgs) -> Any:
     # decompress archive to folder
     with tarfile.open(config.modelInput, "r:gz") as f:
-        f.extractall()
+        
+        import os
+        
+        def is_within_directory(directory, target):
+            
+            abs_directory = os.path.abspath(directory)
+            abs_target = os.path.abspath(target)
+        
+            prefix = os.path.commonprefix([abs_directory, abs_target])
+            
+            return prefix == abs_directory
+        
+        def safe_extract(tar, path=".", members=None, *, numeric_owner=False):
+        
+            for member in tar.getmembers():
+                member_path = os.path.join(path, member.name)
+                if not is_within_directory(path, member_path):
+                    raise Exception("Attempted Path Traversal in Tar File")
+        
+            tar.extractall(path, members, numeric_owner=numeric_owner) 
+            
+        
+        safe_extract(f)
 
     return torsk.load_model(MODEL_PATH)
 
