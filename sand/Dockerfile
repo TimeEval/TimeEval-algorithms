@@ -1,4 +1,4 @@
-FROM registry.gitlab.hpi.de/akita/i/python3-base:0.2.5 as base
+FROM ghcr.io/timeeval/python3-base:0.3.0 as base
 
 LABEL maintainer="sebastian.schmidl@hpi.de"
 
