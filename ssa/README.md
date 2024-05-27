@@ -8,8 +8,9 @@
 | Source Code | https://github.com/johnpaparrizos/AnomalyDetection/tree/master/code/ptsa |
 | Learning type | unsupervised |
 | Input dimensionality | univariate |
-
 |||
+
+After receiving the original source code from the authors, place the directory `ptsa` into this folder. 
 
 ## Notes
 

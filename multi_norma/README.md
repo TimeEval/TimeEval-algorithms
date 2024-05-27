@@ -10,6 +10,17 @@
 | Input dimensionality | multivariate |
 |||
 
+There are two parts to getting access to this algorithm:
+
+1. You get the original NormA implementation from its original authors (see [NormA](../norma/AVAILABILITY.md)).
+2. You get the adaption of the algorithm to multivariate datasets from us after having received the original NormA implementation.
+   We need the original authors' consent to share the code because we re-use significant parts of it.
+
+After receiving the code from us, place the `multinormats`-folder within this folder.
+From the original NormA algorithm, we just require the library files.
+Place the original `normats.lib`-folder within the new `multinormats`-folder.
+The C-code and the matrix profile implementation are not required anymore because we switched to stumpy for MultiNormA.
+
 ## Original Dependencies
 
 - python==3.6
