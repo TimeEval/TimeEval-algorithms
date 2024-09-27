@@ -10,6 +10,8 @@
 | Input dimensionality | univariate |
 |||
 
+After receiving the original source code from the authors, place the directory `matrix_profile` and the file `SAND.py` into this folder.
+
 ## Original Dependencies
 
 - numpy==1.18.5

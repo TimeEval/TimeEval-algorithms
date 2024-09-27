@@ -10,6 +10,8 @@
 | Input dimensionality | univariate |
 |||
 
+After receiving the original source code from the authors, place the directories `C` and `normats` into this folder.
+
 ## Original Dependencies
 
 - python==3.6
