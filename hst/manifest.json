@@ -1,0 +1,43 @@
+{
+    "title": "HST",
+    "description": "Implementation of https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=73b6b7d9e7e225719ad86234927a3b60a4a873c0.",
+    "inputDimensionality": "multivariate",
+    "version": "0.3.1",
+    "authors": "Swee Chuan Tan, Kai Ming Ting, Tony Fei Liu",
+    "language": "Python",
+    "type": "Detector",
+    "mainFile": "algorithm.py",
+    "learningType": "unsupervised",
+    "executionStep": {
+    	"parameters": [
+            {
+                "name": "n_trees",
+                "type": "int",
+                "defaultValue": 10,
+                "optional": "true",
+                "description": "Number of trees to build."
+            },{
+                "name": "height",
+                "type": "int",
+                "defaultValue": 8,
+                "optional": "true",
+                "description": "Height of each tree. Note that a tree of height `h` is made up of `h + 1` levels and therefore contains `2 ** (h + 1) - 1` nodes."
+            },
+            {
+                "name": "window_size",
+                "type": "int",
+                "defaultValue": 250,
+                "optional": "true",
+                "description": "Number of observations to use for calculating the mass at each node in each tree."
+            },
+            {
+                "name": "random_state",
+                "type": "int",
+                "defaultValue": 42,
+                "optional": "true",
+                "description": "Seed for random number generation."
+            }
+        ],
+        "modelInput": "none"
+    }
+}
